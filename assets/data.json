@@ -1,0 +1,4044 @@
+{
+  "acronyms": [
+    {
+      "acronym": "2G",
+      "definition": "2nd Generation",
+      "description": ""
+    },
+    {
+      "acronym": "3G",
+      "definition": "3rd Generation",
+      "description": ""
+    },
+    {
+      "acronym": "3GPP",
+      "definition": "3rd Generation Partnership Project",
+      "description": ""
+    },
+    {
+      "acronym": "3GPP CR",
+      "definition": "3GPP Change Request",
+      "description": ""
+    },
+    {
+      "acronym": "3GPP TS",
+      "definition": "3GPP Technical Specification",
+      "description": ""
+    },
+    {
+      "acronym": "4G",
+      "definition": "4th Generation",
+      "description": ""
+    },
+    {
+      "acronym": "5G",
+      "definition": "5th Generation",
+      "description": ""
+    },
+    {
+      "acronym": "5GC",
+      "definition": "5G Core",
+      "description": ""
+    },
+    {
+      "acronym": "AA",
+      "definition": "Application Assurance",
+      "description": ""
+    },
+    {
+      "acronym": "AAA",
+      "definition": "Authentication, Authorization, and Accounting",
+      "description": ""
+    },
+    {
+      "acronym": "ACL",
+      "definition": "Access Control List",
+      "description": ""
+    },
+    {
+      "acronym": "ACM",
+      "definition": "Adaptive Code Modulation",
+      "description": ""
+    },
+    {
+      "acronym": "ACD",
+      "definition": "Automatic Call Distributor",
+      "description": ""
+    },
+    {
+      "acronym": "ACR",
+      "definition": "Anonymous Customer Reference",
+      "description": ""
+    },
+    {
+      "acronym": "ACID",
+      "definition": "Atomicity, Consistency, Isolation, and Durability",
+      "description": ""
+    },
+    {
+      "acronym": "ACTN",
+      "definition": "Abstraction and Control of TE Networks",
+      "description": ""
+    },
+    {
+      "acronym": "ACTN-VN",
+      "definition": "Abstraction and Control of TE Networks",
+      "description": "Virtualised Network"
+    },
+    {
+      "acronym": "AD",
+      "definition": "Active Directory",
+      "description": ""
+    },
+    {
+      "acronym": "ADP",
+      "definition": "Advanced DNS Protection",
+      "description": ""
+    },
+    {
+      "acronym": "ADM",
+      "definition": "Architecture Development Model",
+      "description": ""
+    },
+    {
+      "acronym": "AI",
+      "definition": "Artificial Intelligence",
+      "description": ""
+    },
+    {
+      "acronym": "AF",
+      "definition": "Application Function",
+      "description": ""
+    },
+    {
+      "acronym": "AMAP",
+      "definition": "Africa",
+      "description": "Middle East - Asia - Pacific"
+    },
+    {
+      "acronym": "AMF",
+      "definition": "Access and Mobility Management Function",
+      "description": ""
+    },
+    {
+      "acronym": "AML",
+      "definition": "Advanced Mobile Location",
+      "description": ""
+    },
+    {
+      "acronym": "AMR-WB",
+      "definition": "Adaptive Multi-Rate Wideband",
+      "description": ""
+    },
+    {
+      "acronym": "ANDSP",
+      "definition": "Access Network Discovery and Selection Policy",
+      "description": ""
+    },
+    {
+      "acronym": "ANSI",
+      "definition": "American National Standards Institute",
+      "description": ""
+    },
+    {
+      "acronym": "AOC",
+      "definition": "Active Optical Cable",
+      "description": ""
+    },
+    {
+      "acronym": "API",
+      "definition": "Application programming interface",
+      "description": ""
+    },
+    {
+      "acronym": "APN",
+      "definition": "Access Point Name",
+      "description": ""
+    },
+    {
+      "acronym": "AppID",
+      "definition": "Application Identity",
+      "description": ""
+    },
+    {
+      "acronym": "ARM",
+      "definition": "Account Resource Management",
+      "description": ""
+    },
+    {
+      "acronym": "AS",
+      "definition": "Autonomous System",
+      "description": ""
+    },
+    {
+      "acronym": "A-SBC",
+      "definition": "Access-Session Border Controller",
+      "description": ""
+    },
+    {
+      "acronym": "ASIC",
+      "definition": "Application Specific Integrated Circuit",
+      "description": ""
+    },
+    {
+      "acronym": "ASR",
+      "definition": "Abort Session Request",
+      "description": ""
+    },
+    {
+      "acronym": "ATPC",
+      "definition": "Automatic Power Control",
+      "description": ""
+    },
+    {
+      "acronym": "AUSF",
+      "definition": "Authentication Server Function",
+      "description": ""
+    },
+    {
+      "acronym": "AVP",
+      "definition": "Attribute-Value Pair",
+      "description": ""
+    },
+    {
+      "acronym": "B2B",
+      "definition": "Business-to-Business",
+      "description": ""
+    },
+    {
+      "acronym": "BAU",
+      "definition": "Business as Usual",
+      "description": ""
+    },
+    {
+      "acronym": "BB",
+      "definition": "Baseband",
+      "description": ""
+    },
+    {
+      "acronym": "BBF",
+      "definition": "Broadband Forum",
+      "description": ""
+    },
+    {
+      "acronym": "BBU",
+      "definition": "Baseband Unit",
+      "description": ""
+    },
+    {
+      "acronym": "BEP",
+      "definition": "Backhaul Evolution Programme",
+      "description": ""
+    },
+    {
+      "acronym": "BESS",
+      "definition": "Battery Energy Storage System",
+      "description": "a system that combines batteries with other electrical components to provide a reliable and efficient source of power."
+    },
+    {
+      "acronym": "BF",
+      "definition": "Beamforming",
+      "description": ""
+    },
+    {
+      "acronym": "BFD",
+      "definition": "Bidirectional Forwarding Detection",
+      "description": ""
+    },
+    {
+      "acronym": "BFD-MPLS",
+      "definition": "Bidirectional Forwarding Detection for MPLS",
+      "description": ""
+    },
+    {
+      "acronym": "BGP",
+      "definition": "Border Gateway Protocol",
+      "description": "interdomain routing protocol designed to provide loop-free routing between organizations."
+    },
+    {
+      "acronym": "BGP-LS",
+      "definition": "Border Gateway Protocol Link-State",
+      "description": ""
+    },
+    {
+      "acronym": "BGP-VPWS",
+      "definition": "BGP Virtual Private Wire Service",
+      "description": ""
+    },
+    {
+      "acronym": "BH",
+      "definition": "Backhaul",
+      "description": ""
+    },
+    {
+      "acronym": "BICN",
+      "definition": "Bearer Independent Core Network",
+      "description": ""
+    },
+    {
+      "acronym": "BIER",
+      "definition": "Bit Indexed Explicit Replication",
+      "description": ""
+    },
+    {
+      "acronym": "BMaaS",
+      "definition": "Bare Metal as-a-Service",
+      "description": ""
+    },
+    {
+      "acronym": "BNG",
+      "definition": "Broadband Network Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "BNM",
+      "definition": "Bandwidth Notification Message",
+      "description": ""
+    },
+    {
+      "acronym": "BoD",
+      "definition": "Bandwidth on Demand",
+      "description": ""
+    },
+    {
+      "acronym": "BP",
+      "definition": "Blue Planet Orchestrator",
+      "description": ""
+    },
+    {
+      "acronym": "BPI",
+      "definition": "Blue Planet Orchestrator & Inventory",
+      "description": ""
+    },
+    {
+      "acronym": "BRAS",
+      "definition": "Broadband Remote Access Server",
+      "description": ""
+    },
+    {
+      "acronym": "BSC",
+      "definition": "Base Station Controller",
+      "description": ""
+    },
+    {
+      "acronym": "BSF 5G",
+      "definition": "Binding Support Function 5th Generation",
+      "description": ""
+    },
+    {
+      "acronym": "BSS 1",
+      "definition": "Business Support System",
+      "description": ""
+    },
+    {
+      "acronym": "BSS 2",
+      "definition": "Base Station Subsystem",
+      "description": ""
+    },
+    {
+      "acronym": "BW",
+      "definition": "Bandwidth",
+      "description": ""
+    },
+    {
+      "acronym": "BWP",
+      "definition": "Bandwidth Part",
+      "description": ""
+    },
+    {
+      "acronym": "CA",
+      "definition": "Carrier Aggregation",
+      "description": ""
+    },
+    {
+      "acronym": "CAB",
+      "definition": "Change Advisory Board",
+      "description": ""
+    },
+    {
+      "acronym": "CAR",
+      "definition": "Capital Allocation Review",
+      "description": ""
+    },
+    {
+      "acronym": "CaaS",
+      "definition": "Container as a Service",
+      "description": ""
+    },
+    {
+      "acronym": "CAG",
+      "definition": "Closed Access Group",
+      "description": ""
+    },
+    {
+      "acronym": "Cat-M",
+      "definition": "Category M",
+      "description": ""
+    },
+    {
+      "acronym": "CapEx",
+      "definition": "capital expenditures",
+      "description": ""
+    },
+    {
+      "acronym": "CAMEL",
+      "definition": "Customized Applications for Mobile network Enhanced Logic",
+      "description": "a set of standards designed to work on either a GSM core network or the UMTS network by extending the services offered within a GSM network. Provides the mechanisms to support operator specific services, which are not covered by standardized GSM services"
+    },
+    {
+      "acronym": "CBAM",
+      "definition": "CloudBand Application Manager",
+      "description": ""
+    },
+    {
+      "acronym": "cBNG",
+      "definition": "Cloud Broadband Network Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "CCS",
+      "definition": "Convergent Charging System",
+      "description": ""
+    },
+    {
+      "acronym": "CD",
+      "definition": "Cloud Drive",
+      "description": ""
+    },
+    {
+      "acronym": "CDA",
+      "definition": "Cloud Domain Assurance",
+      "description": ""
+    },
+    {
+      "acronym": "CDC-F",
+      "definition": "Colorless, Directionless, Contentionless",
+      "description": "FlexGrid"
+    },
+    {
+      "acronym": "CDN",
+      "definition": "Content Delivery Network",
+      "description": ""
+    },
+    {
+      "acronym": "CDR",
+      "definition": "Call Detail Record",
+      "description": ""
+    },
+    {
+      "acronym": "CE",
+      "definition": "Customer Edge",
+      "description": ""
+    },
+    {
+      "acronym": "CEF",
+      "definition": "Charging Enablement Function",
+      "description": ""
+    },
+    {
+      "acronym": "CTCS",
+      "definition": "Call Trace Collection Service",
+      "description": ""
+    },
+    {
+      "acronym": "cENM",
+      "definition": "Cloud Native ENM",
+      "description": ""
+    },
+    {
+      "acronym": "CEPT",
+      "definition": "European Conference of Postal and Telecommunications Administrations",
+      "description": ""
+    },
+    {
+      "acronym": "C-F",
+      "definition": "Colorless, Flexgrid",
+      "description": ""
+    },
+    {
+      "acronym": "CFCS",
+      "definition": "Customer Facing Communication Service",
+      "description": ""
+    },
+    {
+      "acronym": "CFM",
+      "definition": "Connectivity Fault Management",
+      "description": ""
+    },
+    {
+      "acronym": "CFP2",
+      "definition": "C Form-factor Pluggable type 2",
+      "description": ""
+    },
+    {
+      "acronym": "CFS",
+      "definition": "Customer Facing Services",
+      "description": ""
+    },
+    {
+      "acronym": "CHF",
+      "definition": "Charging Function",
+      "description": ""
+    },
+    {
+      "acronym": "CSRF",
+      "definition": "Cross-Site Request Forgery",
+      "description": "It's a type of attack that tricks the victim into submitting a malicious request. Django provides built-in protection against CSRF attacks through the {% csrf_token %} template tag and the ensure_csrf_cookie() decorator. This ensures that only authenticated requests are processed, protecting user data and system integrity."
+    },
+    {
+      "acronym": "CI/CD",
+      "definition": "Continuous Integration/Continuous Deployment",
+      "description": ""
+    },
+    {
+      "acronym": "cIMS",
+      "definition": "cloud IP Multimedia Subsystem",
+      "description": ""
+    },
+    {
+      "acronym": "CLI",
+      "definition": "Command Line Interface",
+      "description": ""
+    },
+    {
+      "acronym": "CloudATS",
+      "definition": "Cloud Application Telephony Server",
+      "description": ""
+    },
+    {
+      "acronym": "CloudCO",
+      "definition": "Cloud Central Office",
+      "description": ""
+    },
+    {
+      "acronym": "CloudSBC",
+      "definition": "Cloud Session Border Control",
+      "description": ""
+    },
+    {
+      "acronym": "CLV",
+      "definition": "Customer Lifetime Value",
+      "description": ""
+    },
+    {
+      "acronym": "CM",
+      "definition": "Configuration Management",
+      "description": ""
+    },
+    {
+      "acronym": "CMG",
+      "definition": "Cloud Mobile Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "CMS",
+      "definition": "Converged Messaging System",
+      "description": ""
+    },
+    {
+      "acronym": "CMTS",
+      "definition": "Cable Modem Termination System",
+      "description": ""
+    },
+    {
+      "acronym": "CN",
+      "definition": "Core Network",
+      "description": ""
+    },
+    {
+      "acronym": "CNAP",
+      "definition": "Calling Name Presentation",
+      "description": ""
+    },
+    {
+      "acronym": "CNCF",
+      "definition": "Cloud Native Computing Foundation",
+      "description": ""
+    },
+    {
+      "acronym": "cnDRA",
+      "definition": "Cloud Native Diameter Routing Agent",
+      "description": ""
+    },
+    {
+      "acronym": "CNF",
+      "definition": "Containerised Network Function",
+      "description": ""
+    },
+    {
+      "acronym": "CNI",
+      "definition": "Container Network Interface",
+      "description": ""
+    },
+    {
+      "acronym": "C-NSSMF",
+      "definition": "Core-NSSMF",
+      "description": ""
+    },
+    {
+      "acronym": "CO 1",
+      "definition": "Central Office",
+      "description": ""
+    },
+    {
+      "acronym": "CO 2",
+      "definition": "Controller",
+      "description": ""
+    },
+    {
+      "acronym": "CoAP",
+      "definition": "Constrained Application Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "CoC",
+      "definition": "Cloud on Cloud",
+      "description": ""
+    },
+    {
+      "acronym": "COB",
+      "definition": "Close of business",
+      "description": ""
+    },
+    {
+      "acronym": "COTS",
+      "definition": "Commercial-off-the-shelf",
+      "description": ""
+    },
+    {
+      "acronym": "CTI",
+      "definition": "Computer Telephony Integration",
+      "description": ""
+    },
+    {
+      "acronym": "CP",
+      "definition": "Cyclic Prefix",
+      "description": ""
+    },
+    {
+      "acronym": "CPE",
+      "definition": "Customer Premise Equipment",
+      "description": ""
+    },
+    {
+      "acronym": "CPM",
+      "definition": "Control Processor Module",
+      "description": ""
+    },
+    {
+      "acronym": "CPN",
+      "definition": "Core Packet Network",
+      "description": ""
+    },
+    {
+      "acronym": "CPRI",
+      "definition": "Common Public Radio Interface",
+      "description": ""
+    },
+    {
+      "acronym": "CPU",
+      "definition": "Central Processing Unit",
+      "description": ""
+    },
+    {
+      "acronym": "CPQ",
+      "definition": "Costing, Pricing and Quoting",
+      "description": ""
+    },
+    {
+      "acronym": "CRD",
+      "definition": "Central Registration Depository",
+      "description": ""
+    },
+    {
+      "acronym": "CRUD",
+      "definition": "Create Read Update Delete",
+      "description": ""
+    },
+    {
+      "acronym": "CRM",
+      "definition": "Customer Relationship Management",
+      "description": ""
+    },
+    {
+      "acronym": "CS",
+      "definition": "Circuit Switched",
+      "description": ""
+    },
+    {
+      "acronym": "CS/R4",
+      "definition": "Circuit Switched/Release 4",
+      "description": ""
+    },
+    {
+      "acronym": "CSCF",
+      "definition": "Call Session Control Function",
+      "description": ""
+    },
+    {
+      "acronym": "CSD",
+      "definition": "Connectivity Service Director",
+      "description": ""
+    },
+    {
+      "acronym": "CSDB",
+      "definition": "Common Subscriber Database",
+      "description": ""
+    },
+    {
+      "acronym": "CSGN",
+      "definition": "Cellular Serving Gateway Node",
+      "description": ""
+    },
+    {
+      "acronym": "CSGSN",
+      "definition": "Controller SGSN",
+      "description": ""
+    },
+    {
+      "acronym": "CSS",
+      "definition": "Cascading Style Sheets",
+      "description": ""
+    },
+    {
+      "acronym": "CSI",
+      "definition": "Communication Service Instance",
+      "description": ""
+    },
+    {
+      "acronym": "CSI-RS",
+      "definition": "Channel State Information-Reference Signal",
+      "description": ""
+    },
+    {
+      "acronym": "CSMF",
+      "definition": "Communication Service Management Function",
+      "description": ""
+    },
+    {
+      "acronym": "CSO",
+      "definition": "Cloud Service Orchestration",
+      "description": ""
+    },
+    {
+      "acronym": "CSP",
+      "definition": "Cloud Service Providers",
+      "description": ""
+    },
+    {
+      "acronym": "CSR",
+      "definition": "Cell Switching Router",
+      "description": ""
+    },
+    {
+      "acronym": "CST",
+      "definition": "Communication Service Template",
+      "description": ""
+    },
+    {
+      "acronym": "CT",
+      "definition": "Canary Test",
+      "description": ""
+    },
+    {
+      "acronym": "CTF",
+      "definition": "Charging Trigger Function",
+      "description": ""
+    },
+    {
+      "acronym": "CTS",
+      "definition": "Common Topology Service",
+      "description": ""
+    },
+    {
+      "acronym": "CU",
+      "definition": "Control Unit",
+      "description": ""
+    },
+    {
+      "acronym": "CVM",
+      "definition": "Customer Value Management",
+      "description": ""
+    },
+    {
+      "acronym": "CX",
+      "definition": "Customer Experience",
+      "description": ""
+    },
+    {
+      "acronym": "DB",
+      "definition": "Database",
+      "description": ""
+    },
+    {
+      "acronym": "Cisco DART",
+      "definition": "Cisco Secure Client Diagnostics and Reporting Tool",
+      "description": ""
+    },
+    {
+      "acronym": "DC 1",
+      "definition": "Data Center",
+      "description": ""
+    },
+    {
+      "acronym": "DC 2",
+      "definition": "Dual Connectivity",
+      "description": ""
+    },
+    {
+      "acronym": "DCA",
+      "definition": "DNS Cache Accelerator",
+      "description": ""
+    },
+    {
+      "acronym": "DCCA",
+      "definition": "Diameter Credit-Control Application",
+      "description": ""
+    },
+    {
+      "acronym": "DCI",
+      "definition": "Cloud and data center interconnect",
+      "description": ""
+    },
+    {
+      "acronym": "DCO",
+      "definition": "Digital coherent optics",
+      "description": ""
+    },
+    {
+      "acronym": "DCSG",
+      "definition": "Disaggregated Cell Site Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "DDoS",
+      "definition": "Distributed Denial of Service",
+      "description": ""
+    },
+    {
+      "acronym": "DEA",
+      "definition": "Diameter Edge Agent",
+      "description": ""
+    },
+    {
+      "acronym": "DevOps",
+      "definition": "Development Operations",
+      "description": ""
+    },
+    {
+      "acronym": "DL",
+      "definition": "Downlink",
+      "description": ""
+    },
+    {
+      "acronym": "DNN",
+      "definition": "Data Network Name",
+      "description": ""
+    },
+    {
+      "acronym": "DNS 1",
+      "definition": "Domain Name Server",
+      "description": ""
+    },
+    {
+      "acronym": "DNS 2",
+      "definition": "Domain Name System",
+      "description": ""
+    },
+    {
+      "acronym": "DO",
+      "definition": "Domain Orchestrator",
+      "description": ""
+    },
+    {
+      "acronym": "DoD",
+      "definition": "Depth of Discharge",
+      "description": "indicates the percentage of the battery that has been discharged relative to the overall capacity of the battery. Depth of Discharge is defined as the capacity that is discharged from a fully charged battery, divided by battery nominal capacity."
+    },
+    {
+      "acronym": "DOCSIS",
+      "definition": "Data Over Cable Service Interface Specification",
+      "description": ""
+    },
+    {
+      "acronym": "DOIC",
+      "definition": "Diameter Overload Indication Conveyance",
+      "description": ""
+    },
+    {
+      "acronym": "DONAS",
+      "definition": "Date over Non-Access Stratum",
+      "description": ""
+    },
+    {
+      "acronym": "DOM",
+      "definition": "Document Object Model",
+      "description": ""
+    },
+    {
+      "acronym": "DMG",
+      "definition": "Disk Mounted Name",
+      "description": ""
+    },
+    {
+      "acronym": "DPI",
+      "definition": "Data Packet Inspection",
+      "description": ""
+    },
+    {
+      "acronym": "DRA",
+      "definition": "Diameter Routing Agent",
+      "description": ""
+    },
+    {
+      "acronym": "DRMP",
+      "definition": "Diameter Routing Message Priority",
+      "description": ""
+    },
+    {
+      "acronym": "DSD",
+      "definition": "Dynamic Service Descriptor",
+      "description": ""
+    },
+    {
+      "acronym": "DSS",
+      "definition": "Dynamic Spectrum Sharing",
+      "description": ""
+    },
+    {
+      "acronym": "DSLAMs",
+      "definition": "Digital Subscriber Line Access Multiplexers",
+      "description": ""
+    },
+    {
+      "acronym": "DTLS",
+      "definition": "Datagram Transport Layer Security",
+      "description": ""
+    },
+    {
+      "acronym": "DU",
+      "definition": "Distributed Unit",
+      "description": ""
+    },
+    {
+      "acronym": "DxL",
+      "definition": "Digital Experience Layer",
+      "description": ""
+    },
+    {
+      "acronym": "E2E",
+      "definition": "End-to-End",
+      "description": ""
+    },
+    {
+      "acronym": "EAI",
+      "definition": "Ericsson Adaptive Inventory",
+      "description": ""
+    },
+    {
+      "acronym": "EANTC",
+      "definition": "European Advanced Networking Test Center",
+      "description": ""
+    },
+    {
+      "acronym": "EAP-TLS",
+      "definition": "Extensible Authentication Protocol-Transport Layer Security",
+      "description": ""
+    },
+    {
+      "acronym": "EC",
+      "definition": "Emergency Call",
+      "description": ""
+    },
+    {
+      "acronym": "ECH",
+      "definition": "Encrypted Client Hello",
+      "description": ""
+    },
+    {
+      "acronym": "E-CID",
+      "definition": "Enhanced Cell ID",
+      "description": ""
+    },
+    {
+      "acronym": "ECM",
+      "definition": "Ericsson Catalogue Manager",
+      "description": ""
+    },
+    {
+      "acronym": "ECMP",
+      "definition": "Equal-Cost Multi-Path",
+      "description": ""
+    },
+    {
+      "acronym": "EMMS",
+      "definition": "Event Exposure Management Service",
+      "description": ""
+    },
+    {
+      "acronym": "ESME",
+      "definition": "External Short Message Entity",
+      "description": ""
+    },
+    {
+      "acronym": "E-Commerce",
+      "definition": "Electronic Commerce",
+      "description": "the buying and selling of goods and services, or the transmitting of funds or data, over an electronic network, primarily the internet"
+    },
+    {
+      "acronym": "eCPRI",
+      "definition": "Evolved Common Public Radio Interface",
+      "description": ""
+    },
+    {
+      "acronym": "ECT",
+      "definition": "Explicit Call Transfer",
+      "description": ""
+    },
+    {
+      "acronym": "EDP",
+      "definition": "Extreme Discovery Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "EDPG",
+      "definition": "Evolved Packet Data Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "EDS",
+      "definition": "Ericsson Design System",
+      "description": ""
+    },
+    {
+      "acronym": "EFM",
+      "definition": "Ethernet in the First Mile",
+      "description": ""
+    },
+    {
+      "acronym": "EIR",
+      "definition": "Equipment Identity Register",
+      "description": ""
+    },
+    {
+      "acronym": "ELA",
+      "definition": "Enterprise Level Agreement",
+      "description": ""
+    },
+    {
+      "acronym": "E-LAN",
+      "definition": "Ethernet LAN",
+      "description": ""
+    },
+    {
+      "acronym": "eMBB",
+      "definition": "Enhanced Mobile Broadband",
+      "description": ""
+    },
+    {
+      "acronym": "EMC",
+      "definition": "Electromagnetic Compatibility",
+      "description": ""
+    },
+    {
+      "acronym": "EMF",
+      "definition": "Electromagnetic Field",
+      "description": ""
+    },
+    {
+      "acronym": "EMS",
+      "definition": "Element Management System",
+      "description": ""
+    },
+    {
+      "acronym": "ENUM",
+      "definition": "E.164 Number Mapping",
+      "description": ""
+    },
+    {
+      "acronym": "EO",
+      "definition": "Ericsson Order",
+      "description": ""
+    },
+    {
+      "acronym": "EOC",
+      "definition": "Ericsson Order Care",
+      "description": ""
+    },
+    {
+      "acronym": "EO-SO",
+      "definition": "Ericsson Ochestrator-Service Orchestration",
+      "description": ""
+    },
+    {
+      "acronym": "EP",
+      "definition": "End-point",
+      "description": ""
+    },
+    {
+      "acronym": "EPC",
+      "definition": "Evolved Packet Core",
+      "description": ""
+    },
+    {
+      "acronym": "e-PDG",
+      "definition": "Evolved Packet Data Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "EPG",
+      "definition": "Evolved Packet Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "EPS",
+      "definition": "Evolved Packet System",
+      "description": ""
+    },
+    {
+      "acronym": "EPS-FB",
+      "definition": "EPS Fallback",
+      "description": ""
+    },
+    {
+      "acronym": "ERPS",
+      "definition": "Ethernet Ring Protection Switching",
+      "description": ""
+    },
+    {
+      "acronym": "ESA",
+      "definition": "Extended Services Appliance",
+      "description": ""
+    },
+    {
+      "acronym": "ESA",
+      "definition": "Extended Services Appliance",
+      "description": ""
+    },
+    {
+      "acronym": "e-SMLC",
+      "definition": "Evolved Serving Mobile Location Centre",
+      "description": ""
+    },
+    {
+      "acronym": "ETH-BN",
+      "definition": "Ethernet Bandwidth notification",
+      "description": ""
+    },
+    {
+      "acronym": "ETSI",
+      "definition": "European Telecommunications Standards Institute",
+      "description": ""
+    },
+    {
+      "acronym": "EVC",
+      "definition": "Ethernet Virtual Circuit",
+      "description": ""
+    },
+    {
+      "acronym": "EVPN",
+      "definition": "Ethernet VPN",
+      "description": ""
+    },
+    {
+      "acronym": "EVPN-IRB",
+      "definition": "integrated routing and bridging",
+      "description": ""
+    },
+    {
+      "acronym": "Exp",
+      "definition": "Expansions",
+      "description": ""
+    },
+    {
+      "acronym": "FAN",
+      "definition": "Fixed Access Network",
+      "description": ""
+    },
+    {
+      "acronym": "FCAPS",
+      "definition": "Fault, Configuration, Accounting, Performance and Security",
+      "description": ""
+    },
+    {
+      "acronym": "FDD",
+      "definition": "Frequency Division Duplex",
+      "description": ""
+    },
+    {
+      "acronym": "FDO",
+      "definition": "Fixed Domain Orchestrator",
+      "description": ""
+    },
+    {
+      "acronym": "FE",
+      "definition": "Fast Ethernet",
+      "description": ""
+    },
+    {
+      "acronym": "FinOps",
+      "definition": "Financial Operations",
+      "description": ""
+    },
+    {
+      "acronym": "FEE",
+      "definition": "Feature Expansion Environment",
+      "description": ""
+    },
+    {
+      "acronym": "FlexE",
+      "definition": "Flexible Ethernet",
+      "description": ""
+    },
+    {
+      "acronym": "FM",
+      "definition": "Fault Management",
+      "description": ""
+    },
+    {
+      "acronym": "ForCES",
+      "definition": "Forwarding and Control Element Separation",
+      "description": ""
+    },
+    {
+      "acronym": "FP 1",
+      "definition": "Feature Pack",
+      "description": ""
+    },
+    {
+      "acronym": "FP 2",
+      "definition": "Frame Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "FQDN",
+      "definition": "Fully Qualified Domain Name",
+      "description": ""
+    },
+    {
+      "acronym": "FR",
+      "definition": "Full Rate",
+      "description": ""
+    },
+    {
+      "acronym": "FS",
+      "definition": "Fault Supervision",
+      "description": ""
+    },
+    {
+      "acronym": "FW",
+      "definition": "Firmware",
+      "description": ""
+    },
+    {
+      "acronym": "FY",
+      "definition": "Fiscal Year",
+      "description": ""
+    },
+    {
+      "acronym": "GANs",
+      "definition": "Generative Adversarial Networks",
+      "description": ""
+    },
+    {
+      "acronym": "G-ACh",
+      "definition": "Generic Associated Channel",
+      "description": ""
+    },
+    {
+      "acronym": "GA",
+      "definition": "General Availability",
+      "description": ""
+    },
+    {
+      "acronym": "GAF",
+      "definition": "Group/Global Architecture Forum",
+      "description": ""
+    },
+    {
+      "acronym": "GB",
+      "definition": "Guard Band",
+      "description": ""
+    },
+    {
+      "acronym": "GGSN",
+      "definition": "Gateway GPRS Support Node",
+      "description": ""
+    },
+    {
+      "acronym": "GIA",
+      "definition": "Genesys Intelligent Automation",
+      "description": ""
+    },
+    {
+      "acronym": "GLN",
+      "definition": "Global Location Number",
+      "description": ""
+    },
+    {
+      "acronym": "GMLC",
+      "definition": "Gateway Mobile Location Centre",
+      "description": ""
+    },
+    {
+      "acronym": "GMPLS",
+      "definition": "Generalized MPLS",
+      "description": ""
+    },
+    {
+      "acronym": "GNMI",
+      "definition": "Google Network Management Interface",
+      "description": ""
+    },
+    {
+      "acronym": "GPB",
+      "definition": "Google Protocol Buffer",
+      "description": ""
+    },
+    {
+      "acronym": "GPON 1 Gigabit",
+      "definition": "Gigabit Passive Optical Network",
+      "description": ""
+    },
+    {
+      "acronym": "GR",
+      "definition": "Geo-Redundancy",
+      "description": ""
+    },
+    {
+      "acronym": "gRPC",
+      "definition": "Google Remote Procedure Call",
+      "description": ""
+    },
+    {
+      "acronym": "GTP",
+      "definition": "GPRS Tunneling Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "GRUU",
+      "definition": "Global Routable User agent URI",
+      "description": ""
+    },
+    {
+      "acronym": "GSM",
+      "definition": "Global System for Mobile Communications",
+      "description": ""
+    },
+    {
+      "acronym": "GSMA",
+      "definition": "GSM Association",
+      "description": ""
+    },
+    {
+      "acronym": "GST",
+      "definition": "Generic Service Template",
+      "description": ""
+    },
+    {
+      "acronym": "GTT",
+      "definition": "Global title translation",
+      "description": ""
+    },
+    {
+      "acronym": "GUI",
+      "definition": "Graphic User Interface",
+      "description": "a system of interactive visual components for computer software that displays objects which convey information and represent actions that can be taken by the user."
+    },
+    {
+      "acronym": "GW",
+      "definition": "Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "H2CO",
+      "definition": "Hierarchical & Hybrid Controller",
+      "description": ""
+    },
+    {
+      "acronym": "HA",
+      "definition": "High Availability",
+      "description": ""
+    },
+    {
+      "acronym": "HAG",
+      "definition": "Hybrid Access Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "HCO",
+      "definition": "Hierarchical Controller",
+      "description": ""
+    },
+    {
+      "acronym": "HD",
+      "definition": "half duplex",
+      "description": "devices which can only transmit in one direction at one time. Although data can move in two directions, it cannot be at the same time. Both devices can transmit and receiving but when one device is sending, the other is receiving"
+    },
+    {
+      "acronym": "HIM",
+      "definition": "Hub Interference Management",
+      "description": ""
+    },
+    {
+      "acronym": "HLD",
+      "definition": "High Level Design",
+      "description": ""
+    },
+    {
+      "acronym": "HLR",
+      "definition": "Home Location Register",
+      "description": ""
+    },
+    {
+      "acronym": "HOT",
+      "definition": "Heat Orchestration Template",
+      "description": ""
+    },
+    {
+      "acronym": "H-PCE",
+      "definition": "Hierarchical PCE",
+      "description": ""
+    },
+    {
+      "acronym": "H-QoS",
+      "definition": "Ingress and egress hierarchical QoS",
+      "description": ""
+    },
+    {
+      "acronym": "HSIA",
+      "definition": "High Speed Internet Access",
+      "description": ""
+    },
+    {
+      "acronym": "HSR",
+      "definition": "Harmonised Software Release",
+      "description": ""
+    },
+    {
+      "acronym": "HSS",
+      "definition": "Home Subscriber Service",
+      "description": ""
+    },
+    {
+      "acronym": "HTTP",
+      "definition": "Hypertext Transfer Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "HTTPS",
+      "definition": "Hypertext Transfer Protocol Secure",
+      "description": ""
+    },
+    {
+      "acronym": "HV-VES",
+      "definition": "High Volume VNF Event Streaming",
+      "description": ""
+    },
+    {
+      "acronym": "HW",
+      "definition": "Hardware",
+      "description": ""
+    },
+    {
+      "acronym": "HW",
+      "definition": "Hardware",
+      "description": ""
+    },
+    {
+      "acronym": "I&C",
+      "definition": "Installation and Commissioning",
+      "description": ""
+    },
+    {
+      "acronym": "IaaS",
+      "definition": "Infrastructure as a Service",
+      "description": ""
+    },
+    {
+      "acronym": "IAS",
+      "definition": "Intelligent Automation Solution",
+      "description": ""
+    },
+    {
+      "acronym": "IB",
+      "definition": "International Business",
+      "description": ""
+    },
+    {
+      "acronym": "IB-SF",
+      "definition": "Intent Based Service Fulfilment Feature",
+      "description": ""
+    },
+    {
+      "acronym": "IBW",
+      "definition": "Instantaneous Bandwidth",
+      "description": ""
+    },
+    {
+      "acronym": "IC",
+      "definition": "Interference Cancellation",
+      "description": ""
+    },
+    {
+      "acronym": "IdAM",
+      "definition": "Identity and Access Management",
+      "description": ""
+    },
+    {
+      "acronym": "IDE",
+      "definition": "Integrated Device Electronics",
+      "description": ""
+    },
+    {
+      "acronym": "IDU",
+      "definition": "Indoor Unit",
+      "description": ""
+    },
+    {
+      "acronym": "IoD",
+      "definition": "Infrastructure-on-demand",
+      "description": ""
+    },
+    {
+      "acronym": "IEEE",
+      "definition": "Institute of Electrical and Electronics Engineers",
+      "description": ""
+    },
+    {
+      "acronym": "IETF",
+      "definition": "Internet Engineering Task Force",
+      "description": ""
+    },
+    {
+      "acronym": "iFIFO",
+      "definition": "Intelligent fan-in/fan-out",
+      "description": ""
+    },
+    {
+      "acronym": "IGMP OSI",
+      "definition": "Internet Group Management Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "IGP OSI",
+      "definition": "Interior Gateway Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "IMS",
+      "definition": "IP Multimedia Subsystem",
+      "description": ""
+    },
+    {
+      "acronym": "IN",
+      "definition": "Intelligent Network",
+      "description": ""
+    },
+    {
+      "acronym": "INAP",
+      "definition": "Intelligent Network Application Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "InF",
+      "definition": "Infrastructure Provider",
+      "description": ""
+    },
+    {
+      "acronym": "INS",
+      "definition": "International Network Systems",
+      "description": ""
+    },
+    {
+      "acronym": "IODT",
+      "definition": "InterOperability Device Testing",
+      "description": ""
+    },
+    {
+      "acronym": "IOM",
+      "definition": "Input/Output Module",
+      "description": ""
+    },
+    {
+      "acronym": "IoT",
+      "definition": "Internet of Things",
+      "description": ""
+    },
+    {
+      "acronym": "IP",
+      "definition": "Internet Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "IP OSI",
+      "definition": "Internet Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "IPAM",
+      "definition": "IP Address Management",
+      "description": ""
+    },
+    {
+      "acronym": "IP-MPLS",
+      "definition": "Internet Protocol-Multi Protocol Label Switching",
+      "description": ""
+    },
+    {
+      "acronym": "IPSec",
+      "definition": "Internet Protocol Security",
+      "description": ""
+    },
+    {
+      "acronym": "IP-SM-GW",
+      "definition": "IP Short Message Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "IRB",
+      "definition": "Integrated Routing and Bridging",
+      "description": ""
+    },
+    {
+      "acronym": "IRU",
+      "definition": "Indefeasible right of use",
+      "description": ""
+    },
+    {
+      "acronym": "IRC",
+      "definition": "Interference Rejection Combining",
+      "description": ""
+    },
+    {
+      "acronym": "I-SBC",
+      "definition": "Interworking-SBC",
+      "description": ""
+    },
+    {
+      "acronym": "ISDN",
+      "definition": "Integrated Services Digital Network",
+      "description": "a circuit-switched telephone network system that transmits both data and voice over a digital line"
+    },
+    {
+      "acronym": "ISIS",
+      "definition": "Intermediate System to Intermediate System",
+      "description": ""
+    },
+    {
+      "acronym": "IS-IS",
+      "definition": "Intermediate System-to-Intermediate System",
+      "description": ""
+    },
+    {
+      "acronym": "ISSU",
+      "definition": "In-Service Software Upgrade",
+      "description": ""
+    },
+    {
+      "acronym": "ISUP",
+      "definition": "Signalling Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "IT4C",
+      "definition": "IT for customers",
+      "description": ""
+    },
+    {
+      "acronym": "ITU",
+      "definition": "International Telecommunication Union",
+      "description": ""
+    },
+    {
+      "acronym": "IVR",
+      "definition": "Interactive Voice Response",
+      "description": ""
+    },
+    {
+      "acronym": "JSON",
+      "definition": "Java Script Object Notification",
+      "description": ""
+    },
+    {
+      "acronym": "K8s",
+      "definition": "Kubernetes",
+      "description": ""
+    },
+    {
+      "acronym": "KPI",
+      "definition": "Key Performance Indicator",
+      "description": ""
+    },
+    {
+      "acronym": "KQI",
+      "definition": "Key Quality Indicator",
+      "description": ""
+    },
+    {
+      "acronym": "L1CSM",
+      "definition": "Layer 1 Connectivity Service Module",
+      "description": ""
+    },
+    {
+      "acronym": "L2",
+      "definition": "Layer 2 Ethernet Layer",
+      "description": ""
+    },
+    {
+      "acronym": "L2NM",
+      "definition": "Layer 2 Network Model",
+      "description": ""
+    },
+    {
+      "acronym": "L2TP",
+      "definition": "Layer 2 Tunnelling Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "L3",
+      "definition": "Layer 3 Network Layer",
+      "description": ""
+    },
+    {
+      "acronym": "LIHS",
+      "definition": "Lawful Intercept Handling Service",
+      "description": ""
+    },
+    {
+      "acronym": "L3NM",
+      "definition": "Layer 3 Network Model",
+      "description": ""
+    },
+    {
+      "acronym": "L3VPN",
+      "definition": "Layer 3 Virtual Private Network",
+      "description": ""
+    },
+    {
+      "acronym": "LAG",
+      "definition": "Link Aggregation",
+      "description": ""
+    },
+    {
+      "acronym": "LAN",
+      "definition": "Local Area Network",
+      "description": ""
+    },
+    {
+      "acronym": "LB",
+      "definition": "Load Balancer",
+      "description": ""
+    },
+    {
+      "acronym": "LBO",
+      "definition": "Local Breakout",
+      "description": ""
+    },
+    {
+      "acronym": "LBS",
+      "definition": "Location-Based Services",
+      "description": ""
+    },
+    {
+      "acronym": "LCM 1",
+      "definition": "Lifecycle Management",
+      "description": ""
+    },
+    {
+      "acronym": "LCM 2",
+      "definition": "Local Congestion Mitigation",
+      "description": ""
+    },
+    {
+      "acronym": "LCOS",
+      "definition": "Levelized Cost of Storage",
+      "description": ""
+    },
+    {
+      "acronym": "LDAP",
+      "definition": "Lightweight Directory Access Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "LDP",
+      "definition": "Label Distribution Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "LED",
+      "definition": "Light-emitting diode",
+      "description": ""
+    },
+    {
+      "acronym": "LEO",
+      "definition": "Low Earth Orbit",
+      "description": ""
+    },
+    {
+      "acronym": "LER",
+      "definition": "Label Edge Router",
+      "description": ""
+    },
+    {
+      "acronym": "LFA",
+      "definition": "Loop Free Alternate",
+      "description": ""
+    },
+    {
+      "acronym": "LI",
+      "definition": "Lawful Interception",
+      "description": ""
+    },
+    {
+      "acronym": "LLD",
+      "definition": "Low Level Design",
+      "description": ""
+    },
+    {
+      "acronym": "LMF",
+      "definition": "Location Management Function",
+      "description": ""
+    },
+    {
+      "acronym": "LMISF",
+      "definition": "LI Mirror IMS State Function",
+      "description": ""
+    },
+    {
+      "acronym": "LNS",
+      "definition": "L2TP Network Server",
+      "description": ""
+    },
+    {
+      "acronym": "LoPS",
+      "definition": "Local Plugin Services",
+      "description": ""
+    },
+    {
+      "acronym": "LoS",
+      "definition": "Line of Sight",
+      "description": ""
+    },
+    {
+      "acronym": "LRF",
+      "definition": "Location Retrieval Function",
+      "description": ""
+    },
+    {
+      "acronym": "LSP 1",
+      "definition": "label switched path",
+      "description": ""
+    },
+    {
+      "acronym": "LSP 2",
+      "definition": "Link State Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "LSR",
+      "definition": "label switch router",
+      "description": ""
+    },
+    {
+      "acronym": "LRS",
+      "definition": "Locally Redundant Storage",
+      "description": ""
+    },
+    {
+      "acronym": "LTE",
+      "definition": "Long Term Evolution",
+      "description": ""
+    },
+    {
+      "acronym": "LVD",
+      "definition": "Low Voltage Directive",
+      "description": ""
+    },
+    {
+      "acronym": "LxNM",
+      "definition": "Layer 2/3 VPN Network Model",
+      "description": ""
+    },
+    {
+      "acronym": "M&C",
+      "definition": "Management & Control",
+      "description": ""
+    },
+    {
+      "acronym": "M/VNO",
+      "definition": "Mobile/Virtual Network Operations",
+      "description": ""
+    },
+    {
+      "acronym": "MAC",
+      "definition": "Media Access Control",
+      "description": ""
+    },
+    {
+      "acronym": "MAE",
+      "definition": "Mobile Automation Engine",
+      "description": ""
+    },
+    {
+      "acronym": "MAE-CN",
+      "definition": "Mobile Automation Engine – Core Network",
+      "description": ""
+    },
+    {
+      "acronym": "MBGP",
+      "definition": "Multiprotocol Border Gateway Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "MBL",
+      "definition": "Multiband Link",
+      "description": ""
+    },
+    {
+      "acronym": "MCPTT",
+      "definition": "Mission Critical Push to Talk",
+      "description": ""
+    },
+    {
+      "acronym": "MCR",
+      "definition": "Multi Carrier Radio",
+      "description": ""
+    },
+    {
+      "acronym": "MDA",
+      "definition": "Media dependent adapter",
+      "description": ""
+    },
+    {
+      "acronym": "MD-CLI",
+      "definition": "Model-Driven CLI",
+      "description": ""
+    },
+    {
+      "acronym": "MDM",
+      "definition": "Model Driven Mediation",
+      "description": ""
+    },
+    {
+      "acronym": "MDSO",
+      "definition": "Multi-Domain Service Orchestration",
+      "description": ""
+    },
+    {
+      "acronym": "MEC",
+      "definition": "Multi-Access Edge Computing",
+      "description": "moves the computing of traffic and services from a centralized cloud to the edge of the network and closer to the customer. Instead of sending all data to a cloud for processing, the network edge analyses, processes, and stores the data."
+    },
+    {
+      "acronym": "MEF",
+      "definition": "Metro Ethernet Forum",
+      "description": ""
+    },
+    {
+      "acronym": "MEO",
+      "definition": "Medium Earth Orbit",
+      "description": ""
+    },
+    {
+      "acronym": "MF",
+      "definition": "Management functions",
+      "description": ""
+    },
+    {
+      "acronym": "MgC",
+      "definition": "Huawei Cloud Migration Center",
+      "description": ""
+    },
+    {
+      "acronym": "MGW",
+      "definition": "Media Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "MIMO",
+      "definition": "Multiple Input Multiple Output",
+      "description": ""
+    },
+    {
+      "acronym": "ML",
+      "definition": "Machine Learning",
+      "description": ""
+    },
+    {
+      "acronym": "MLD",
+      "definition": "Multicast Listener Discovery",
+      "description": ""
+    },
+    {
+      "acronym": "MLDP",
+      "definition": "Multicast LDP",
+      "description": ""
+    },
+    {
+      "acronym": "MME",
+      "definition": "Mobility Management Entity",
+      "description": ""
+    },
+    {
+      "acronym": "M-MIMO",
+      "definition": "Massive MIMO",
+      "description": ""
+    },
+    {
+      "acronym": "mmWave",
+      "definition": "Millimeter Wave",
+      "description": ""
+    },
+    {
+      "acronym": "MNP",
+      "definition": "Mobile Number Portability",
+      "description": ""
+    },
+    {
+      "acronym": "MnS",
+      "definition": "Maintenance & Support",
+      "description": ""
+    },
+    {
+      "acronym": "MOCN",
+      "definition": "Multi-Operator Core Networks",
+      "description": ""
+    },
+    {
+      "acronym": "MOI",
+      "definition": "Managed Object Instance",
+      "description": ""
+    },
+    {
+      "acronym": "MOP",
+      "definition": "Method of Procedure",
+      "description": ""
+    },
+    {
+      "acronym": "MORAN",
+      "definition": "Multi-Operator Radio Access Networks",
+      "description": ""
+    },
+    {
+      "acronym": "M-Pesa Swahili",
+      "definition": "Mobile-Money",
+      "description": "a virtual banking system, money transfer, payments and micro-financing service that provides transaction services through a SIM card."
+    },
+    {
+      "acronym": "MPLS",
+      "definition": "Multiprotocol Label Switching",
+      "description": ""
+    },
+    {
+      "acronym": "MPLS-TP",
+      "definition": "MPLS-Transport Profile",
+      "description": ""
+    },
+    {
+      "acronym": "MPN",
+      "definition": "Mobile Private Network",
+      "description": ""
+    },
+    {
+      "acronym": "MQTT",
+      "definition": "Message Queuing Telemetry Transport",
+      "description": ""
+    },
+    {
+      "acronym": "MRC",
+      "definition": "Maximal Ratio Combining",
+      "description": ""
+    },
+    {
+      "acronym": "MRF",
+      "definition": "Media Resource Function",
+      "description": ""
+    },
+    {
+      "acronym": "MSC-S",
+      "definition": "MSC Server",
+      "description": ""
+    },
+    {
+      "acronym": "MSDP",
+      "definition": "Multicast Source Discovery Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "MSIN",
+      "definition": "Mobile Subscription Identification Number",
+      "description": ""
+    },
+    {
+      "acronym": "MSISDN",
+      "definition": "Mobile Station International Subscriber Directory Number",
+      "description": ""
+    },
+    {
+      "acronym": "MSP",
+      "definition": "Multi Service Proxy",
+      "description": ""
+    },
+    {
+      "acronym": "MT",
+      "definition": "Mobile Terminating",
+      "description": ""
+    },
+    {
+      "acronym": "MVP",
+      "definition": "Minimal viable product",
+      "description": ""
+    },
+    {
+      "acronym": "MTAS",
+      "definition": "Multimedia Telephony Application Server",
+      "description": ""
+    },
+    {
+      "acronym": "MTBF",
+      "definition": "Mean Time Between Failures",
+      "description": ""
+    },
+    {
+      "acronym": "MTTR",
+      "definition": "Mean Time to Respond",
+      "description": ""
+    },
+    {
+      "acronym": "Multi-X",
+      "definition": "Multi-Device + Multi-Identity",
+      "description": ""
+    },
+    {
+      "acronym": "MU-MIMO",
+      "definition": "Multiuser MIMO",
+      "description": ""
+    },
+    {
+      "acronym": "MUST",
+      "definition": "Mandatory Use-case requirements for SDN for Transport",
+      "description": ""
+    },
+    {
+      "acronym": "MVA",
+      "definition": "My Vodacom App",
+      "description": ""
+    },
+    {
+      "acronym": "MVAS",
+      "definition": "Mobile VAS",
+      "description": ""
+    },
+    {
+      "acronym": "MW",
+      "definition": "Microwave",
+      "description": ""
+    },
+    {
+      "acronym": "NaaP",
+      "definition": "Network as a Platform",
+      "description": ""
+    },
+    {
+      "acronym": "NAS",
+      "definition": "Non-access stratum",
+      "description": ""
+    },
+    {
+      "acronym": "NAT",
+      "definition": "Network Address Translation",
+      "description": ""
+    },
+    {
+      "acronym": "NBi",
+      "definition": "Northbound Interface",
+      "description": "an interface that allows the component to communicate with a higher-level component, using the latter component's southbound interface. The languages or protocols commonly used include SNMP and TL1."
+    },
+    {
+      "acronym": "NB-IoT",
+      "definition": "Narrow Band Internet of Things",
+      "description": ""
+    },
+    {
+      "acronym": "NCE",
+      "definition": "Network Cloud Engine",
+      "description": ""
+    },
+    {
+      "acronym": "NCS",
+      "definition": "Network Convergence System",
+      "description": ""
+    },
+    {
+      "acronym": "NE",
+      "definition": "Networks Elements",
+      "description": ""
+    },
+    {
+      "acronym": "NEF",
+      "definition": "Network Exposure Function",
+      "description": ""
+    },
+    {
+      "acronym": "NEL",
+      "definition": "Network Exposure Layer",
+      "description": ""
+    },
+    {
+      "acronym": "NERG",
+      "definition": "Network Enhanced Residential Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "NEST",
+      "definition": "Network Slice Type",
+      "description": ""
+    },
+    {
+      "acronym": "NETCONF",
+      "definition": "Network Configuration",
+      "description": ""
+    },
+    {
+      "acronym": "NetLoc",
+      "definition": "Network-provided Location",
+      "description": ""
+    },
+    {
+      "acronym": "NF",
+      "definition": "Network Function",
+      "description": ""
+    },
+    {
+      "acronym": "NF-C",
+      "definition": "Network Functions Cloudification",
+      "description": ""
+    },
+    {
+      "acronym": "NFD",
+      "definition": "Network Function Descriptor",
+      "description": ""
+    },
+    {
+      "acronym": "NFM",
+      "definition": "Network Function Manager",
+      "description": ""
+    },
+    {
+      "acronym": "NFM-P",
+      "definition": "Network Function Manager for Packet",
+      "description": ""
+    },
+    {
+      "acronym": "NFV",
+      "definition": "Network Functions Virtualization",
+      "description": ""
+    },
+    {
+      "acronym": "NFVI",
+      "definition": "Network Function Virtualization Infrastructure",
+      "description": ""
+    },
+    {
+      "acronym": "NFVO",
+      "definition": "Network Function Virtualisation Orchestrator",
+      "description": ""
+    },
+    {
+      "acronym": "NGIN",
+      "definition": "Next Generation Intelligent Network",
+      "description": ""
+    },
+    {
+      "acronym": "NG-MVPN",
+      "definition": "Next Generation MVPN",
+      "description": ""
+    },
+    {
+      "acronym": "NIC",
+      "definition": "Network interface card",
+      "description": ""
+    },
+    {
+      "acronym": "NLP",
+      "definition": "Natural Language Processing",
+      "description": ""
+    },
+    {
+      "acronym": "NMG",
+      "definition": "Network Management Group",
+      "description": ""
+    },
+    {
+      "acronym": "NMS",
+      "definition": "Network Management System",
+      "description": ""
+    },
+    {
+      "acronym": "NNI",
+      "definition": "Network Node Interface",
+      "description": ""
+    },
+    {
+      "acronym": "NOM",
+      "definition": "Network Operations Manager",
+      "description": ""
+    },
+    {
+      "acronym": "NOS",
+      "definition": "Network Operating System",
+      "description": ""
+    },
+    {
+      "acronym": "NLD",
+      "definition": "National Long Distance",
+      "description": ""
+    },
+    {
+      "acronym": "NP",
+      "definition": "Network processing",
+      "description": ""
+    },
+    {
+      "acronym": "NPLI",
+      "definition": "Network Provided Location Information",
+      "description": ""
+    },
+    {
+      "acronym": "NPS",
+      "definition": "Node Provisioning System",
+      "description": ""
+    },
+    {
+      "acronym": "NR",
+      "definition": "New Radio",
+      "description": ""
+    },
+    {
+      "acronym": "NRC",
+      "definition": "Network Resources Controller",
+      "description": ""
+    },
+    {
+      "acronym": "NRF",
+      "definition": "Network Repository Function",
+      "description": ""
+    },
+    {
+      "acronym": "NRM",
+      "definition": "Network Resource Model",
+      "description": ""
+    },
+    {
+      "acronym": "NS",
+      "definition": "Network Slicing",
+      "description": ""
+    },
+    {
+      "acronym": "NSA",
+      "definition": "Non-Standalone",
+      "description": ""
+    },
+    {
+      "acronym": "NSB",
+      "definition": "Network Services Benchmark",
+      "description": ""
+    },
+    {
+      "acronym": "NSD",
+      "definition": "Network Services Director",
+      "description": ""
+    },
+    {
+      "acronym": "NSI",
+      "definition": "Network Slice Instance",
+      "description": ""
+    },
+    {
+      "acronym": "NSM",
+      "definition": "Network Service Mesh",
+      "description": ""
+    },
+    {
+      "acronym": "NSMF",
+      "definition": "Network Slice Management Function",
+      "description": ""
+    },
+    {
+      "acronym": "NSO",
+      "definition": "Network Service Orchestrator",
+      "description": ""
+    },
+    {
+      "acronym": "NSOM",
+      "definition": "Network Service Order Management",
+      "description": ""
+    },
+    {
+      "acronym": "NSP",
+      "definition": "Network Services Platform",
+      "description": ""
+    },
+    {
+      "acronym": "NSP-TSC",
+      "definition": "Network Service Platform – Transport Slicing Controller",
+      "description": ""
+    },
+    {
+      "acronym": "NSSF",
+      "definition": "Network Slice Selection Function",
+      "description": ""
+    },
+    {
+      "acronym": "NSSI",
+      "definition": "Network Slice Subnet instance",
+      "description": ""
+    },
+    {
+      "acronym": "NSSMF",
+      "definition": "Network Slice Subnet Management Functions",
+      "description": ""
+    },
+    {
+      "acronym": "NTP",
+      "definition": "Network Time Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "NUMA",
+      "definition": "Non-Uniform Memory Access",
+      "description": ""
+    },
+    {
+      "acronym": "NWDAF",
+      "definition": "Network Data Analytics Function",
+      "description": ""
+    },
+    {
+      "acronym": "OAM",
+      "definition": "Operation, Administration and Maintenance",
+      "description": ""
+    },
+    {
+      "acronym": "OASIS",
+      "definition": "Organization for the Advancement of Structured Information Standards",
+      "description": ""
+    },
+    {
+      "acronym": "OC",
+      "definition": "OpenConfig",
+      "description": ""
+    },
+    {
+      "acronym": "OccBW",
+      "definition": "Occupied Bandwidth",
+      "description": ""
+    },
+    {
+      "acronym": "O-CU",
+      "definition": "Open Centralized Unit",
+      "description": ""
+    },
+    {
+      "acronym": "O-DU",
+      "definition": "Open Distributed Unit",
+      "description": ""
+    },
+    {
+      "acronym": "ODU",
+      "definition": "Outdoor Unit",
+      "description": ""
+    },
+    {
+      "acronym": "OEM",
+      "definition": "Original Equipment Manufacturer",
+      "description": ""
+    },
+    {
+      "acronym": "OISM",
+      "definition": "Optimized Inter-Subnet Multicast",
+      "description": ""
+    },
+    {
+      "acronym": "OLS",
+      "definition": "Open Line System",
+      "description": ""
+    },
+    {
+      "acronym": "OLT",
+      "definition": "Optical Line Termination",
+      "description": ""
+    },
+    {
+      "acronym": "OLPC",
+      "definition": "Outer Loop Power Control",
+      "description": ""
+    },
+    {
+      "acronym": "OMA",
+      "definition": "Open Mobile Alliance",
+      "description": ""
+    },
+    {
+      "acronym": "OMCI",
+      "definition": "ONT Management Control Interface",
+      "description": ""
+    },
+    {
+      "acronym": "ONAP",
+      "definition": "Open Networking Automation Platform",
+      "description": ""
+    },
+    {
+      "acronym": "ONF",
+      "definition": "Open Networking Foundation",
+      "description": ""
+    },
+    {
+      "acronym": "ONIE",
+      "definition": "Open Network Install Environment",
+      "description": "a small operating system, pre-installed as firmware on bare metal network switches, that provides an environment for automated operating system provisioning"
+    },
+    {
+      "acronym": "ONOS",
+      "definition": "Open Network Operating System",
+      "description": ""
+    },
+    {
+      "acronym": "OP",
+      "definition": "Optical",
+      "description": ""
+    },
+    {
+      "acronym": "ORAN/O-RAN",
+      "definition": "Open Ran",
+      "description": ""
+    },
+    {
+      "acronym": "O-RU",
+      "definition": "Open Radio Unit",
+      "description": ""
+    },
+    {
+      "acronym": "OS",
+      "definition": "Operating System",
+      "description": ""
+    },
+    {
+      "acronym": "OSPF",
+      "definition": "Open Shortest Path First",
+      "description": ""
+    },
+    {
+      "acronym": "OSS",
+      "definition": "Operations Support System",
+      "description": ""
+    },
+    {
+      "acronym": "OSN",
+      "definition": "Optical Switching Network",
+      "description": "equipment that use optical fibers to transmit data signals. They are used in a variety of applications, including long-distance transmission, metropolitan area networks (MANs), and access networks."
+    },
+    {
+      "acronym": "OTN",
+      "definition": "Optical Transport Network",
+      "description": ""
+    },
+    {
+      "acronym": "OO",
+      "definition": "One Office",
+      "description": ""
+    },
+    {
+      "acronym": "OVPN",
+      "definition": "Optical Virtual Private Network",
+      "description": ""
+    },
+    {
+      "acronym": "OpEx",
+      "definition": "Operational Expenses",
+      "description": ""
+    },
+    {
+      "acronym": "P2MP",
+      "definition": "Point-to-Multipoint",
+      "description": ""
+    },
+    {
+      "acronym": "P2P",
+      "definition": "Point-to-Point",
+      "description": ""
+    },
+    {
+      "acronym": "PA 1",
+      "definition": "Power Amplifier",
+      "description": ""
+    },
+    {
+      "acronym": "PA 2",
+      "definition": "Performance Assurance",
+      "description": ""
+    },
+    {
+      "acronym": "PAN",
+      "definition": "Personal Area Network",
+      "description": ""
+    },
+    {
+      "acronym": "PAP-CHAP",
+      "definition": "Password Authentication Protocol",
+      "description": "Challenge-Handshake Authentication Protocol"
+    },
+    {
+      "acronym": "PBB-VPLS",
+      "definition": "Provider Backbone Bridging for VPLS",
+      "description": ""
+    },
+    {
+      "acronym": "PC",
+      "definition": "Packet Core",
+      "description": ""
+    },
+    {
+      "acronym": "PCE",
+      "definition": "Path Computation Element",
+      "description": "a device that computes paths on behalf of the nodes in the network. It can be a router, a COTS server, part of the OSS, or a virtualized entity running in a cloud. When a network node needs a path for an LSP, it makes a request to the PCE using the PCE protocol (PCEP). The PCE has access to topology information for the entire network and uses this in path computations."
+    },
+    {
+      "acronym": "PCEF",
+      "definition": "Policy and Charging Enforcement Function",
+      "description": ""
+    },
+    {
+      "acronym": "PCEP",
+      "definition": "Path Computation Element Protocol",
+      "description": "a special set of rules that allows a Path Computation Client (PCC) to request path computations from Path Computation Elements (PCEs)"
+    },
+    {
+      "acronym": "PCF",
+      "definition": "Policy Control Function",
+      "description": ""
+    },
+    {
+      "acronym": "PCG",
+      "definition": "Packet Core Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "PCI",
+      "definition": "Peripheral Component Interconnect",
+      "description": ""
+    },
+    {
+      "acronym": "PCRF",
+      "definition": "Policy Control and Rules Function",
+      "description": ""
+    },
+    {
+      "acronym": "PDB",
+      "definition": "Power Distribution Board",
+      "description": ""
+    },
+    {
+      "acronym": "PDN",
+      "definition": "Packet Data Network",
+      "description": ""
+    },
+    {
+      "acronym": "PDCP",
+      "definition": "Packet Data Converge Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "PE",
+      "definition": "Provider Edge",
+      "description": ""
+    },
+    {
+      "acronym": "PFCP",
+      "definition": "Packet Forwarding Control Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "PGW",
+      "definition": "PDN Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "PIM 1",
+      "definition": "Protocol Independent Multicast",
+      "description": ""
+    },
+    {
+      "acronym": "PIM 2",
+      "definition": "Physical Infrastructure Manager",
+      "description": ""
+    },
+    {
+      "acronym": "PLMN",
+      "definition": "Public Land Mobile Network",
+      "description": ""
+    },
+    {
+      "acronym": "PM",
+      "definition": "Performance Management",
+      "description": ""
+    },
+    {
+      "acronym": "PWA",
+      "definition": "Progressive Web App",
+      "description": "PWAs combine the flexibility of the web with the experience of a native application, allowing users to install web apps to their home screen, receive push notifications, and work offline"
+    },
+    {
+      "acronym": "PNF",
+      "definition": "Physical Network Function",
+      "description": ""
+    },
+    {
+      "acronym": "PHP",
+      "definition": "Penultimate Hop Popping",
+      "description": ""
+    },
+    {
+      "acronym": "PoC",
+      "definition": "Proof of Concept",
+      "description": ""
+    },
+    {
+      "acronym": "PoC1",
+      "definition": "Point-of-Concentration 1st level",
+      "description": "Highest level on aggregation network hierarchy, connects to the core network."
+    },
+    {
+      "acronym": "PoC2",
+      "definition": "Point-of-Concentration 2nd level",
+      "description": "Intermediate aggregation level between POC1 and POC3, sometimes aggregates Cell Sites directly. Normally connected to POC1 in ring architectures or slightly meshed, always with optical fibre."
+    },
+    {
+      "acronym": "PoC3",
+      "definition": "Point-of-Concentration 3rd level",
+      "description": "First aggregation point in the hierarchy after last mile/access"
+    },
+    {
+      "acronym": "PoCx",
+      "definition": "Point of Connection 1/2/3",
+      "description": ""
+    },
+    {
+      "acronym": "POD",
+      "definition": "Point of Delivery",
+      "description": ""
+    },
+    {
+      "acronym": "PoE",
+      "definition": "Power Over Ethernet",
+      "description": ""
+    },
+    {
+      "acronym": "PON",
+      "definition": "Passive Optical Network",
+      "description": ""
+    },
+    {
+      "acronym": "PoP",
+      "definition": "Point-of-Presence",
+      "description": ""
+    },
+    {
+      "acronym": "PPG",
+      "definition": "Push Proxy Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "PRA",
+      "definition": "Presence Reporting Area",
+      "description": ""
+    },
+    {
+      "acronym": "PRINS",
+      "definition": "Protocol for N32 Interconnect Security",
+      "description": ""
+    },
+    {
+      "acronym": "PS",
+      "definition": "Professional Services",
+      "description": ""
+    },
+    {
+      "acronym": "PSM",
+      "definition": "Power Save Mode",
+      "description": ""
+    },
+    {
+      "acronym": "PSU",
+      "definition": "Power Supply Unit",
+      "description": ""
+    },
+    {
+      "acronym": "PTP",
+      "definition": "Precision Time Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "PTT",
+      "definition": "Push to Talk",
+      "description": ""
+    },
+    {
+      "acronym": "QE",
+      "definition": "Quality Estimate",
+      "description": ""
+    },
+    {
+      "acronym": "QnQ",
+      "definition": "Quality, Not Quantity",
+      "description": ""
+    },
+    {
+      "acronym": "QoE",
+      "definition": "Quality of Experience",
+      "description": ""
+    },
+    {
+      "acronym": "QoS",
+      "definition": "Quality of Service",
+      "description": ""
+    },
+    {
+      "acronym": "QSFP",
+      "definition": "Quad Small Form-factor Pluggable",
+      "description": ""
+    },
+    {
+      "acronym": "QSFP-DD",
+      "definition": "Quad Small Form-factor Pluggable Dual Density",
+      "description": ""
+    },
+    {
+      "acronym": "QUIC",
+      "definition": "Quick UDP Internet Connections",
+      "description": ""
+    },
+    {
+      "acronym": "RA",
+      "definition": "Resource Adaptor",
+      "description": ""
+    },
+    {
+      "acronym": "RADIUS",
+      "definition": "Remote Authentication Dial-In User Service",
+      "description": ""
+    },
+    {
+      "acronym": "RAMP",
+      "definition": "Router as a Mesh Point",
+      "description": ""
+    },
+    {
+      "acronym": "RAN",
+      "definition": "Radio Access Network",
+      "description": ""
+    },
+    {
+      "acronym": "RANAP",
+      "definition": "Radio Access Network Application Part",
+      "description": ""
+    },
+    {
+      "acronym": "RAT",
+      "definition": "Radio Access Technology",
+      "description": ""
+    },
+    {
+      "acronym": "RB",
+      "definition": "Resource Block",
+      "description": ""
+    },
+    {
+      "acronym": "RBS",
+      "definition": "Radio Base Station",
+      "description": "a fixed radio transceiver that provides wireless communication coverage to a specific geographic area"
+    },
+    {
+      "acronym": "RBAC",
+      "definition": "Role Based access control",
+      "description": ""
+    },
+    {
+      "acronym": "RCS",
+      "definition": "Rich Communication Services",
+      "description": ""
+    },
+    {
+      "acronym": "RCIS",
+      "definition": "Radio Capability Information Service",
+      "description": ""
+    },
+    {
+      "acronym": "RDF",
+      "definition": "Routing Determination Function",
+      "description": ""
+    },
+    {
+      "acronym": "RED",
+      "definition": "Radio Equipment Directive",
+      "description": ""
+    },
+    {
+      "acronym": "REST",
+      "definition": "Representational State Transfer",
+      "description": ""
+    },
+    {
+      "acronym": "RESTCONF",
+      "definition": "Representational State Transfer Configuration",
+      "description": ""
+    },
+    {
+      "acronym": "RF",
+      "definition": "Radiofrequency",
+      "description": ""
+    },
+    {
+      "acronym": "RFC",
+      "definition": "Resource Facing Communication",
+      "description": ""
+    },
+    {
+      "acronym": "RFC",
+      "definition": "Request for Comments",
+      "description": ""
+    },
+    {
+      "acronym": "RFQ",
+      "definition": "Request for Quotation",
+      "description": ""
+    },
+    {
+      "acronym": "RFS",
+      "definition": "Resource Facing Services",
+      "description": ""
+    },
+    {
+      "acronym": "RFSP",
+      "definition": "RAT Frequency Selection Policy",
+      "description": ""
+    },
+    {
+      "acronym": "RFU",
+      "definition": "Radio Frequency Unit",
+      "description": "part of the digital microwave transmission system. It supports a point-to-point digital fixed radio service and long-haul wireless transmission system. The RFU works together with the Indoor Unit (IDU) to provide multiple types of service interfaces."
+    },
+    {
+      "acronym": "RIB",
+      "definition": "routing information base",
+      "description": ""
+    },
+    {
+      "acronym": "RIC",
+      "definition": "RAN Intelligent Controller",
+      "description": ""
+    },
+    {
+      "acronym": "RIP",
+      "definition": "Routing Information Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "RLS",
+      "definition": "Reconfigurable Line System",
+      "description": ""
+    },
+    {
+      "acronym": "RNC",
+      "definition": "Radio Network Controller",
+      "description": ""
+    },
+    {
+      "acronym": "ROADM",
+      "definition": "Reconfigurable optical add-drop multiplexer",
+      "description": ""
+    },
+    {
+      "acronym": "RPS",
+      "definition": "Radio Positioning System",
+      "description": ""
+    },
+    {
+      "acronym": "RRC",
+      "definition": "Radio Resources Control",
+      "description": ""
+    },
+    {
+      "acronym": "RRH",
+      "definition": "Remote Radio Head",
+      "description": ""
+    },
+    {
+      "acronym": "RRM",
+      "definition": "Radio Resource Management",
+      "description": ""
+    },
+    {
+      "acronym": "RRP",
+      "definition": "Radio Resource Partitioning",
+      "description": ""
+    },
+    {
+      "acronym": "RRU",
+      "definition": "Remote Radio Unit",
+      "description": ""
+    },
+    {
+      "acronym": "RSVP",
+      "definition": "Resource Reservation Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "RSVP-TE",
+      "definition": "Resource Reservation Protocol",
+      "description": "Traffic Engineering"
+    },
+    {
+      "acronym": "RSVP-TE",
+      "definition": "Resource Reservation Protocol – Traffic Engineering",
+      "description": ""
+    },
+    {
+      "acronym": "RT",
+      "definition": "Real Time",
+      "description": ""
+    },
+    {
+      "acronym": "RTU",
+      "definition": "Right-To-Use",
+      "description": ""
+    },
+    {
+      "acronym": "RU",
+      "definition": "Radio Unit",
+      "description": ""
+    },
+    {
+      "acronym": "RVAS",
+      "definition": "Roaming Value Added Services",
+      "description": ""
+    },
+    {
+      "acronym": "Rx",
+      "definition": "Receiver",
+      "description": ""
+    },
+    {
+      "acronym": "S8HR",
+      "definition": "S8 Home Routing",
+      "description": ""
+    },
+    {
+      "acronym": "SA",
+      "definition": "Stand Alone",
+      "description": ""
+    },
+    {
+      "acronym": "SAML",
+      "definition": "Security Assertion Markup Language",
+      "description": ""
+    },
+    {
+      "acronym": "SAR",
+      "definition": "Service Area Restrictions",
+      "description": ""
+    },
+    {
+      "acronym": "SFA",
+      "definition": "Sales Force Automation",
+      "description": ""
+    },
+    {
+      "acronym": "SAS 1",
+      "definition": "Standalone SMLC",
+      "description": ""
+    },
+    {
+      "acronym": "SAS 2",
+      "definition": "Service Access Switch",
+      "description": ""
+    },
+    {
+      "acronym": "SB",
+      "definition": "Session Border",
+      "description": ""
+    },
+    {
+      "acronym": "SBC",
+      "definition": "Session Border Controller",
+      "description": ""
+    },
+    {
+      "acronym": "SBG",
+      "definition": "Session Border Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "SBI 1",
+      "definition": "Southbound Interface",
+      "description": ""
+    },
+    {
+      "acronym": "SBI 2",
+      "definition": "Service Management and Network Integration",
+      "description": ""
+    },
+    {
+      "acronym": "SBMA",
+      "definition": "Service Based Management Architecture",
+      "description": ""
+    },
+    {
+      "acronym": "SC",
+      "definition": "Standard Configurations",
+      "description": ""
+    },
+    {
+      "acronym": "SCCP",
+      "definition": "Signalling Connection Control Part",
+      "description": ""
+    },
+    {
+      "acronym": "SCEF",
+      "definition": "Service Capability Exposure Function",
+      "description": ""
+    },
+    {
+      "acronym": "SCM 1",
+      "definition": "Supply Chain Management",
+      "description": ""
+    },
+    {
+      "acronym": "SCM 2",
+      "definition": "Service Configuration Manager",
+      "description": ""
+    },
+    {
+      "acronym": "SCP",
+      "definition": "Service Communication Proxy",
+      "description": ""
+    },
+    {
+      "acronym": "S-CSCF",
+      "definition": "Serving Call Session Control Function",
+      "description": ""
+    },
+    {
+      "acronym": "SCTP",
+      "definition": "Stream Control Transmission Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "SD",
+      "definition": "Software Director",
+      "description": ""
+    },
+    {
+      "acronym": "SDC",
+      "definition": "Service Design and Configuration",
+      "description": ""
+    },
+    {
+      "acronym": "SDDC",
+      "definition": "Software-Defined data center",
+      "description": ""
+    },
+    {
+      "acronym": "SDH",
+      "definition": "Synchronous Digital Hierarchy",
+      "description": ""
+    },
+    {
+      "acronym": "SDK",
+      "definition": "Software Development Kit",
+      "description": ""
+    },
+    {
+      "acronym": "SDL",
+      "definition": "Supplementary Downlink",
+      "description": ""
+    },
+    {
+      "acronym": "SDN",
+      "definition": "Software-Defined Networking",
+      "description": ""
+    },
+    {
+      "acronym": "SD-WAN",
+      "definition": "Software defined",
+      "description": "Wide Area Network"
+    },
+    {
+      "acronym": "SeGW",
+      "definition": "Security Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "SEPP",
+      "definition": "Security Edge Protection Proxy",
+      "description": ""
+    },
+    {
+      "acronym": "SFM",
+      "definition": "Switch Fabric Module",
+      "description": ""
+    },
+    {
+      "acronym": "SFP",
+      "definition": "Small form-factor pluggable",
+      "description": ""
+    },
+    {
+      "acronym": "SGSN",
+      "definition": "Serving GPRS Support Node",
+      "description": ""
+    },
+    {
+      "acronym": "SGW",
+      "definition": "Serving Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "SigFW",
+      "definition": "Signalling Firewall",
+      "description": ""
+    },
+    {
+      "acronym": "SIGTRAN",
+      "definition": "Signalling transport",
+      "description": ""
+    },
+    {
+      "acronym": "SIM",
+      "definition": "SDN Interference Management",
+      "description": ""
+    },
+    {
+      "acronym": "SIP",
+      "definition": "Session Initiation Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "SCM",
+      "definition": "Source code management",
+      "description": ""
+    },
+    {
+      "acronym": "SKU",
+      "definition": "Stock Keeping Unit",
+      "description": ""
+    },
+    {
+      "acronym": "SLA",
+      "definition": "Service-Level Agreement",
+      "description": ""
+    },
+    {
+      "acronym": "SM",
+      "definition": "Service Management",
+      "description": ""
+    },
+    {
+      "acronym": "SME",
+      "definition": "Small and medium-sized enterprises",
+      "description": ""
+    },
+    {
+      "acronym": "SMF",
+      "definition": "Session Management Function",
+      "description": ""
+    },
+    {
+      "acronym": "SMLC",
+      "definition": "Serving Mobile Location Centre",
+      "description": ""
+    },
+    {
+      "acronym": "SMO",
+      "definition": "Service Management & Orchestration",
+      "description": ""
+    },
+    {
+      "acronym": "SMS",
+      "definition": "Short Message Service",
+      "description": ""
+    },
+    {
+      "acronym": "SMSoIP",
+      "definition": "SMS over IP",
+      "description": ""
+    },
+    {
+      "acronym": "SNMP",
+      "definition": "Simple Network Management Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "SOAP",
+      "definition": "Simple Object Access Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "SOH",
+      "definition": "State of Health",
+      "description": ""
+    },
+    {
+      "acronym": "SoC",
+      "definition": "Statement of Compliance",
+      "description": ""
+    },
+    {
+      "acronym": "SOLxxx",
+      "definition": "NFV Solutions 001/002…",
+      "description": ""
+    },
+    {
+      "acronym": "SON",
+      "definition": "Self Optimised Network",
+      "description": ""
+    },
+    {
+      "acronym": "SOO",
+      "definition": "Service Order Orchestrator",
+      "description": ""
+    },
+    {
+      "acronym": "SOX",
+      "definition": "Sarbanes Oxley Act",
+      "description": ""
+    },
+    {
+      "acronym": "SP 1",
+      "definition": "Service Provider",
+      "description": ""
+    },
+    {
+      "acronym": "SP 1",
+      "definition": "Scalable Processor",
+      "description": ""
+    },
+    {
+      "acronym": "SPDA",
+      "definition": "Security and Privacy by Design Assurance",
+      "description": ""
+    },
+    {
+      "acronym": "SPC",
+      "definition": "Single Packet Core",
+      "description": ""
+    },
+    {
+      "acronym": "SPOC",
+      "definition": "Single Point of Contact",
+      "description": ""
+    },
+    {
+      "acronym": "SPOF",
+      "definition": "Single Point of Failure",
+      "description": ""
+    },
+    {
+      "acronym": "SPS",
+      "definition": "Serving Processing System",
+      "description": ""
+    },
+    {
+      "acronym": "SR 1",
+      "definition": "Segment Routing",
+      "description": ""
+    },
+    {
+      "acronym": "SR 2",
+      "definition": "Speech Recognition",
+      "description": ""
+    },
+    {
+      "acronym": "SR OS",
+      "definition": "Service Router Operating System",
+      "description": ""
+    },
+    {
+      "acronym": "SR-IOV",
+      "definition": "Single Root I/O Virtualisation",
+      "description": ""
+    },
+    {
+      "acronym": "SRS",
+      "definition": "Sounding Reference Signal",
+      "description": ""
+    },
+    {
+      "acronym": "SR-TE",
+      "definition": "Segment Routing",
+      "description": "Traffic Engineering"
+    },
+    {
+      "acronym": "SRVCC",
+      "definition": "Single Radio Voice Call Continuity",
+      "description": ""
+    },
+    {
+      "acronym": "SS7",
+      "definition": "Signalling System 7",
+      "description": ""
+    },
+    {
+      "acronym": "SSB",
+      "definition": "Synchronization Signal Block Beam",
+      "description": ""
+    },
+    {
+      "acronym": "SSC",
+      "definition": "Session and Service Continuity",
+      "description": ""
+    },
+    {
+      "acronym": "STP",
+      "definition": "Signalling Transfer Point",
+      "description": ""
+    },
+    {
+      "acronym": "SUA",
+      "definition": "Signalling Connection Control Part User Adaptation Layer",
+      "description": ""
+    },
+    {
+      "acronym": "SU-MIMO",
+      "definition": "Single User MIMO",
+      "description": ""
+    },
+    {
+      "acronym": "SUPL",
+      "definition": "Secure User Plane Location",
+      "description": ""
+    },
+    {
+      "acronym": "sVNFM",
+      "definition": "Specific Virtualised Network Function Manager",
+      "description": ""
+    },
+    {
+      "acronym": "SW",
+      "definition": "Software",
+      "description": ""
+    },
+    {
+      "acronym": "SWVC",
+      "definition": "SD-WAN Virtual Connection",
+      "description": ""
+    },
+    {
+      "acronym": "SyncE",
+      "definition": "Synchronous Ethernet",
+      "description": ""
+    },
+    {
+      "acronym": "TaaS",
+      "definition": "Telecom as a Service",
+      "description": ""
+    },
+    {
+      "acronym": "T-API",
+      "definition": "Transport API",
+      "description": ""
+    },
+    {
+      "acronym": "TAS",
+      "definition": "Telephony Application Server",
+      "description": ""
+    },
+    {
+      "acronym": "TCA",
+      "definition": "Telco Cloud Automation",
+      "description": ""
+    },
+    {
+      "acronym": "TCAP",
+      "definition": "Transaction Capabilities Application Part",
+      "description": ""
+    },
+    {
+      "acronym": "TCP 1",
+      "definition": "Transmission Control Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "TCP 2",
+      "definition": "Telco Cloud Platform",
+      "description": ""
+    },
+    {
+      "acronym": "TCP OSI",
+      "definition": "Transmission Control Protocol",
+      "description": "connection-oriented transport protocol used over IP to ensure reliable transmission of packets"
+    },
+    {
+      "acronym": "TDD",
+      "definition": "Time Division Duplex",
+      "description": ""
+    },
+    {
+      "acronym": "TDM",
+      "definition": "Time Division Multiplexing",
+      "description": ""
+    },
+    {
+      "acronym": "TDO",
+      "definition": "Transport Domain Orchestrator",
+      "description": ""
+    },
+    {
+      "acronym": "TFT",
+      "definition": "Traffic Flow Template",
+      "description": ""
+    },
+    {
+      "acronym": "TF-IDF",
+      "definition": "Term Frequency-Inverse Document Frequency",
+      "description": ""
+    },
+    {
+      "acronym": "TI-LFA",
+      "definition": "Topology-Independent LFA",
+      "description": ""
+    },
+    {
+      "acronym": "TIP",
+      "definition": "Telecom Infra Project",
+      "description": ""
+    },
+    {
+      "acronym": "TKG",
+      "definition": "Tanzu Kubernetes Grid",
+      "description": ""
+    },
+    {
+      "acronym": "T-LDP",
+      "definition": "Targeted LDP",
+      "description": ""
+    },
+    {
+      "acronym": "TLS",
+      "definition": "Transport Layer Security",
+      "description": ""
+    },
+    {
+      "acronym": "TMF 1",
+      "definition": "Telemanagement Forum",
+      "description": ""
+    },
+    {
+      "acronym": "TMF 2",
+      "definition": "Traffic Management Function",
+      "description": ""
+    },
+    {
+      "acronym": "TMF-SD",
+      "definition": "Tele Management Forum – Software Defined",
+      "description": ""
+    },
+    {
+      "acronym": "TN-NSSI",
+      "definition": "Transpor Network-NSSI",
+      "description": ""
+    },
+    {
+      "acronym": "TN-NSSMF",
+      "definition": "Transport Network- NSSMF",
+      "description": ""
+    },
+    {
+      "acronym": "ToR",
+      "definition": "Terms of Reference",
+      "description": "a strategy-level document that defines the tasks and duties required of a project contractor, and highlights project background and objectives at high level."
+    },
+    {
+      "acronym": "TOSCA",
+      "definition": "Topology and Orchestration Specification for Cloud Applications",
+      "description": ""
+    },
+    {
+      "acronym": "TPM",
+      "definition": "Trusted Platform Module",
+      "description": ""
+    },
+    {
+      "acronym": "TR 1",
+      "definition": "Technical Recommendation",
+      "description": ""
+    },
+    {
+      "acronym": "TR 2",
+      "definition": "Technical Report",
+      "description": ""
+    },
+    {
+      "acronym": "TRP",
+      "definition": "Technical Recovery Plan",
+      "description": ""
+    },
+    {
+      "acronym": "TRS",
+      "definition": "Technical Requirements Specification",
+      "description": ""
+    },
+    {
+      "acronym": "TRX",
+      "definition": "Transmitter and Receiver",
+      "description": ""
+    },
+    {
+      "acronym": "TS",
+      "definition": "Technical Specification",
+      "description": ""
+    },
+    {
+      "acronym": "TSC",
+      "definition": "Transport Slice Connectivity",
+      "description": ""
+    },
+    {
+      "acronym": "TCSM",
+      "definition": "Transcoder/Sub-Multiplexer",
+      "description": "Interface traffic is carried through the radio frequency in the air. Data is compressed for efficient transmission of data. Original data of 64 KBPS on interface side is compressed to 13 KBPS on the air. The compression is done by TCSM."
+    },
+    {
+      "acronym": "TSIG",
+      "definition": "Transaction Signature protocol",
+      "description": ""
+    },
+    {
+      "acronym": "TV",
+      "definition": "Television",
+      "description": ""
+    },
+    {
+      "acronym": "TWAG",
+      "definition": "Trusted Wireless Access Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "TWAMP",
+      "definition": "Two-Way Active Measurement Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "TWDM",
+      "definition": "time and wavelength division multiplexing",
+      "description": ""
+    },
+    {
+      "acronym": "UAA",
+      "definition": "User Account and Authentication",
+      "description": ""
+    },
+    {
+      "acronym": "UAM",
+      "definition": "User Access Management",
+      "description": ""
+    },
+    {
+      "acronym": "uCPE",
+      "definition": "Universal CPE",
+      "description": ""
+    },
+    {
+      "acronym": "UCC",
+      "definition": "Unified Communication and Collaboration",
+      "description": "an evolving set of technologies aimed at automating and unifying human and device communications within a common context and experience"
+    },
+    {
+      "acronym": "UCS",
+      "definition": "Unified Computing System",
+      "description": "centered on data center architecture. It's a product line introduced by Cisco Systems, which integrates computing, networking, and storage resources to increase efficiency and enable centralized management."
+    },
+    {
+      "acronym": "UDICOM",
+      "definition": "User Data Interworking, Coexistence and Migration",
+      "description": ""
+    },
+    {
+      "acronym": "UDM",
+      "definition": "Unified Data Management",
+      "description": ""
+    },
+    {
+      "acronym": "UDR",
+      "definition": "Unified Data Repository",
+      "description": ""
+    },
+    {
+      "acronym": "UDS",
+      "definition": "Universal Design Studio",
+      "description": ""
+    },
+    {
+      "acronym": "UDSF",
+      "definition": "Unstructured Data Storage Function",
+      "description": ""
+    },
+    {
+      "acronym": "UE",
+      "definition": "User Equipment",
+      "description": ""
+    },
+    {
+      "acronym": "UI",
+      "definition": "User Interface",
+      "description": ""
+    },
+    {
+      "acronym": "UIV",
+      "definition": "Unified Inventory",
+      "description": ""
+    },
+    {
+      "acronym": "UL",
+      "definition": "Uplink",
+      "description": ""
+    },
+    {
+      "acronym": "ULCL",
+      "definition": "Uplink Classifier",
+      "description": ""
+    },
+    {
+      "acronym": "ULL",
+      "definition": "Ultra Low Latency",
+      "description": ""
+    },
+    {
+      "acronym": "ULP",
+      "definition": "Ultra-low Power",
+      "description": ""
+    },
+    {
+      "acronym": "UNI",
+      "definition": "User-network interface",
+      "description": ""
+    },
+    {
+      "acronym": "UP 1",
+      "definition": "User Plane",
+      "description": ""
+    },
+    {
+      "acronym": "UPF",
+      "definition": "User Plane Function",
+      "description": ""
+    },
+    {
+      "acronym": "URI",
+      "definition": "Uniform Resource Identifier",
+      "description": ""
+    },
+    {
+      "acronym": "URLLC",
+      "definition": "Ultra-Reliable Low-Latency Communications",
+      "description": ""
+    },
+    {
+      "acronym": "uRPF",
+      "definition": "Unicast Reverse Path Forwarding",
+      "description": ""
+    },
+    {
+      "acronym": "URSP",
+      "definition": "UE Route Selection Policy",
+      "description": ""
+    },
+    {
+      "acronym": "USB",
+      "definition": "Universal Serial Bus",
+      "description": ""
+    },
+    {
+      "acronym": "USN",
+      "definition": "Unified Service Node",
+      "description": ""
+    },
+    {
+      "acronym": "V2X",
+      "definition": "Vehicle-to-Everything",
+      "description": ""
+    },
+    {
+      "acronym": "VAS",
+      "definition": "Value-added service",
+      "description": ""
+    },
+    {
+      "acronym": "vBNG",
+      "definition": "Virtual Broadband Network Gateway",
+      "description": ""
+    },
+    {
+      "acronym": "vBSC",
+      "definition": "Virtual Base Station Controller",
+      "description": ""
+    },
+    {
+      "acronym": "vCD",
+      "definition": "Virtual Cloud Director",
+      "description": ""
+    },
+    {
+      "acronym": "vCloud",
+      "definition": "Virtual Cloud",
+      "description": ""
+    },
+    {
+      "acronym": "vCMTS",
+      "definition": "Virtualised Cable Modem Termination System",
+      "description": ""
+    },
+    {
+      "acronym": "VCO",
+      "definition": "VMware VeloCloud Orchestrator",
+      "description": ""
+    },
+    {
+      "acronym": "vCPE",
+      "definition": "Virtual CPE",
+      "description": ""
+    },
+    {
+      "acronym": "vCU",
+      "definition": "Virtualized Centralized Unit",
+      "description": ""
+    },
+    {
+      "acronym": "vDU",
+      "definition": "Virtualized Distributed Unit",
+      "description": ""
+    },
+    {
+      "acronym": "VES",
+      "definition": "VNF Event Streaming",
+      "description": ""
+    },
+    {
+      "acronym": "VFS",
+      "definition": "Vodacom Financial Services",
+      "description": ""
+    },
+    {
+      "acronym": "vFW",
+      "definition": "Virtual Firewall",
+      "description": ""
+    },
+    {
+      "acronym": "ViLTE",
+      "definition": "Video over LTE",
+      "description": ""
+    },
+    {
+      "acronym": "VIM",
+      "definition": "Virtual Infrastructure Manager",
+      "description": ""
+    },
+    {
+      "acronym": "VIO",
+      "definition": "VMware Integrated Openstack",
+      "description": ""
+    },
+    {
+      "acronym": "VM",
+      "definition": "Virtual Machine",
+      "description": ""
+    },
+    {
+      "acronym": "vMSC",
+      "definition": "vSphere Metro Storage Cluster",
+      "description": ""
+    },
+    {
+      "acronym": "VNF",
+      "definition": "Virtual Network Function",
+      "description": ""
+    },
+    {
+      "acronym": "VNFC",
+      "definition": "VNF Component",
+      "description": ""
+    },
+    {
+      "acronym": "VNFD",
+      "definition": "Virtual Network Function Descriptor",
+      "description": ""
+    },
+    {
+      "acronym": "VNFM",
+      "definition": "Virtual Network Function Manager",
+      "description": ""
+    },
+    {
+      "acronym": "V-ODA",
+      "definition": "Vodafone Open Digital Architecture",
+      "description": ""
+    },
+    {
+      "acronym": "vOLT",
+      "definition": "Virtual OLT",
+      "description": ""
+    },
+    {
+      "acronym": "VoLTE",
+      "definition": "Voice over LTE",
+      "description": ""
+    },
+    {
+      "acronym": "VOLTHA",
+      "definition": "Virtual OLT Hardware Abstraction",
+      "description": ""
+    },
+    {
+      "acronym": "VoNR",
+      "definition": "Voice over New Radio",
+      "description": ""
+    },
+    {
+      "acronym": "VoWiFi",
+      "definition": "Voice over WiFi",
+      "description": ""
+    },
+    {
+      "acronym": "VPC",
+      "definition": "Vodafone Procurement",
+      "description": ""
+    },
+    {
+      "acronym": "VPLS",
+      "definition": "Virtual private LAN service",
+      "description": ""
+    },
+    {
+      "acronym": "VPN",
+      "definition": "Virtual Private Network",
+      "description": ""
+    },
+    {
+      "acronym": "VPRN",
+      "definition": "virtual private routed network",
+      "description": ""
+    },
+    {
+      "acronym": "vRNC",
+      "definition": "Virtual Radio Network Controller",
+      "description": ""
+    },
+    {
+      "acronym": "VSAT",
+      "definition": "Very Small Aperture Terminal",
+      "description": ""
+    },
+    {
+      "acronym": "VSS",
+      "definition": "Validate Solution Stack",
+      "description": ""
+    },
+    {
+      "acronym": "vSTP",
+      "definition": "Spanning Tree Protocol",
+      "description": ""
+    },
+    {
+      "acronym": "VTS",
+      "definition": "Vodafone Technology Standards",
+      "description": "a common set of strategic recommendations across Group Technology"
+    },
+    {
+      "acronym": "VULA",
+      "definition": "Virtual Unbundled Local Access",
+      "description": ""
+    },
+    {
+      "acronym": "VXLAN",
+      "definition": "Virtual eXtensible LAN",
+      "description": ""
+    },
+    {
+      "acronym": "WAP",
+      "definition": "Wireless Access Point",
+      "description": ""
+    },
+    {
+      "acronym": "WB",
+      "definition": "Wideband",
+      "description": ""
+    },
+    {
+      "acronym": "WBH",
+      "definition": "Wireless Backhaul",
+      "description": ""
+    },
+    {
+      "acronym": "WDM",
+      "definition": "Wavelength Division Multiplexing",
+      "description": ""
+    },
+    {
+      "acronym": "WebRTC",
+      "definition": "Web Real-Time Communications",
+      "description": ""
+    },
+    {
+      "acronym": "WEEE",
+      "definition": "Waste Electrical and Electronic Equipment",
+      "description": ""
+    },
+    {
+      "acronym": "WO",
+      "definition": "Work Order",
+      "description": ""
+    },
+    {
+      "acronym": "XC",
+      "definition": "Cross Connect",
+      "description": ""
+    },
+    {
+      "acronym": "XCM",
+      "definition": "XMA Control Module",
+      "description": ""
+    },
+    {
+      "acronym": "XGS-PON",
+      "definition": "10 Gigabit Symmetrical PON",
+      "description": ""
+    },
+    {
+      "acronym": "XMA",
+      "definition": "eXpandable Media Adapter",
+      "description": ""
+    },
+    {
+      "acronym": "XPIC",
+      "definition": "Cross Polarization Interference Cancellation",
+      "description": ""
+    },
+    {
+      "acronym": "YAML",
+      "definition": "Yet Another Modelling Language",
+      "description": ""
+    },
+    {
+      "acronym": "YANG",
+      "definition": "Yet Another Next Generation",
+      "description": ""
+    },
+    {
+      "acronym": "ZTP",
+      "definition": "Zero-Touch Provisioning",
+      "description": ""
+    }
+  ]
+}

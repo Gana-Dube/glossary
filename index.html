@@ -3,10 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telco Glossary</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <title>Telecommunications Glossary</title>
+    <!-- Favicon from favicon.io -->
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/svgs/solid/list.svg">
+    <!-- Bulma CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-    Hello World
+    <section class="section">
+        <div class="container">
+            <!-- Search Form -->
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <form id="searchForm">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input is-rounded" type="text" id="search" placeholder="Search for acronyms..." required>
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-primary is-rounded">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Error Message -->
+                    <div id="errorMessage" class="notification is-danger is-hidden" style="margin-top: 1em;"></div>
+                </div>
+            </div>
+            
+            <!-- Search Results -->
+            <div class="columns is-multiline" id="results" style="margin-top: 2em;"></div>
+        </div>
+    </section>
+    
+    <!-- Bulma JavaScript (optional, for interactive components) -->
+    <script src="js/main.js"></script>
 </body>
 </html>
