@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const errorDiv = document.getElementById('errorMessage');
 
         resultsDiv.innerHTML = ''; // Clear previous results
+        resultsDiv.className = 'columns is-multiline is-centered';
         errorDiv.classList.add('is-hidden'); // Hide previous errors
 
         if (!searchTerm) {
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Create a regex for exact match, case-insensitive
-        const regex = new RegExp(`^${escapeRegex(searchTerm)}$`, 'i');
+        const regex = new RegExp(`^${escapeRegex(searchTerm)}`, 'i');
         
         // Filter only by acronym for exact match
         const matches = acronymsData.acronyms.filter(item => 
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         matches.forEach(item => {
             // Create Bulma card
             const cardColumn = document.createElement('div');
-            cardColumn.className = 'column is-one-third';
+            cardColumn.className = 'column is-two-fifths';
 
             const card = document.createElement('div');
             card.className = 'card';
