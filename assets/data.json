@@ -4001,6 +4001,31 @@
       "description": ""
     },
     {
+      "acronym": "WAN",
+      "definition": "Wide Area Network",
+      "description": "A telecommunications network that extends over a large geographical area for primary purpose of computer networking"
+    },
+    {
+      "acronym": "WCDMA",
+      "definition": "Wideband Code Division Multiple Access",
+      "description": "A third-generation (3G) mobile telecommunications technology that supports high-speed data transmission"
+    },
+    {
+      "acronym": "WLAN",
+      "definition": "Wireless Local Area Network",
+      "description": "A wireless computer network that links two or more devices using wireless communication to form a local area network within a limited area"
+    },
+    {
+      "acronym": "WPA",
+      "definition": "Wi-Fi Protected Access",
+      "description": "A security protocol developed for wireless networks to address vulnerabilities found in earlier protocols"
+    },
+    {
+      "acronym": "WSN",
+      "definition": "Wireless Sensor Network",
+      "description": "A network of distributed autonomous devices that use sensors to monitor physical or environmental conditions"
+    },
+    {
       "acronym": "WAP",
       "definition": "Wireless Access Point",
       "description": ""
