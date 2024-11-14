@@ -1451,6 +1451,11 @@
       "description": ""
     },
     {
+      "acronym": "IAM",
+      "definition": "Identity and Access Management",
+      "description": "A framework of policies and technologies for ensuring that the proper people in an enterprise have the appropriate access to technology resources. It handles the authentication, authorization, and management of user identities within IT systems."
+    },
+    {
       "acronym": "IaaS",
       "definition": "Infrastructure as a Service",
       "description": ""
@@ -1654,6 +1659,11 @@
       "acronym": "IVR",
       "definition": "Interactive Voice Response",
       "description": ""
+    },
+    {
+      "acronym": "JIT",
+      "definition": "Joint Innovation Technology",
+      "description": "The collaborative efforts between two or more organizations aimed at developing new products, services, or processes through shared resources and expertise"
     },
     {
       "acronym": "JSON",
@@ -2699,6 +2709,31 @@
       "acronym": "PHP",
       "definition": "Penultimate Hop Popping",
       "description": ""
+    },
+    {
+      "acronym": "PoV",
+      "definition": "Proof of Value",
+      "description": "A demonstration of a solution's business value and ROI, typically following a PoC"
+    },
+    {
+      "acronym": "PaaS",
+      "definition": "Platform as a Service",
+      "description": "A cloud computing model where a third-party provider delivers hardware and software tools for application development"
+    },
+    {
+      "acronym": "PAT",
+      "definition": "Port Address Translation",
+      "description": "A networking technology that translates multiple local ports to a single public IP address"
+    },
+    {
+      "acronym": "PDU",
+      "definition": "Protocol Data Unit",
+      "description": "Information that is delivered as a unit between peer entities of a network"
+    },
+    {
+      "acronym": "PIM",
+      "definition": "Protocol Independent Multicast",
+      "description": "A family of multicast routing protocols for IP networks that provide one-to-many and many-to-many distribution"
     },
     {
       "acronym": "PoC",
