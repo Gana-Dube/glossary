@@ -98,6 +98,68 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             card.appendChild(cardContent);
+
+            const copyButton = document.createElement('button');
+            copyButton.className = 'button is-small is-light';
+            copyButton.style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                border-radius: 4px;
+                padding: 5px;
+                z-index: 10;
+                height: 32px;
+                width: 32px;
+                transition: background-color 0.3s ease;
+            `;
+            copyButton.innerHTML = '<span class="icon is-small"><i class="fas fa-clipboard"></i></span>';
+
+            // Add hover effects
+            copyButton.addEventListener('mouseenter', () => {
+                copyButton.classList.add('is-primary');
+            });
+            copyButton.addEventListener('mouseleave', () => {
+                copyButton.classList.remove('is-primary');
+            });
+
+            // Copy functionality (keep existing)
+            copyButton.addEventListener('click', () => {
+                let copyText = `${item.acronym}: ${item.definition}`;
+                if (item.description) {
+                    copyText += `\nDescription: ${item.description}`;
+                }
+                
+                navigator.clipboard.writeText(copyText).then(() => {
+                    copyButton.classList.add('is-success');
+                    copyFeedback.style.opacity = '1';
+                    setTimeout(() => {
+                        copyButton.classList.remove('is-success');
+                        copyFeedback.style.opacity = '0';
+                    }, 4000);
+                }).catch(err => {
+                    showError('Failed to copy text');
+                });
+            });
+
+            // After creating copyButton, add this code
+            const copyFeedback = document.createElement('span');
+            copyFeedback.className = 'is-size-7 has-text-danger';
+            copyFeedback.style.cssText = `
+                position: absolute;
+                top: 45px;
+                right: 4px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
+            copyFeedback.textContent = 'Copied!';
+
+            // Add feedback span after button
+            cardContent.appendChild(copyFeedback);
+
+            // Add position relative to card for absolute positioning
+            cardContent.style.position = 'relative';
+            cardContent.appendChild(copyButton);
+
             cardColumn.appendChild(card);
             resultsDiv.appendChild(cardColumn);
         });
