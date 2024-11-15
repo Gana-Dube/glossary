@@ -1156,6 +1156,36 @@
       "description": ""
     },
     {
+      "acronym": "FM",
+      "definition": "Foundation Model",
+      "description": "A large AI model trained on broad data that can be adapted for various downstream tasks, serving as a foundation for other AI models"
+    },
+    {
+      "acronym": "FaaS",
+      "definition": "Function as a Service",
+      "description": "A cloud computing model that allows running individual functions in response to events without managing infrastructure"
+    },
+    {
+      "acronym": "FOSS",
+      "definition": "Free and Open Source Software",
+      "description": "Software that is freely available for anyone to use, modify, and distribute"
+    },
+    {
+      "acronym": "FIFO",
+      "definition": "First In, First Out",
+      "description": "A data structure and processing method where the first element added is the first one to be removed"
+    },
+    {
+      "acronym": "FSM",
+      "definition": "Finite State Machine",
+      "description": "A computational model used to design systems that can be in exactly one of a finite number of states at any given time"
+    },
+    {
+      "acronym": "FLOPs",
+      "definition": "Floating Point Operations per Second",
+      "description": "A measure of computer performance, especially relevant in AI/ML computations and model training"
+    },
+    {
       "acronym": "FCAPS",
       "definition": "Fault, Configuration, Accounting, Performance and Security",
       "description": ""
