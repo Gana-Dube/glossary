@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             acronymsData = data;
+            showRandomAcronyms(); // Initialize random acronyms
         })
         .catch(error => {
             showError('Failed to load acronyms data. Please try again later.');
@@ -28,7 +29,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
+    function getRandomAcronyms(count = 5) {
+        if (!acronymsData || !acronymsData.acronyms.length) return [];
+        const shuffled = [...acronymsData.acronyms].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    }
+
+    function showRandomAcronyms() {
+        const container = document.getElementById('suggestedAcronyms');
+        container.innerHTML = '';
+        
+        const randomAcronyms = getRandomAcronyms();
+        randomAcronyms.forEach(item => {
+            const tag = document.createElement('a');
+            tag.className = 'tag is-primary is-light is-medium is-clickable';
+            tag.textContent = item.acronym;
+            tag.addEventListener('click', () => {
+                document.getElementById('search').value = item.acronym;
+                searchAcronyms();
+            });
+            container.appendChild(tag);
+        });
+    }
+
     function searchAcronyms() {
+        // Add this line at the start of the function
+        showRandomAcronyms(); // Refresh suggestions on each search
+
         const searchTerm = document.getElementById('search').value.trim();
         const resultsDiv = document.getElementById('results');
         const errorDiv = document.getElementById('errorMessage');
