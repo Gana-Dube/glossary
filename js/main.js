@@ -1,6 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
     let acronymsData = null;
 
+    // Add after existing variables
+    const voiceButton = document.getElementById('voiceButton');
+    let isListening = false;
+
+    // Add voice recognition setup
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+        const recognition = new SpeechRecognition();
+        
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+
+        recognition.onstart = () => {
+            isListening = true;
+            voiceButton.classList.add('is-active');
+            voiceButton.querySelector('i').classList.remove('fa-microphone');
+            voiceButton.querySelector('i').classList.add('fa-spinner', 'fa-pulse');
+        };
+
+        recognition.onend = () => {
+            isListening = false;
+            voiceButton.classList.remove('is-active');
+            voiceButton.querySelector('i').classList.remove('fa-spinner', 'fa-pulse');
+            voiceButton.querySelector('i').classList.add('fa-microphone');
+        };
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('search').value = transcript;
+            searchAcronyms(); // Trigger search automatically
+        };
+
+        recognition.onerror = (event) => {
+            showError('Voice recognition error: ' + event.error);
+            recognition.stop();
+        };
+
+        voiceButton.addEventListener('click', () => {
+            if (!isListening) {
+                recognition.start();
+            } else {
+                recognition.stop();
+            }
+        });
+    } else {
+        voiceButton.style.display = 'none';
+        showError('Voice recognition not supported in this browser');
+    }
+
     // Fetch JSON data
     fetch('assets/data.json')
         .then(response => {
