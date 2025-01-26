@@ -3706,24 +3706,14 @@
       "description": ""
     },
     {
-      "acronym": "UAM",
-      "definition": "User Access Management",
-      "description": ""
+      "acronym": "UCI",
+      "definition": "Unified Customer Intelligence",
+      "description": "A system that combines and analyzes customer data from multiple sources to provide comprehensive customer insights"
     },
     {
-      "acronym": "uCPE",
-      "definition": "Universal CPE",
-      "description": ""
-    },
-    {
-      "acronym": "UCC",
-      "definition": "Unified Communication and Collaboration",
-      "description": "an evolving set of technologies aimed at automating and unifying human and device communications within a common context and experience"
-    },
-    {
-      "acronym": "UCS",
-      "definition": "Unified Computing System",
-      "description": "centered on data center architecture. It's a product line introduced by Cisco Systems, which integrates computing, networking, and storage resources to increase efficiency and enable centralized management."
+      "acronym": "UCM",
+      "definition": "Unified Certificate Management",
+      "description": "A centralized system for managing digital certificates and PKI infrastructure across an organization"
     },
     {
       "acronym": "UDICOM",
@@ -3756,6 +3746,16 @@
       "description": ""
     },
     {
+      "acronym": "UEE",
+      "definition": "Unified Event Exchange",
+      "description": "A platform for managing and coordinating event-driven communications across distributed systems"
+    },
+    {
+      "acronym": "UEM",
+      "definition": "Unified Endpoint Management",
+      "description": "A security approach that enables organizations to manage and secure all endpoints (mobile, desktop, IoT) from a single platform"
+    },
+    {
       "acronym": "UI",
       "definition": "User Interface",
       "description": ""
@@ -3786,6 +3786,11 @@
       "description": ""
     },
     {
+      "acronym": "UFS",
+      "definition": "Unified File System",
+      "description": "A storage system that provides a unified view of multiple file systems and storage resources"
+    },
+    {
       "acronym": "UNI",
       "definition": "User-network interface",
       "description": ""
@@ -3799,6 +3804,16 @@
       "acronym": "UPF",
       "definition": "User Plane Function",
       "description": ""
+    },
+    {
+      "acronym": "ULA",
+      "definition": "Unique Local Address",
+      "description": "IPv6 address type intended for local communications within a site or organization"
+    },
+    {
+      "acronym": "UMA",
+      "definition": "Unlicensed Mobile Access",
+      "description": "Technology enabling seamless roaming between cellular and Wi-Fi networks"
     },
     {
       "acronym": "URI",
@@ -3829,6 +3844,21 @@
       "acronym": "USN",
       "definition": "Unified Service Node",
       "description": ""
+    },
+    {
+      "acronym": "UPA",
+      "definition": "User Profile Analytics",
+      "description": "System for analyzing user behavior patterns and profile data to derive actionable insights"
+    },
+    {
+      "acronym": "UPR",
+      "definition": "Unified Policy Repository",
+      "description": "Centralized storage and management system for security and access control policies"
+    },
+    {
+      "acronym": "UTP",
+      "definition": "Unified Threat Protection",
+      "description": "Comprehensive security approach combining multiple security technologies and protocols"
     },
     {
       "acronym": "V2X",
