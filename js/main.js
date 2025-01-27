@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (item.tags && item.tags.length > 0) {
                 const tagsContainer = document.createElement('div');
                 tagsContainer.className = 'tags';
-                tagsContainer.style.marginTop = '1rem';
+                tagsContainer.style.cssText = 'margin: 0.5rem 0 0 0;';
                 
                 // Split tags if it's a string, or use array directly
                 const tagsList = typeof item.tags === 'string' ? 
