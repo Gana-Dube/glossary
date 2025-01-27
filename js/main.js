@@ -174,6 +174,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardContent.appendChild(description);
             }
 
+            // Add tags section
+            if (item.tags && item.tags.length > 0) {
+                const tagsContainer = document.createElement('div');
+                tagsContainer.className = 'tags';
+                tagsContainer.style.marginTop = '1rem';
+                
+                // Split tags if it's a string, or use array directly
+                const tagsList = typeof item.tags === 'string' ? 
+                    item.tags.split(',').map(t => t.trim()) : 
+                    item.tags;
+                
+                tagsList.filter(tag => tag && tag.length > 0).forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'tag is-info is-light';
+                    tagElement.textContent = tag;
+                    tagsContainer.appendChild(tagElement);
+                });
+                
+                cardContent.appendChild(tagsContainer);
+            }
+
             card.appendChild(cardContent);
 
             const copyButton = document.createElement('button');
