@@ -154,9 +154,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const mediaContent = document.createElement('div');
             mediaContent.className = 'media-content';
 
-            const title = document.createElement('p');
-            title.className = 'title is-4';
+            const title = document.createElement('button'); // Changed to button
+            title.className = 'button is-link is-inverted is-large'; // Added button classes
             title.textContent = item.acronym;
+            title.style.padding = '0.25rem'; // Added padding
+            title.style.border = 'none'; // Remove border
+            title.style.textAlign = 'left'; // Align text to the left
+            title.addEventListener('click', () => {
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(item.acronym)}`, '_blank');
+            });
 
             const subtitle = document.createElement('p');
             subtitle.className = 'subtitle is-6';
