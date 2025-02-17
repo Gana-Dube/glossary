@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <!-- Add after Bulma CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
 </head>
 <body>
     <section class="section">
@@ -41,6 +43,32 @@
                 </div>
             </div>
             
+            <div class="columns is-centered" style="margin-top: 1rem;">
+              <div class="column is-half">
+                <div class="file has-name is-boxed is-fullwidth is-centered" style="position: relative; text-align: center;">
+                  <label class="file-label" style="width: 100%; cursor: pointer;">
+                    <input class="file-input" type="file" accept=".pdf" id="pdfInput" style="opacity:0; position:absolute; left:0; top:0; width:100%; height:100%; cursor:pointer;">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        Drop PDF file here or click to upload
+                      </span>
+                    </span>
+                    <p class="file-name" id="fileName" style="margin-top: 0.5rem; font-weight: bold;">No file selected</p>
+                  </label>
+                  <button id="refreshUploaded" class="button is-info is-small" title="Refresh uploaded acronyms" style="position: absolute; right: 1rem; bottom: 1rem;">
+                    <span class="icon">
+                      <i class="fas fa-redo"></i>
+                    </span>
+                    <span>Refresh</span>
+                  </button>
+                </div>
+                <progress class="progress is-primary is-small is-hidden" id="pdfProgress" value="0" max="100" style="margin-top: 0.5rem;">0%</progress>
+              </div>
+            </div>
+
             <!-- Suggested Acronyms -->
             <div class="columns is-centered">
                 <div class="column is-half has-text-centered">
