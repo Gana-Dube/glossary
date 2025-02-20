@@ -45,25 +45,37 @@
             
             <div class="columns is-centered" style="margin-top: 1rem;">
               <div class="column is-half">
-                <div class="file has-name is-boxed is-fullwidth is-centered" style="position: relative; text-align: center;">
-                  <label class="file-label" style="width: 100%; cursor: pointer;">
-                    <input class="file-input" type="file" accept=".pdf" id="pdfInput" style="opacity:0; position:absolute; left:0; top:0; width:100%; height:100%; cursor:pointer;">
-                    <span class="file-cta">
-                      <span class="file-icon">
-                        <i class="fas fa-upload"></i>
-                      </span>
-                      <span class="file-label">
-                        Drop PDF file here or click to upload
-                      </span>
-                    </span>
-                    <p class="file-name" id="fileName" style="margin-top: 0.5rem; font-weight: bold;">No file selected</p>
-                  </label>
-                  <button id="refreshUploaded" class="button is-info is-small" title="Refresh uploaded acronyms" style="position: absolute; right: 1rem; bottom: 1rem;">
-                    <span class="icon">
-                      <i class="fas fa-redo"></i>
-                    </span>
-                    <span>Refresh</span>
-                  </button>
+                <div class="box" style="padding: 1rem;">
+                  <div class="columns is-vcentered">
+                    <div class="column is-8">
+                      <label class="file is-fullwidth">
+                        <input class="file-input" type="file" accept=".pdf" id="pdfInput" style="opacity:0; position:absolute; left:0; top:0; width:100%; height:100%; cursor:pointer;">
+                        <span class="file-cta is-rounded">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Drop PDF file here or click to upload
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="column is-4">
+                      <div class="field is-grouped is-grouped-right">
+                        <p class="control">
+                          <span id="fileName" class="tag is-info is-rounded" style="font-weight: bold;">No file selected</span>
+                        </p>
+                        <p class="control">
+                          <button id="refreshUploaded" class="button is-info is-rounded is-small" title="Refresh uploaded acronyms">
+                            <span class="icon">
+                              <i class="fas fa-redo"></i>
+                            </span>
+                            <span>Refresh</span>
+                          </button>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <progress class="progress is-primary is-small is-hidden" id="pdfProgress" value="0" max="100" style="margin-top: 0.5rem;">0%</progress>
               </div>

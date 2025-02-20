@@ -327,14 +327,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const acronyms = new Map();
 
-      // Apply the single updated pattern
       ACRONYM_PATTERNS.forEach((pattern) => {
         let match;
         while ((match = pattern.exec(extractedText)) !== null) {
-          // match[1] is the definition and match[2] is the short acronym
-          const definitionText = match[1].trim();
+          // match[1] is the definition
+          // match[2] is the acronym
+          let definitionText = match[1].trim();
           const acronymText = match[2].trim();
+      
+          // Only proceed if acronym length is at least 2
           if (acronymText.length >= 2) {
+            // Fix: Check if the definition starts with the same letter as the acronym.
+            // If not, try to find the first word that matches.
+            if (definitionText[0].toLowerCase() !== acronymText[0].toLowerCase()) {
+              const words = definitionText.split(/\s+/);
+              const fixedIndex = words.findIndex(word =>
+                word[0] && word[0].toLowerCase() === acronymText[0].toLowerCase()
+              );
+              if (fixedIndex !== -1) {
+                definitionText = words.slice(fixedIndex).join(" ");
+              }
+            }
+      
             acronyms.set(acronymText, {
               acronym: acronymText,
               definition: definitionText,
@@ -382,37 +396,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  async function handlePDFFile(file) {
-    document.getElementById("fileName").textContent = file.name;
-    try {
-      const extractedAcronyms = await parsePDF(file);
-      if (extractedAcronyms.length > 0) {
-        // Filter out duplicates before merging
-        const newAcronyms = extractedAcronyms.filter(
-          (newAcronym) =>
-            !acronymsData.acronyms.some(
-              (existing) => existing.acronym === newAcronym.acronym
-            )
-        );
-
-        acronymsData.acronyms = [...acronymsData.acronyms, ...newAcronyms];
-        showUploadedAcronyms(newAcronyms);
-        showError(
-          `Successfully imported ${newAcronyms.length} new acronyms from PDF`
-        );
-      } else {
-        showError("No acronyms found in the PDF");
-      }
-    } catch (error) {
-      showError("Error processing PDF file");
-      console.error(error);
-    }
-  }
-
   function showUploadedAcronyms(acronyms) {
     const resultsDiv = document.getElementById("results");
     // Option: clear previous results or append
     resultsDiv.innerHTML = "";
+    // Ensure the container uses the Bulma classes for centered layout:
+    resultsDiv.className = "columns is-multiline is-centered";
     
     acronyms.forEach((item) => {
       // Create Bulma card
@@ -550,6 +539,33 @@ document.addEventListener("DOMContentLoaded", () => {
       cardColumn.appendChild(card);
       resultsDiv.appendChild(cardColumn);
     });
+  }
+
+  async function handlePDFFile(file) {
+    document.getElementById("fileName").textContent = file.name;
+    try {
+      const extractedAcronyms = await parsePDF(file);
+      if (extractedAcronyms.length > 0) {
+        // Filter out duplicates before merging
+        const newAcronyms = extractedAcronyms.filter(
+          (newAcronym) =>
+            !acronymsData.acronyms.some(
+              (existing) => existing.acronym === newAcronym.acronym
+            )
+        );
+
+        acronymsData.acronyms = [...acronymsData.acronyms, ...newAcronyms];
+        showUploadedAcronyms(newAcronyms);
+        showError(
+          `Successfully imported ${newAcronyms.length} new acronyms from PDF`
+        );
+      } else {
+        showError("No acronyms found in the PDF");
+      }
+    } catch (error) {
+      showError("Error processing PDF file");
+      console.error(error);
+    }
   }
 
   // Prevent default on the entire window
