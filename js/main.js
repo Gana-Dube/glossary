@@ -337,12 +337,13 @@ document.addEventListener("DOMContentLoaded", () => {
       
           // Only proceed if acronym length is at least 2
           if (acronymText.length >= 2) {
-            // Fix: Check if the definition starts with the same letter as the acronym.
+            // Fix: Check if the definition exists and starts with the same letter as the acronym.
             // If not, try to find the first word that matches.
-            if (definitionText[0].toLowerCase() !== acronymText[0].toLowerCase()) {
+            if (definitionText.length > 0 && 
+                definitionText[0].toLowerCase() !== acronymText[0].toLowerCase()) {
               const words = definitionText.split(/\s+/);
               const fixedIndex = words.findIndex(word =>
-                word[0] && word[0].toLowerCase() === acronymText[0].toLowerCase()
+                word && word.length > 0 && word[0] && word[0].toLowerCase() === acronymText[0].toLowerCase()
               );
               if (fixedIndex !== -1) {
                 definitionText = words.slice(fixedIndex).join(" ");

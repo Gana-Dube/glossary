@@ -43,37 +43,37 @@
                 </div>
             </div>
             
-            <div class="columns is-centered" style="margin-top: 1rem;">
+            <!-- Improved PDF Upload Section -->
+            <div class="columns is-centered" >
               <div class="column is-half">
-                <div class="box" style="padding: 1rem;">
-                  <div class="columns is-vcentered">
-                    <div class="column is-8">
-                      <label class="file is-fullwidth">
-                        <input class="file-input" type="file" accept=".pdf" id="pdfInput" style="opacity:0; position:absolute; left:0; top:0; width:100%; height:100%; cursor:pointer;">
-                        <span class="file-cta is-rounded">
-                          <span class="file-icon">
-                            <i class="fas fa-upload"></i>
-                          </span>
-                          <span class="file-label">
-                            Drop PDF file here or click to upload
-                          </span>
+                <div class="box">
+                  <!-- File Upload Area -->
+                  <div class="file is-fullwidth has-name is-boxed">
+                    <label class="file-label">
+                      <input class="file-input" type="file" accept=".pdf" id="pdfInput">
+                      <span class="file-cta is-rounded has-text-centered">
+                        <span class="file-icon">
+                          <i class="fas fa-upload"></i>
                         </span>
-                      </label>
+                        <span class="file-label">
+                          Drop PDF file here or click to upload
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  
+                  <!-- File Info and Refresh Button (Below Upload Area) -->
+                  <div class="columns is-vcentered mt-1">
+                    <div class="column">
+                      <span id="fileName" class="tag is-info is-medium is-rounded">No file selected</span>
                     </div>
-                    <div class="column is-4">
-                      <div class="field is-grouped is-grouped-right">
-                        <p class="control">
-                          <span id="fileName" class="tag is-info is-rounded" style="font-weight: bold;">No file selected</span>
-                        </p>
-                        <p class="control">
-                          <button id="refreshUploaded" class="button is-info is-rounded is-small" title="Refresh uploaded acronyms">
-                            <span class="icon">
-                              <i class="fas fa-redo"></i>
-                            </span>
-                            <span>Refresh</span>
-                          </button>
-                        </p>
-                      </div>
+                    <div class="column is-narrow">
+                      <button id="refreshUploaded" class="button is-info is-rounded">
+                        <span class="icon">
+                          <i class="fas fa-redo"></i>
+                        </span>
+                        <span>Refresh</span>
+                      </button>
                     </div>
                   </div>
                 </div>
