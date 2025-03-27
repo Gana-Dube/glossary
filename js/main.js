@@ -325,6 +325,25 @@ document.addEventListener("DOMContentLoaded", () => {
         progressBar.value = (i / pdf.numPages) * 100;
       }
 
+      // Try to use Python processing first
+      if (window.processPDFWithPython) {
+        try {
+          showError("Processing with Python - this may take a moment...");
+          const pythonResults = await window.processPDFWithPython(extractedText);
+          progressBar.classList.add("is-hidden");
+
+          if (pythonResults && pythonResults.length > 0) {
+            return pythonResults;
+          }
+          // If Python processing returned no results, fall back to JavaScript
+          showError("Python processing found no acronyms, using JavaScript fallback");
+        } catch (error) {
+          console.error("Python processing failed:", error);
+          showError("Python processing failed, using JavaScript fallback");
+        }
+      }
+
+      // Fallback to JavaScript processing if Python is not available or failed
       const acronyms = new Map();
 
       ACRONYM_PATTERNS.forEach((pattern) => {
@@ -334,12 +353,12 @@ document.addEventListener("DOMContentLoaded", () => {
           // match[2] is the acronym
           let definitionText = match[1].trim();
           const acronymText = match[2].trim();
-      
+
           // Only proceed if acronym length is at least 2
           if (acronymText.length >= 2) {
             // Fix: Check if the definition exists and starts with the same letter as the acronym.
             // If not, try to find the first word that matches.
-            if (definitionText.length > 0 && 
+            if (definitionText.length > 0 &&
                 definitionText[0].toLowerCase() !== acronymText[0].toLowerCase()) {
               const words = definitionText.split(/\s+/);
               const fixedIndex = words.findIndex(word =>
@@ -349,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 definitionText = words.slice(fixedIndex).join(" ");
               }
             }
-      
+
             acronyms.set(acronymText, {
               acronym: acronymText,
               definition: definitionText,
@@ -403,24 +422,24 @@ document.addEventListener("DOMContentLoaded", () => {
     resultsDiv.innerHTML = "";
     // Ensure the container uses the Bulma classes for centered layout:
     resultsDiv.className = "columns is-multiline is-centered";
-    
+
     acronyms.forEach((item) => {
       // Create Bulma card
       const cardColumn = document.createElement("div");
       cardColumn.className = "column is-two-fifths";
-      
+
       const card = document.createElement("div");
       card.className = "card";
-      
+
       const cardContent = document.createElement("div");
       cardContent.className = "card-content";
-      
+
       const media = document.createElement("div");
       media.className = "media";
-      
+
       const mediaContent = document.createElement("div");
       mediaContent.className = "media-content";
-      
+
       // Create button title for the acronym
       const title = document.createElement("button");
       title.className = "button is-link is-inverted is-large";
@@ -436,16 +455,16 @@ document.addEventListener("DOMContentLoaded", () => {
           "_blank"
         );
       });
-      
+
       const subtitle = document.createElement("p");
       subtitle.className = "subtitle is-6";
       subtitle.innerHTML = `<strong>Definition:</strong> ${item.definition}`;
-      
+
       mediaContent.appendChild(title);
       mediaContent.appendChild(subtitle);
       media.appendChild(mediaContent);
       cardContent.appendChild(media);
-      
+
       // Optionally display description if available
       if (item.description) {
         const description = document.createElement("div");
@@ -453,7 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
         description.innerHTML = `<strong>Description:</strong> ${item.description}`;
         cardContent.appendChild(description);
       }
-      
+
       // Optional: add tags if provided
       if (item.tags && item.tags.length > 0) {
         const tagsContainer = document.createElement("div");
@@ -463,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
           typeof item.tags === "string"
             ? item.tags.split(",").map((t) => t.trim())
             : item.tags;
-      
+
         tagsList
           .filter((tag) => tag && tag.length > 0)
           .forEach((tag) => {
@@ -472,10 +491,10 @@ document.addEventListener("DOMContentLoaded", () => {
             tagElement.textContent = tag;
             tagsContainer.appendChild(tagElement);
           });
-      
+
         cardContent.appendChild(tagsContainer);
       }
-      
+
       // Copy button
       const copyButton = document.createElement("button");
       copyButton.className = "button is-small is-light";
@@ -492,20 +511,20 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       copyButton.innerHTML =
         '<span class="icon is-small"><i class="fas fa-clipboard"></i></span>';
-      
+
       copyButton.addEventListener("mouseenter", () => {
         copyButton.classList.add("is-primary");
       });
       copyButton.addEventListener("mouseleave", () => {
         copyButton.classList.remove("is-primary");
       });
-      
+
       copyButton.addEventListener("click", () => {
         let copyText = `${item.acronym}: ${item.definition}`;
         if (item.description) {
           copyText += `\nDescription: ${item.description}`;
         }
-      
+
         navigator.clipboard
           .writeText(copyText)
           .then(() => {
@@ -520,7 +539,7 @@ document.addEventListener("DOMContentLoaded", () => {
             showError("Failed to copy text");
           });
       });
-      
+
       const copyFeedback = document.createElement("span");
       copyFeedback.className = "is-size-7 has-text-danger";
       copyFeedback.style.cssText = `
@@ -531,11 +550,11 @@ document.addEventListener("DOMContentLoaded", () => {
         transition: opacity 0.3s ease;
       `;
       copyFeedback.textContent = "Copied!";
-      
+
       cardContent.style.position = "relative";
       cardContent.appendChild(copyFeedback);
       cardContent.appendChild(copyButton);
-      
+
       card.appendChild(cardContent);
       cardColumn.appendChild(card);
       resultsDiv.appendChild(cardColumn);
@@ -592,19 +611,19 @@ document.addEventListener("DOMContentLoaded", () => {
         await handlePDFFile(file);
       }
     });
-    
+
 // Refresh button for uploaded acronyms (filters items from PDF import)
 document.getElementById("refreshUploaded").addEventListener("click", () => {
     if (!acronymsData || !acronymsData.acronyms) {
       showError("No acronyms data available");
       return;
     }
-    
+
     // Filter for acronyms uploaded via PDF (which have "PDF Import" tag)
-    const uploadedAcronyms = acronymsData.acronyms.filter(item => 
+    const uploadedAcronyms = acronymsData.acronyms.filter(item =>
       item.tags && item.tags.includes("PDF Import")
     );
-    
+
     if (uploadedAcronyms.length > 0) {
       showUploadedAcronyms(uploadedAcronyms);
     } else {

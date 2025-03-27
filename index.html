@@ -1,99 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecommunications Glossary</title>
-    <!-- Favicon from favicon.io -->
-    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/svgs/solid/list.svg">
-    <!-- Bulma CSS CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <!-- Add after Bulma CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telecommunications Glossary</title>
+<!-- Favicon from favicon.io -->
+<link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/svgs/solid/list.svg">
+<!-- Bulma CSS CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<!-- Add after Bulma CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
 </head>
 <body>
-    <section class="section">
-        <div class="container">
-            <!-- Search Form -->
-            <div class="columns is-centered">
-                <div class="column is-half">
-                    <form id="searchForm">
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <input class="input is-rounded" type="text" id="search" placeholder="Search for acronyms..." required>
-                            </div>
-                            <div class="control">
-                                <button type="button" id="voiceButton" class="button is-info is-rounded">
-                                    <span class="icon">
-                                        <i class="fas fa-microphone"></i>
-                                    </span>
-                                </button>
-                            </div>
-                            <div class="control">
-                                <button type="submit" class="button is-primary is-rounded">
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Error Message -->
-                    <div id="errorMessage" class="notification is-danger is-hidden" style="margin-top: 1em;"></div>
+<section class="section">
+<div class="container">
+    <!-- Title -->
+    <div class="columns is-centered mb-4">
+        <div class="column is-half has-text-centered">
+            <h1 class="title">Telecommunications Glossary</h1>
+        </div>
+    </div>
+
+    <!-- Suggested Acronyms - Now moved above search bar -->
+    <div class="columns is-centered">
+        <div class="column is-half has-text-centered">
+            <p class="has-text-grey mb-2">Random Generated Acronyms:</p>
+            <div class="tags is-centered is-justify-content-center" id="suggestedAcronyms"></div>
+        </div>
+    </div>
+
+    <!-- Search Form -->
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <form id="searchForm">
+                <div class="field has-addons">
+                    <div class="control is-expanded">
+                        <input class="input is-rounded" type="text" id="search" placeholder="Search for acronyms..." required>
+                    </div>
+                    <div class="control">
+                        <button type="button" id="voiceButton" class="button is-info is-rounded">
+                            <span class="icon">
+                                <i class="fas fa-microphone"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-primary is-rounded">
+                            Search
+                        </button>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Improved PDF Upload Section -->
-            <div class="columns is-centered" >
-              <div class="column is-half">
-                <div class="box">
-                  <!-- File Upload Area -->
-                  <div class="file is-fullwidth has-name is-boxed">
+            </form>
+            <!-- Error Message -->
+            <div id="errorMessage" class="notification is-danger is-hidden mt-3"></div>
+        </div>
+    </div>
+
+    <!-- Improved PDF Upload Section -->
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="box">
+                <!-- File Upload Area -->
+                <div class="file is-fullwidth has-name is-boxed">
                     <label class="file-label">
-                      <input class="file-input" type="file" accept=".pdf" id="pdfInput">
-                      <span class="file-cta is-rounded has-text-centered">
-                        <span class="file-icon">
-                          <i class="fas fa-upload"></i>
+                        <input class="file-input" type="file" accept=".pdf" id="pdfInput">
+                        <span class="file-cta is-rounded has-text-centered">
+                            <span class="file-label">
+                                Drop PDF file here or click to upload
+                            </span>
                         </span>
-                        <span class="file-label">
-                          Drop PDF file here or click to upload
-                        </span>
-                      </span>
                     </label>
-                  </div>
-                  
-                  <!-- File Info and Refresh Button (Below Upload Area) -->
-                  <div class="columns is-vcentered mt-1">
+                </div>
+
+                <!-- File Info and Refresh Button (Below Upload Area) -->
+                <div class="columns is-vcentered mt-1">
                     <div class="column">
-                      <span id="fileName" class="tag is-info is-medium is-rounded">No file selected</span>
+                        <span id="fileName" class="tag is-info is-medium is-rounded">No file selected</span>
                     </div>
                     <div class="column is-narrow">
-                      <button id="refreshUploaded" class="button is-info is-rounded">
-                        <span class="icon">
-                          <i class="fas fa-redo"></i>
-                        </span>
-                        <span>Refresh</span>
-                      </button>
+                        <button id="refreshUploaded" class="button is-info is-rounded">
+                            <span class="icon">
+                                <i class="fas fa-redo"></i>
+                            </span>
+                            <span>Refresh</span>
+                        </button>
                     </div>
-                  </div>
-                </div>
-                <progress class="progress is-primary is-small is-hidden" id="pdfProgress" value="0" max="100" style="margin-top: 0.5rem;">0%</progress>
-              </div>
-            </div>
-
-            <!-- Suggested Acronyms -->
-            <div class="columns is-centered">
-                <div class="column is-half has-text-centered">
-                    <div class="tags is-centered is-justify-content-center" id="suggestedAcronyms"></div>
                 </div>
             </div>
-
-            <!-- Search Results -->
-            <div class="columns is-multiline" id="results" style="margin-top: 2em;"></div>
+            <progress class="progress is-primary is-small is-hidden" id="pdfProgress" value="0" max="100" style="margin-top: 0.5rem;">0%</progress>
         </div>
-    </section>
-    
-    <!-- Bulma JavaScript (optional, for interactive components) -->
-    <script src="js/main.js"></script>
+    </div>
+
+    <!-- Search Results -->
+    <div class="columns is-multiline" id="results" style="margin-top: 2em;"></div>
+</div>
+</section>
+
+<!-- Bulma JavaScript (optional, for interactive components) -->
+<script src="js/pyodide-integration.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
