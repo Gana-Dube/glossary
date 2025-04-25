@@ -298,13 +298,13 @@ document.addEventListener("DOMContentLoaded", () => {
     /([\w\s\-\&]+?)\s*\(\s*([A-Za-z0-9\-.]+)\s*\)/g, // Pattern: definition (ACRONYM)
   ];
 
-  async function parsePDF(file) {
+  async function parsePDF(file, pdfDoc = null) {
     const progressBar = document.getElementById("pdfProgress");
     progressBar.classList.remove("is-hidden");
 
     try {
-      const arrayBuffer = await file.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      // Use the provided PDF document if available, otherwise load it
+      const pdf = pdfDoc || await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
       let extractedText = "";
 
       // Process all pages
@@ -563,8 +563,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function handlePDFFile(file) {
     document.getElementById("fileName").textContent = file.name;
+
     try {
-      const extractedAcronyms = await parsePDF(file);
+      // Get the page count display element
+      const pageCountElement = document.getElementById("pageCount");
+      pageCountElement.style.display = "none"; // Hide initially
+
+      // Get page count from the PDF
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      const numPages = pdf.numPages;
+
+      // Display the page count
+      pageCountElement.textContent = `PDF contains ${numPages} pages`;
+      pageCountElement.style.display = "block"; // Make visible
+
+      const extractedAcronyms = await parsePDF(file, pdf); // Pass the pdf object to avoid loading twice
+
       if (extractedAcronyms.length > 0) {
         // Filter out duplicates before merging
         const newAcronyms = extractedAcronyms.filter(

@@ -17,8 +17,8 @@ async function initPyodide() {
     // Load Pyodide
     pyodideInstance = await loadPyodide();
 
-    // Install required packages (micropip is included by default)
-    await pyodideInstance.loadPackagesFromImports(`
+    // First import the modules into the global namespace
+    await pyodideInstance.runPythonAsync(`
       import re
       import json
       import io
@@ -27,7 +27,7 @@ async function initPyodide() {
     // Remove loading indicator
     document.body.removeChild(loadingMessage);
 
-    // Load your Python script for PDF processing
+    // Then load your Python script for PDF processing
     await pyodideInstance.runPythonAsync(`
       # Python functions for PDF processing
       def extract_acronyms(text):
@@ -125,6 +125,19 @@ async function initPyodide() {
   }
 }
 
+// Add this helper function
+function dedent(str) {
+  // Remove common leading whitespace from every line
+  str = str.replace(/^\n/, '');
+  const match = str.match(/^[ \t]*(?=\S)/gm);
+  if (!match) return str;
+
+  const indent = Math.min(...match.map(x => x.length));
+  const re = new RegExp(`^[ \\t]{${indent}}`, 'gm');
+  return str.replace(re, '');
+}
+
+
 // Function to process PDF text using Python
 async function processPDFWithPython(text) {
   try {
@@ -134,8 +147,18 @@ async function processPDFWithPython(text) {
       return [];
     }
 
-    // Call the Python function
-    const jsonResult = pyodide.runPython(`process_pdf_text('''${text.replace(/'/g, "\\'")}''')`);
+    // Define the function and process the text in a single execution context
+    const jsonResult = pyodide.runPython(dedent(`
+      import re
+      import json
+
+      text = '''${text.replace(/'/g, "\\'")}'''
+
+      # Extract from existing context
+      result = process_pdf_text(text)
+      result
+    `));
+
     return JSON.parse(jsonResult);
   } catch (error) {
     console.error("Error in Python processing:", error);
