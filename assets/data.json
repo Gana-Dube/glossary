@@ -3782,7 +3782,7 @@
     },
     {
       "acronym": "SBG",
-      "definition": "Session Border Gateway",
+      "definition": "Session Border gateway",
       "description": "",
       "tags": ""
     },
@@ -5003,6 +5003,90 @@
       "definition": "Zero-Touch Provisioning",
       "description": "",
       "tags": ""
+    },
+    {
+      "acronym": "LLM",
+      "definition": "Large Language Model",
+      "description": "An AI model trained on vast amounts of text data to understand and generate human-like language.",
+      "tags": ["AI", "GenAI", "NLP"]
+    },
+    {
+      "acronym": "GPT",
+      "definition": "Generative Pre-trained Transformer",
+      "description": "A type of large language model developed by OpenAI, known for its strong text generation capabilities.",
+      "tags": ["AI", "GenAI", "NLP", "Transformer"]
+    },
+    {
+      "acronym": "RAG",
+      "definition": "Retrieval-Augmented Generation",
+      "description": "An AI technique that combines a retrieval system (to find relevant information) with a generative model (to create an answer).",
+      "tags": ["AI", "GenAI", "NLP"]
+    },
+    {
+      "acronym": "NLP",
+      "definition": "Natural Language Processing",
+      "description": "A field of AI focused on enabling computers to understand, interpret, and generate human language.",
+      "tags": ["AI", "Language"]
+    },
+    {
+      "acronym": "NLU",
+      "definition": "Natural Language Understanding",
+      "description": "A subfield of NLP focused on machine reading comprehension and understanding the meaning of text.",
+      "tags": ["AI", "NLP", "Language"]
+    },
+    {
+      "acronym": "NLG",
+      "definition": "Natural Language Generation",
+      "description": "A subfield of NLP focused on producing natural language text from structured data or computational representations.",
+      "tags": ["AI", "NLP", "Language"]
+    },
+    {
+      "acronym": "Transformer",
+      "definition": "Transformer Architecture",
+      "description": "A deep learning model architecture introduced in 'Attention Is All You Need', heavily used in NLP and other sequence tasks.",
+      "tags": ["AI", "Deep Learning", "Architecture"]
+    },
+    {
+      "acronym": "BERT",
+      "definition": "Bidirectional Encoder Representations from Transformers",
+      "description": "A language representation model developed by Google, known for its effectiveness in various NLP tasks.",
+      "tags": ["AI", "NLP", "Transformer"]
+    },
+    {
+      "acronym": "VAE",
+      "definition": "Variational Autoencoder",
+      "description": "A type of generative model that learns a probabilistic mapping from input data to a latent space.",
+      "tags": ["AI", "GenAI", "Deep Learning"]
+    },
+    {
+      "acronym": "Diffusion Model",
+      "definition": "Diffusion Model",
+      "description": "A class of generative models that learn to reverse a gradual noising process to generate data, often used for image generation.",
+      "tags": ["AI", "GenAI", "Deep Learning", "Image Generation"]
+    },
+    {
+      "acronym": "Fine-tuning",
+      "definition": "Fine-tuning",
+      "description": "The process of adapting a pre-trained model (like an LLM) to a specific task or dataset by training it further on relevant data.",
+      "tags": ["AI", "ML", "Training"]
+    },
+    {
+      "acronym": "Prompt Engineering",
+      "definition": "Prompt Engineering",
+      "description": "The practice of designing and refining input prompts to guide generative AI models towards desired outputs.",
+      "tags": ["AI", "GenAI", "LLM"]
+    },
+    {
+      "acronym": "Zero-shot Learning",
+      "definition": "Zero-shot Learning",
+      "description": "The ability of a model to perform a task it hasn't been explicitly trained on, often by understanding instructions in the prompt.",
+      "tags": ["AI", "ML", "LLM"]
+    },
+    {
+      "acronym": "Few-shot Learning",
+      "definition": "Few-shot Learning",
+      "description": "The ability of a model to learn a new task from only a small number of examples provided in the prompt.",
+      "tags": ["AI", "ML", "LLM"]
     }
   ]
 }

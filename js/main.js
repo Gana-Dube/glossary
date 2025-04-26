@@ -104,8 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function searchAcronyms() {
-    // Add this line at the start of the function
-
     const searchTerm = document.getElementById("search").value.trim();
     const resultsDiv = document.getElementById("results");
     const errorDiv = document.getElementById("errorMessage");
