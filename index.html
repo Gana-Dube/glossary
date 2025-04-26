@@ -1,98 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Telecommunications Glossary</title>
-<!-- Favicon from favicon.io -->
-<link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/svgs/solid/list.svg">
-<!-- Bulma CSS CDN -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-<!-- Add after Bulma CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
-<script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary</title>
+    <!-- Favicon from favicon.io -->
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/svgs/solid/list.svg">
+    <!-- Bulma CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- Add after Bulma CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <!-- Add Iconify CDN -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
 <section class="section">
 <div class="container">
-    <!-- Title -->
+    <!-- Title Banner Option 3: Dark Notification -->
     <div class="columns is-centered mb-4">
-        <div class="column is-half has-text-centered">
-            <h1 class="title">Telecommunications Glossary</h1>
+        <div class="column is-three-quarters"> <!-- Adjust width as needed -->
+            <div class="notification is-dark has-text-centered py-4">
+                <h1 class="title has-text-white" style="text-transform: uppercase;">Glossary</h1>
+            </div>
         </div>
     </div>
 
-    <!-- Suggested Acronyms - Now moved above search bar -->
+    <!-- Wrapper column to match title width -->
     <div class="columns is-centered">
-        <div class="column is-half has-text-centered">
-            <p class="has-text-grey mb-2">Random Generated Acronyms:</p>
-            <div class="tags is-centered is-justify-content-center" id="suggestedAcronyms"></div>
-        </div>
-    </div>
-
-    <!-- Search Form -->
-    <div class="columns is-centered">
-        <div class="column is-half">
-            <form id="searchForm">
-                <div class="field has-addons">
-                    <div class="control is-expanded">
-                        <input class="input is-rounded" type="text" id="search" placeholder="Search for acronyms..." required>
-                    </div>
-                    <div class="control">
-                        <button type="button" id="voiceButton" class="button is-info is-rounded">
-                            <span class="icon">
-                                <i class="fas fa-microphone"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="control">
-                        <button type="submit" class="button is-primary is-rounded">
-                            Search
-                        </button>
+        <div class="column is-three-quarters">
+            <!-- Suggested Acronyms & Search Form Side-by-Side (Nested Columns) -->
+            <div class="columns">
+                <!-- Suggested Acronyms Column -->
+                <div class="column is-half">
+                    <div class="box py-3 px-4" style="height: 100%;">
+                        <div class="level is-mobile"> <!-- Use level for left/right alignment -->
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <div>
+                                        <p class="has-text-grey mb-2 is-size-7">Random Generated Acronyms:</p>
+                                        <div class="tags" id="suggestedAcronyms"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="level-right" style="position: relative; height: 100%;">
+                                <div class="level-item" style="position: absolute; top: 0; right: 0;">
+                                    <button class="button is-small is-ghost" id="refreshRandomAcronyms">
+                                        <span class="icon">
+                                            <iconify-icon icon="f7:rotate-right-fill" width="24" height="24"  style="color: #000"></iconify-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </form>
-            <!-- Error Message -->
-            <div id="errorMessage" class="notification is-danger is-hidden mt-3"></div>
-        </div>
-    </div>
 
-    <!-- Improved PDF Upload Section -->
-    <div class="columns is-centered">
-        <div class="column is-half">
-            <div class="box">
-                <!-- File Upload Area -->
-                <div class="file is-fullwidth has-name is-boxed">
-                    <label class="file-label">
-                        <input class="file-input" type="file" accept=".pdf" id="pdfInput">
-                        <span class="file-cta is-rounded has-text-centered">
-                            <span class="file-label">
-                                Drop PDF file here or click to upload
-                            </span>
-                        </span>
-                    </label>
-                </div>
-
-                <!-- File Info and Refresh Button (Below Upload Area) -->
-                <div class="columns is-vcentered mt-1">
-                    <div class="column">
-                        <span id="fileName" class="tag is-info is-medium is-rounded">No file selected</span>
-                        <!-- Add page count display below filename -->
-                        <p id="pageCount" class="has-text-danger mt-2" style="display: none;"></p>
-                    </div>
-                    <div class="column is-narrow">
-                        <button id="refreshUploaded" class="button is-info is-rounded">
-                            <span class="icon">
-                                <i class="fas fa-redo"></i>
-                            </span>
-                            <span>Refresh</span>
-                        </button>
+                <!-- Search Form Column -->
+                <div class="column is-half is-flex is-align-items-center">
+                    <div class="box px-4" style="height: 100%; width: 100%;"> <!-- Added box container with padding and width -->
+                        <form id="searchForm">
+                            <div class="field is-grouped"> <!-- Changed from has-addons to is-grouped -->
+                                <div class="control">
+                                    <button type="button" id="voiceButton" class="button is-light"> <!-- Moved to left, muted color -->
+                                        <span class="icon has-text-grey">
+                                            <i class="fas fa-microphone"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="control is-expanded">
+                                    <input class="input" type="text" id="search" placeholder="Search for acronyms..." required> <!-- Removed is-rounded -->
+                                </div>
+                                <div class="control">
+                                    <button type="submit" class="button is-light has-text-grey-dark"> <!-- Muted color -->
+                                        <span class="icon">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                        <span>Search</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Error Message -->
+                        <div id="errorMessage" class="notification is-danger is-light is-hidden mt-2"></div> <!-- Changed to is-light -->
                     </div>
                 </div>
             </div>
-            <progress class="progress is-primary is-small is-hidden" id="pdfProgress" value="0" max="100" style="margin-top: 0.5rem;">0%</progress>
+        </div>
+    </div>
+
+    <!-- PDF Upload Section - Option 3: Horizontal Level Layout -->
+    <div class="columns is-centered">
+        <div class="column is-half"> <!-- Keep PDF upload centered but potentially wider -->
+            <div class="box">
+                 <p class="has-text-grey mb-2 is-size-7">Upload PDF Document:</p>
+                <div class="level is-mobile">
+                    <!-- Left side: File Input Button -->
+                    <div class="level-left">
+                        <div class="level-item">
+                             <div class="file">
+                                <label class="file-label">
+                                    <input class="file-input" type="file" accept=".pdf" id="pdfInput">
+                                    <span class="file-cta has-background-white-ter"> <!-- Muted CTA -->
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                            Upload PDF
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Right side: File Info & Refresh -->
+                    <div class="level-right">
+                         <div class="level-item">
+                            <span id="fileName" class="tag is-light is-medium">No file selected</span>
+                        </div>
+                         <div class="level-item">
+                             <p id="pageCount" class="has-text-grey is-size-7" style="display: none;"></p>
+                        </div>
+                        <div class="level-item">
+                            <button id="refreshUploaded" class="button is-small is-light" title="Refresh/Clear Selection">
+                                <span class="icon is-small">
+                                    <i class="fas fa-redo"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Progress Bar -->
+                <progress class="progress is-grey-lighter is-small is-hidden mt-2" id="pdfProgress" value="0" max="100">0%</progress>
+            </div>
         </div>
     </div>
 

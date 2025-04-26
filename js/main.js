@@ -105,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function searchAcronyms() {
     // Add this line at the start of the function
-    showRandomAcronyms(); // Refresh suggestions on each search
 
     const searchTerm = document.getElementById("search").value.trim();
     const resultsDiv = document.getElementById("results");
@@ -627,8 +626,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-// Refresh button for uploaded acronyms (filters items from PDF import)
-document.getElementById("refreshUploaded").addEventListener("click", () => {
+  // Add reference for the new refresh button
+  const refreshRandomButton = document.getElementById("refreshRandomAcronyms");
+
+  // Add event listener for the refresh random acronyms button
+  refreshRandomButton.addEventListener("click", () => {
+    showRandomAcronyms();
+  });
+
+  // Refresh button for uploaded acronyms (filters items from PDF import)
+  document.getElementById("refreshUploaded").addEventListener("click", () => {
     if (!acronymsData || !acronymsData.acronyms) {
       showError("No acronyms data available");
       return;
