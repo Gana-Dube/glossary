@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
   // Adjust 'YOUR_VERCEL_DEPLOYMENT_URL' or use '*' for less security during dev
   const allowedOrigin = process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000' // Or whatever port you use locally
-      : 'https://YOUR_VERCEL_DEPLOYMENT_URL.vercel.app'; // Replace with your actual Vercel URL
+      : 'https://glossary-one.vercel.app'; // Correct production domain with https
   res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
