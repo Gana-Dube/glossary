@@ -272,10 +272,113 @@ document.addEventListener("DOMContentLoaded", () => {
       cardContent.style.position = "relative";
       cardContent.appendChild(copyButton);
 
+      // --- Gemini Button Integration ---
+      const geminiButton = document.createElement("button");
+      // Position it next to the copy button or adjust as needed
+      geminiButton.className = "button is-small is-light"; // Use 'is-light' like copy button
+      geminiButton.style.cssText = `
+                position: absolute;
+                top: 10px; /* Same top as copy button */
+                right: 52px; /* Adjust this value to position left of copy button (10px + 32px width + 10px spacing) */
+                border-radius: 4px;
+                padding: 5px;
+                z-index: 10; /* Same z-index */
+                height: 32px; /* Same height */
+                width: 32px; /* Same width */
+                transition: background-color 0.3s ease;
+            `;
+      geminiButton.title = "Tell me more (AI)";
+
+      const geminiIcon = document.createElement("img");
+      geminiIcon.src = "assets/static/icons/google-gemini-icon.svg";
+      geminiIcon.alt = "Gemini Icon";
+      geminiIcon.style.width = "16px";
+      geminiIcon.style.height = "16px";
+      geminiIcon.style.verticalAlign = "middle"; // Helps center the icon in the button
+
+      geminiButton.appendChild(geminiIcon);
+
+      // Add hover effects similar to copy button
+      geminiButton.addEventListener("mouseenter", () => {
+        geminiButton.classList.add("is-info"); // Use a different color like 'is-info'
+      });
+      geminiButton.addEventListener("mouseleave", () => {
+        geminiButton.classList.remove("is-info");
+      });
+
+      // Placeholder for AI response within the card content
+      let aiResponseDiv = cardContent.querySelector(".ai-response");
+      if (!aiResponseDiv) {
+        aiResponseDiv = document.createElement("div");
+        aiResponseDiv.className = "ai-response content is-size-7 mt-3"; // Added 'content' for Bulma styling
+        aiResponseDiv.style.display = "none"; // Initially hidden
+        // Insert it before tags if they exist, otherwise append
+        const tagsContainer = cardContent.querySelector(".tags");
+        if (tagsContainer) {
+            cardContent.insertBefore(aiResponseDiv, tagsContainer);
+        } else {
+            cardContent.appendChild(aiResponseDiv);
+        }
+      }
+
+
+      geminiButton.addEventListener("click", async () => {
+        const acronym = item.acronym;
+        const definition = item.definition;
+        const description = item.description || ""; // Handle potentially missing description
+        const context = `Acronym: ${acronym}\nDefinition: ${definition}\nDescription: ${description}`;
+
+        // Indicate loading state
+        geminiButton.classList.add("is-loading");
+        geminiButton.disabled = true;
+        aiResponseDiv.textContent = "Fetching details...";
+        aiResponseDiv.style.display = "block"; // Show loading message
+
+        try {
+          const response = await fetch("/api/tell-me-more", { // Relative path to Vercel function
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ acronym, definition, description }), // Send context data
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' })); // Try to parse error
+            throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (data.text) {
+             // Use innerHTML to allow basic formatting if needed later, sanitize if necessary
+            aiResponseDiv.innerHTML = `<strong>AI Explanation:</strong> ${data.text}`;
+            aiResponseDiv.style.display = "block"; // Ensure it's visible
+          } else {
+            throw new Error("No text received from AI.");
+          }
+
+        } catch (error) {
+          console.error("Error fetching AI details:", error);
+          aiResponseDiv.textContent = `Error: ${error.message}`;
+          aiResponseDiv.style.display = "block";
+          // Optionally hide the error after a few seconds
+          // setTimeout(() => { aiResponseDiv.style.display = 'none'; }, 5000);
+        } finally {
+          // Restore button state
+          geminiButton.classList.remove("is-loading");
+          geminiButton.disabled = false;
+        }
+      });
+
+      cardContent.appendChild(geminiButton); // Add the button to the card
+
+      // --- End Gemini Button Integration ---
+
       cardColumn.appendChild(card);
       resultsDiv.appendChild(cardColumn);
-    });
-  }
+    }); // End of matches.forEach or acronyms.forEach
+  } // End of searchAcronyms or showUploadedAcronyms function
 
   // Escape special regex characters in searchTerm
   function escapeRegex(string) {
@@ -552,7 +655,109 @@ document.addEventListener("DOMContentLoaded", () => {
       cardContent.appendChild(copyFeedback);
       cardContent.appendChild(copyButton);
 
-      card.appendChild(cardContent);
+      // --- Gemini Button Integration ---
+      const geminiButton = document.createElement("button");
+      // Position it next to the copy button or adjust as needed
+      geminiButton.className = "button is-small is-light"; // Use 'is-light' like copy button
+      geminiButton.style.cssText = `
+                position: absolute;
+                top: 10px; /* Same top as copy button */
+                right: 52px; /* Adjust this value to position left of copy button (10px + 32px width + 10px spacing) */
+                border-radius: 4px;
+                padding: 5px;
+                z-index: 10; /* Same z-index */
+                height: 32px; /* Same height */
+                width: 32px; /* Same width */
+                transition: background-color 0.3s ease;
+            `;
+      geminiButton.title = "Tell me more (AI)";
+
+      const geminiIcon = document.createElement("img");
+      geminiIcon.src = "assets/static/icons/google-gemini-icon.svg";
+      geminiIcon.alt = "Gemini Icon";
+      geminiIcon.style.width = "16px";
+      geminiIcon.style.height = "16px";
+      geminiIcon.style.verticalAlign = "middle"; // Helps center the icon in the button
+
+      geminiButton.appendChild(geminiIcon);
+
+      // Add hover effects similar to copy button
+      geminiButton.addEventListener("mouseenter", () => {
+        geminiButton.classList.add("is-info"); // Use a different color like 'is-info'
+      });
+      geminiButton.addEventListener("mouseleave", () => {
+        geminiButton.classList.remove("is-info");
+      });
+
+      // Placeholder for AI response within the card content
+      let aiResponseDiv = cardContent.querySelector(".ai-response");
+      if (!aiResponseDiv) {
+        aiResponseDiv = document.createElement("div");
+        aiResponseDiv.className = "ai-response content is-size-7 mt-3"; // Added 'content' for Bulma styling
+        aiResponseDiv.style.display = "none"; // Initially hidden
+        // Insert it before tags if they exist, otherwise append
+        const tagsContainer = cardContent.querySelector(".tags");
+        if (tagsContainer) {
+            cardContent.insertBefore(aiResponseDiv, tagsContainer);
+        } else {
+            cardContent.appendChild(aiResponseDiv);
+        }
+      }
+
+
+      geminiButton.addEventListener("click", async () => {
+        const acronym = item.acronym;
+        const definition = item.definition;
+        const description = item.description || ""; // Handle potentially missing description
+        const context = `Acronym: ${acronym}\nDefinition: ${definition}\nDescription: ${description}`;
+
+        // Indicate loading state
+        geminiButton.classList.add("is-loading");
+        geminiButton.disabled = true;
+        aiResponseDiv.textContent = "Fetching details...";
+        aiResponseDiv.style.display = "block"; // Show loading message
+
+        try {
+          const response = await fetch("/api/tell-me-more", { // Relative path to Vercel function
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ acronym, definition, description }), // Send context data
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' })); // Try to parse error
+            throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (data.text) {
+             // Use innerHTML to allow basic formatting if needed later, sanitize if necessary
+            aiResponseDiv.innerHTML = `<strong>AI Explanation:</strong> ${data.text}`;
+            aiResponseDiv.style.display = "block"; // Ensure it's visible
+          } else {
+            throw new Error("No text received from AI.");
+          }
+
+        } catch (error) {
+          console.error("Error fetching AI details:", error);
+          aiResponseDiv.textContent = `Error: ${error.message}`;
+          aiResponseDiv.style.display = "block";
+          // Optionally hide the error after a few seconds
+          // setTimeout(() => { aiResponseDiv.style.display = 'none'; }, 5000);
+        } finally {
+          // Restore button state
+          geminiButton.classList.remove("is-loading");
+          geminiButton.disabled = false;
+        }
+      });
+
+      cardContent.appendChild(geminiButton); // Add the button to the card
+
+      // --- End Gemini Button Integration ---
+
       cardColumn.appendChild(card);
       resultsDiv.appendChild(cardColumn);
     });

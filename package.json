@@ -1,0 +1,23 @@
+{
+  "name": "telco_glossary",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gana-Dube/glossary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gana-Dube/glossary/issues"
+  },
+  "homepage": "https://github.com/Gana-Dube/glossary#readme",
+  "description": "",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0"
+  }
+}
