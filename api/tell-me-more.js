@@ -9,7 +9,7 @@ if (!API_KEY) {
 }
 
 const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-pro" }); // Or your preferred model
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" }); // Or your preferred model
 
 // Export the handler function for Vercel
 module.exports = async (req, res) => {
