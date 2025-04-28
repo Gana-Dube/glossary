@@ -820,43 +820,64 @@
       "acronym": "CSDB",
       "definition": "Common Subscriber Database",
       "description": "Centralized database storing subscriber information and profiles in telecommunications networks",
-      "tags": ["telecommunications", "database-systems", "core-network"]
+      "tags": [
+        "telecommunications",
+        "database-systems",
+        "core-network"
+      ]
     },
     {
       "acronym": "CSGN",
       "definition": "Cellular Serving Gateway Node",
       "description": "Network node that handles user plane mobility and acts as gateway between radio and core network",
-      "tags": ["telecommunications", "core-network"]
+      "tags": [
+        "telecommunications",
+        "core-network"
+      ]
     },
     {
       "acronym": "CSGSN",
       "definition": "Controller SGSN",
       "description": "Component that manages control plane functions in the SGSN architecture",
-      "tags": ["telecommunications", "core-network"]
+      "tags": [
+        "telecommunications",
+        "core-network"
+      ]
     },
     {
       "acronym": "CSS",
       "definition": "Cascading Style Sheets",
       "description": "Style sheet language used for describing the presentation of HTML documents",
-      "tags": ["web-development"]
+      "tags": [
+        "web-development"
+      ]
     },
     {
       "acronym": "CSI",
       "definition": "Communication Service Instance",
       "description": "Instance of a communication service in network slice management",
-      "tags": ["telecommunications", "core-network"]
+      "tags": [
+        "telecommunications",
+        "core-network"
+      ]
     },
     {
       "acronym": "CSI-RS",
       "definition": "Channel State Information-Reference Signal",
       "description": "Reference signals used in 4G/5G systems for channel quality measurement and beamforming",
-      "tags": ["telecommunications", "radio-network"]
+      "tags": [
+        "telecommunications",
+        "radio-network"
+      ]
     },
     {
       "acronym": "CSMF",
       "definition": "Communication Service Management Function",
       "description": "Function responsible for translating communication service requirements to network slice requirements",
-      "tags": ["telecommunications", "core-network"]
+      "tags": [
+        "telecommunications",
+        "core-network"
+      ]
     },
     {
       "acronym": "CSO",
@@ -1924,49 +1945,74 @@
       "acronym": "IP",
       "definition": "Internet Protocol",
       "description": "Fundamental protocol for relaying packets across network boundaries in computer networks",
-      "tags": ["networking", "internet-protocols"]
+      "tags": [
+        "networking",
+        "internet-protocols"
+      ]
     },
     {
       "acronym": "IP",
       "definition": "Intellectual Property",
       "description": "Legal rights that protect creations of the mind such as patents, trademarks, and copyrights",
-      "tags": ["legal", "business"]
+      "tags": [
+        "legal",
+        "business"
+      ]
     },
     {
       "acronym": "IP",
       "definition": "Internet Provider",
       "description": "Company that provides internet access services to customers",
-      "tags": ["telecommunications", "business"]
+      "tags": [
+        "telecommunications",
+        "business"
+      ]
     },
     {
       "acronym": "IP OSI",
       "definition": "Internet Protocol",
       "description": "Internet Protocol implementation in the OSI network model layer 3",
-      "tags": ["networking", "internet-protocols"]
+      "tags": [
+        "networking",
+        "internet-protocols"
+      ]
     },
     {
       "acronym": "IPAM",
       "definition": "IP Address Management",
       "description": "Administration and monitoring of IP address space within a network",
-      "tags": ["networking", "internet-protocols"]
+      "tags": [
+        "networking",
+        "internet-protocols"
+      ]
     },
     {
       "acronym": "IP-MPLS",
       "definition": "Internet Protocol-Multi Protocol Label Switching",
       "description": "Routing technique in telecommunications networks that directs data using path labels rather than long network addresses",
-      "tags": ["telecommunications", "networking"]
+      "tags": [
+        "telecommunications",
+        "networking"
+      ]
     },
     {
       "acronym": "IPSec",
       "definition": "Internet Protocol Security",
       "description": "Protocol suite for securing Internet Protocol communications through authentication and encryption",
-      "tags": ["networking", "security", "internet-protocols"]
+      "tags": [
+        "networking",
+        "security",
+        "internet-protocols"
+      ]
     },
     {
       "acronym": "IP-SM-GW",
       "definition": "IP Short Message Gateway",
       "description": "Gateway that enables SMS delivery over IP networks in telecommunications systems",
-      "tags": ["telecommunications", "networking"]
+      "tags": [
+        "telecommunications",
+        "networking"
+      ]
     },
     {
       "acronym": "IRB",
@@ -2415,218 +2461,218 @@
     {
       "acronym": "ML",
       "definition": "Machine Learning",
-      "description": "",
-      "tags": ""
+      "description": "A field of artificial intelligence focused on building systems that can learn from and make decisions based on data.",
+      "tags": "ai, data-science"
     },
     {
       "acronym": "MLD",
       "definition": "Multicast Listener Discovery",
-      "description": "",
-      "tags": ""
+      "description": "A protocol used by IPv6 routers to discover multicast listeners on a directly attached link, part of the ICMPv6 suite.",
+      "tags": "ipv6, multicast, networking, protocol"
     },
     {
       "acronym": "MLDP",
       "definition": "Multicast LDP",
-      "description": "",
-      "tags": ""
+      "description": "An extension to the Label Distribution Protocol (LDP) for setting up point-to-multipoint (P2MP) and multipoint-to-multipoint (MP2MP) Label Switched Paths (LSPs) for multicast traffic.",
+      "tags": "mpls, multicast, networking, ldp"
     },
     {
       "acronym": "MME",
       "definition": "Mobility Management Entity",
-      "description": "",
-      "tags": ""
+      "description": "A key control node in the LTE Evolved Packet Core (EPC) responsible for idle mode UE tracking, paging procedures, and bearer activation/deactivation processes.",
+      "tags": "lte, epc, core-network, mobility, 4g"
     },
     {
       "acronym": "M-MIMO",
       "definition": "Massive MIMO",
-      "description": "",
-      "tags": ""
+      "description": "An advanced Multiple Input Multiple Output (MIMO) technology using a large number of antennas (e.g., dozens or hundreds) at the base station to improve spectral efficiency, capacity, and coverage.",
+      "tags": "5g, ran, mimo, antenna, radio"
     },
     {
       "acronym": "mmWave",
       "definition": "Millimeter Wave",
-      "description": "",
-      "tags": ""
+      "description": "Refers to the spectrum band between 30 GHz and 300 GHz. Used in 5G NR for providing high data rates and capacity, typically over shorter distances due to higher propagation loss.",
+      "tags": "5g, spectrum, radio, frequency"
     },
     {
       "acronym": "MNP",
       "definition": "Mobile Number Portability",
-      "description": "",
-      "tags": ""
+      "description": "A service that enables mobile phone users to retain their mobile telephone number when changing from one mobile network carrier to another.",
+      "tags": "mobile, regulation, subscriber, numbering"
     },
     {
       "acronym": "MnS",
       "definition": "Maintenance & Support",
-      "description": "",
-      "tags": ""
+      "description": "Activities related to keeping network equipment, software, and services operational, including troubleshooting, repairs, updates, and technical assistance.",
+      "tags": "operations, support, lifecycle"
     },
     {
       "acronym": "MOCN",
       "definition": "Multi-Operator Core Networks",
-      "description": "",
-      "tags": ""
+      "description": "A network sharing configuration where multiple core network operators connect to a shared Radio Access Network (RAN).",
+      "tags": "ran-sharing, core-network, network-sharing"
     },
     {
       "acronym": "MOI",
       "definition": "Managed Object Instance",
-      "description": "",
-      "tags": ""
+      "description": "A specific instance of a Managed Object Class within a network management model (e.g., in TMN or 3GPP management frameworks), representing a manageable network resource.",
+      "tags": "management, oss, fcaps, nrm"
     },
     {
       "acronym": "MOP",
       "definition": "Method of Procedure",
-      "description": "",
-      "tags": ""
+      "description": "A detailed, step-by-step document outlining the actions required to perform a specific network task, change, or maintenance activity safely and correctly.",
+      "tags": "operations, process, change-management, documentation"
     },
     {
       "acronym": "MORAN",
       "definition": "Multi-Operator Radio Access Networks",
-      "description": "",
-      "tags": ""
+      "description": "A network sharing configuration where multiple operators share the same Radio Access Network (RAN) infrastructure.",
+      "tags": "ran-sharing, ran, network-sharing"
     },
     {
       "acronym": "M-Pesa Swahili",
       "definition": "Mobile-Money",
       "description": "a virtual banking system, money transfer, payments and micro-financing service that provides transaction services through a SIM card.",
-      "tags": ""
+      "tags": "mobile-money, fintech, vas, payments"
     },
     {
       "acronym": "MPLS",
       "definition": "Multiprotocol Label Switching",
-      "description": "",
-      "tags": ""
+      "description": "A routing technique in telecommunications networks that directs data using short path labels rather than long network addresses, avoiding complex lookups in a routing table.",
+      "tags": "networking, routing, transport, ip, label-switching"
     },
     {
       "acronym": "MPLS-TP",
       "definition": "MPLS-Transport Profile",
-      "description": "",
-      "tags": ""
+      "description": "A profile of MPLS designed specifically for transport networks, providing carrier-grade OAM (Operations, Administration, and Maintenance) and protection switching capabilities similar to SDH/SONET.",
+      "tags": "mpls, transport, networking, oam, protection"
     },
     {
       "acronym": "MPN",
       "definition": "Mobile Private Network",
-      "description": "",
-      "tags": ""
+      "description": "A dedicated cellular network tailored for a specific enterprise or organization, providing enhanced security, control, performance, and coverage for specific business needs.",
+      "tags": "private-network, 5g, lte, enterprise, campus-network"
     },
     {
       "acronym": "MQTT",
       "definition": "Message Queuing Telemetry Transport",
-      "description": "",
-      "tags": ""
+      "description": "A lightweight, publish/subscribe network protocol that transports messages between devices. Ideal for constrained devices and low-bandwidth, high-latency networks, commonly used in IoT.",
+      "tags": "iot, messaging, protocol, pub-sub"
     },
     {
       "acronym": "MRC",
       "definition": "Maximal Ratio Combining",
-      "description": "",
-      "tags": ""
+      "description": "A receiver diversity technique where signals from multiple antennas are weighted and combined to maximize the signal-to-noise ratio (SNR) of the resultant signal.",
+      "tags": "radio, receiver, mimo, diversity"
     },
     {
       "acronym": "MRF",
       "definition": "Media Resource Function",
-      "description": "",
-      "tags": ""
+      "description": "A component in the IP Multimedia Subsystem (IMS) architecture that provides media-related functions such as conferencing, transcoding, media announcements, and interactive voice response (IVR).",
+      "tags": "ims, media, core-network, volte"
     },
     {
       "acronym": "MSC-S",
       "definition": "MSC Server",
-      "description": "",
-      "tags": ""
+      "description": "The server component (control plane) of a Mobile Switching Center (MSC) in GSM/UMTS networks, responsible for call control, mobility management, and supplementary services for circuit-switched calls.",
+      "tags": "gsm, umts, core-network, circuit-switched, msc"
     },
     {
       "acronym": "MSDP",
       "definition": "Multicast Source Discovery Protocol",
-      "description": "",
-      "tags": ""
+      "description": "A protocol used between multicast routers, specifically Rendezvous Points (RPs) in different PIM-SM domains, to share information about active multicast sources.",
+      "tags": "multicast, routing, pim, rp"
     },
     {
       "acronym": "MSIN",
       "definition": "Mobile Subscription Identification Number",
-      "description": "",
-      "tags": ""
+      "description": "Part of the International Mobile Subscriber Identity (IMSI), uniquely identifying a mobile subscription within the home Public Land Mobile Network (PLMN).",
+      "tags": "subscriber, identity, imsi, numbering"
     },
     {
       "acronym": "MSISDN",
       "definition": "Mobile Station International Subscriber Directory Number",
-      "description": "",
-      "tags": ""
+      "description": "The globally unique phone number allocated to a mobile subscriber, used for routing calls and messages to the subscriber.",
+      "tags": "subscriber, identity, numbering, phone-number"
     },
     {
       "acronym": "MSP",
       "definition": "Multi Service Proxy",
-      "description": "",
-      "tags": ""
+      "description": "A network element acting as a proxy server that handles multiple services or protocols, often used for mediation or interworking.",
+      "tags": "proxy, networking, gateway"
     },
     {
       "acronym": "MT",
       "definition": "Mobile Terminating",
-      "description": "",
-      "tags": ""
+      "description": "Refers to a call, message (e.g., SMS), or data session that originates from the network and terminates at the mobile device (User Equipment).",
+      "tags": "mobile, call-flow, sms, session"
     },
     {
       "acronym": "MVP",
       "definition": "Minimal viable product",
-      "description": "",
-      "tags": ""
+      "description": "A version of a new product which allows a team to collect the maximum amount of validated learning about customers with the least effort.",
+      "tags": "product-development, agile, startup"
     },
     {
       "acronym": "MTAS",
       "definition": "Multimedia Telephony Application Server",
-      "description": "",
-      "tags": ""
+      "description": "An application server within the IP Multimedia Subsystem (IMS) architecture that provides supplementary services for multimedia telephony, such as call waiting, call forwarding, and conferencing.",
+      "tags": "ims, volte, application-server, tas"
     },
     {
       "acronym": "MTBF",
       "definition": "Mean Time Between Failures",
-      "description": "",
-      "tags": ""
+      "description": "A measure of the predicted elapsed time between inherent failures of a mechanical or electronic system during normal system operation. Represents reliability.",
+      "tags": "reliability, operations, metrics, availability"
     },
     {
       "acronym": "MTTR",
-      "definition": "Mean Time to Respond",
-      "description": "",
-      "tags": ""
+      "definition": "Mean Time to Repair",
+      "description": "A basic measure of the maintainability of repairable items. It represents the average time required to repair a failed component or device.",
+      "tags": "reliability, operations, metrics, maintainability, availability"
     },
     {
       "acronym": "Multi-X",
       "definition": "Multi-Device + Multi-Identity",
-      "description": "",
-      "tags": ""
+      "description": "A concept referring to seamless user experiences and service continuity across multiple devices (e.g., phone, tablet, PC) and potentially multiple user identities or profiles.",
+      "tags": "user-experience, convergence, multi-device"
     },
     {
       "acronym": "MU-MIMO",
       "definition": "Multiuser MIMO",
-      "description": "",
-      "tags": ""
+      "description": "Allows a base station (e.g., Wi-Fi AP or cellular base station) to communicate with multiple user devices simultaneously using the same time and frequency resources through spatial multiplexing.",
+      "tags": "wifi, lte, 5g, mimo, ran, wireless"
     },
     {
       "acronym": "MUST",
       "definition": "Mandatory Use-case requirements for SDN for Transport",
-      "description": "",
-      "tags": ""
+      "description": "An IETF draft defining mandatory functional requirements for applying Software-Defined Networking (SDN) principles to transport networks.",
+      "tags": "sdn, transport, ietf, requirements"
     },
     {
       "acronym": "MVA",
       "definition": "My Vodacom App",
-      "description": "",
-      "tags": ""
+      "description": "The self-service mobile application provided by Vodacom for its customers to manage their accounts, services, and usage.",
+      "tags": "mobile-app, customer-care, self-service, vodacom"
     },
     {
       "acronym": "MVAS",
       "definition": "Mobile VAS",
-      "description": "",
-      "tags": ""
+      "description": "Value-Added Services delivered over mobile networks, beyond standard voice calls and SMS, such as ringback tones, mobile money, location-based services, etc.",
+      "tags": "vas, mobile, services"
     },
     {
       "acronym": "MW",
       "definition": "Microwave",
-      "description": "",
-      "tags": ""
+      "description": "Electromagnetic waves in the frequency range of 300 MHz to 300 GHz, commonly used for point-to-point communication links in telecommunications backhaul and fixed wireless access.",
+      "tags": "radio, transport, backhaul, wireless, frequency"
     },
     {
       "acronym": "NaaP",
       "definition": "Network as a Platform",
-      "description": "",
-      "tags": ""
+      "description": "A business and technology model where network capabilities (e.g., bandwidth on demand, location services, security functions) are exposed as programmable services via APIs for internal or external developers.",
+      "tags": "api, programmability, business-model, sdn, network-slicing, automation"
     },
     {
       "acronym": "NAS",
@@ -5008,85 +5054,142 @@
       "acronym": "LLM",
       "definition": "Large Language Model",
       "description": "An AI model trained on vast amounts of text data to understand and generate human-like language.",
-      "tags": ["AI", "GenAI", "NLP"]
+      "tags": [
+        "AI",
+        "GenAI",
+        "NLP"
+      ]
     },
     {
       "acronym": "GPT",
       "definition": "Generative Pre-trained Transformer",
       "description": "A type of large language model developed by OpenAI, known for its strong text generation capabilities.",
-      "tags": ["AI", "GenAI", "NLP", "Transformer"]
+      "tags": [
+        "AI",
+        "GenAI",
+        "NLP",
+        "Transformer"
+      ]
     },
     {
       "acronym": "RAG",
       "definition": "Retrieval-Augmented Generation",
       "description": "An AI technique that combines a retrieval system (to find relevant information) with a generative model (to create an answer).",
-      "tags": ["AI", "GenAI", "NLP"]
+      "tags": [
+        "AI",
+        "GenAI",
+        "NLP"
+      ]
     },
     {
       "acronym": "NLP",
       "definition": "Natural Language Processing",
       "description": "A field of AI focused on enabling computers to understand, interpret, and generate human language.",
-      "tags": ["AI", "Language"]
+      "tags": [
+        "AI",
+        "Language"
+      ]
     },
     {
       "acronym": "NLU",
       "definition": "Natural Language Understanding",
       "description": "A subfield of NLP focused on machine reading comprehension and understanding the meaning of text.",
-      "tags": ["AI", "NLP", "Language"]
+      "tags": [
+        "AI",
+        "NLP",
+        "Language"
+      ]
     },
     {
       "acronym": "NLG",
       "definition": "Natural Language Generation",
       "description": "A subfield of NLP focused on producing natural language text from structured data or computational representations.",
-      "tags": ["AI", "NLP", "Language"]
+      "tags": [
+        "AI",
+        "NLP",
+        "Language"
+      ]
     },
     {
       "acronym": "Transformer",
       "definition": "Transformer Architecture",
       "description": "A deep learning model architecture introduced in 'Attention Is All You Need', heavily used in NLP and other sequence tasks.",
-      "tags": ["AI", "Deep Learning", "Architecture"]
+      "tags": [
+        "AI",
+        "Deep Learning",
+        "Architecture"
+      ]
     },
     {
       "acronym": "BERT",
       "definition": "Bidirectional Encoder Representations from Transformers",
       "description": "A language representation model developed by Google, known for its effectiveness in various NLP tasks.",
-      "tags": ["AI", "NLP", "Transformer"]
+      "tags": [
+        "AI",
+        "NLP",
+        "Transformer"
+      ]
     },
     {
       "acronym": "VAE",
       "definition": "Variational Autoencoder",
       "description": "A type of generative model that learns a probabilistic mapping from input data to a latent space.",
-      "tags": ["AI", "GenAI", "Deep Learning"]
+      "tags": [
+        "AI",
+        "GenAI",
+        "Deep Learning"
+      ]
     },
     {
       "acronym": "Diffusion Model",
       "definition": "Diffusion Model",
       "description": "A class of generative models that learn to reverse a gradual noising process to generate data, often used for image generation.",
-      "tags": ["AI", "GenAI", "Deep Learning", "Image Generation"]
+      "tags": [
+        "AI",
+        "GenAI",
+        "Deep Learning",
+        "Image Generation"
+      ]
     },
     {
       "acronym": "Fine-tuning",
       "definition": "Fine-tuning",
       "description": "The process of adapting a pre-trained model (like an LLM) to a specific task or dataset by training it further on relevant data.",
-      "tags": ["AI", "ML", "Training"]
+      "tags": [
+        "AI",
+        "ML",
+        "Training"
+      ]
     },
     {
       "acronym": "Prompt Engineering",
       "definition": "Prompt Engineering",
       "description": "The practice of designing and refining input prompts to guide generative AI models towards desired outputs.",
-      "tags": ["AI", "GenAI", "LLM"]
+      "tags": [
+        "AI",
+        "GenAI",
+        "LLM"
+      ]
     },
     {
       "acronym": "Zero-shot Learning",
       "definition": "Zero-shot Learning",
       "description": "The ability of a model to perform a task it hasn't been explicitly trained on, often by understanding instructions in the prompt.",
-      "tags": ["AI", "ML", "LLM"]
+      "tags": [
+        "AI",
+        "ML",
+        "LLM"
+      ]
     },
     {
       "acronym": "Few-shot Learning",
       "definition": "Few-shot Learning",
       "description": "The ability of a model to learn a new task from only a small number of examples provided in the prompt.",
-      "tags": ["AI", "ML", "LLM"]
+      "tags": [
+        "AI",
+        "ML",
+        "LLM"
+      ]
     }
   ]
 }
