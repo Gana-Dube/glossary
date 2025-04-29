@@ -1009,41 +1009,41 @@
       "tags": ""
     },
     {
-      "acronym": "DevOps",
-      "definition": "Development Operations",
-      "description": "",
-      "tags": ""
-    },
-    {
-      "acronym": "DL",
-      "definition": "Downlink",
-      "description": "",
-      "tags": ""
-    },
-    {
-      "acronym": "DNN",
-      "definition": "Data Network Name",
-      "description": "",
-      "tags": ""
-    },
-    {
-      "acronym": "DNS 1",
-      "definition": "Domain Name Server",
-      "description": "",
-      "tags": ""
-    },
-    {
-      "acronym": "DNS 2",
-      "definition": "Domain Name System",
-      "description": "",
-      "tags": ""
-    },
-    {
-      "acronym": "DO",
-      "definition": "Domain Orchestrator",
-      "description": "",
-      "tags": ""
-    },
+        "acronym": "DevOps",
+        "definition": "Development Operations",
+        "description": "DevOps is a transformative methodology integrating software development and IT operations, emphasizing automation, collaboration, and rapid feedback.",
+        "tags": ["Software Development", "IT Operations", "Automation", "Collaboration"]
+      },
+      {
+        "acronym": "DL",
+        "definition": "Downlink",
+        "description": "In telecommunications, DL refers to the transmission path from a network base station or satellite to the user device, often used in mobile networks like LTE and 5G to define data transfer directionality.",
+        "tags": ["Telecommunications", "Mobile Networks", "Data Transfer", "Uplink/Downlink"]
+      },
+      {
+        "acronym": "DNN",
+        "definition": "Data Network Name",
+        "description": "DNN is a parameter used in 5G networks to identify a specific Data Network within the operator's infrastructure, enabling the selection of the appropriate packet data network for connectivity.",
+        "tags": ["5G Networks", "Packet Data", "Network Selection", "Core Network"]
+      },
+      {
+        "acronym": "DNS",
+        "definition": "Domain Name Server",
+        "description": "DNS is a server that responds to queries by translating domain names into IP addresses, facilitating access to web services and resources over the internet.",
+        "tags": ["Networking", "Internet Infrastructure", "Name Resolution", "Client-Server Architecture"]
+      },
+      {
+        "acronym": "DNS",
+        "definition": "Domain Name System",
+        "description": "DNS is a hierarchical decentralized naming system for computers, services, or other resources connected to the Internet or a private network, primarily used to translate human-readable hostnames into numerical IP addresses.",
+        "tags": ["Networking", "Internet Protocols", "Address Translation", "Hierarchical Systems"]
+      },
+      {
+        "acronym": "DO",
+        "definition": "Domain Orchestrator",
+        "description": "DO refers to a functional component in network orchestration responsible for managing and coordinating workflows across individual domains, ensuring alignment with service-level agreements and policies in virtualized or cloud-native environments.",
+        "tags": ["Network Orchestration", "Cloud Computing", "Service Management", "Automation"]
+      },
     {
       "acronym": "DoD",
       "definition": "Depth of Discharge",
@@ -4177,19 +4177,19 @@
     {
       "acronym": "SR",
       "definition": "Segment Routing",
-      "description": "Segment Routing (SR) simplifies network operations by encoding paths as sequences of segments, enabling scalable and flexible traffic engineering. Recent studies focus on SR's integration with MPLS and IPv6, highlighting its benefits in reducing protocol overhead and enhancing network programmability.",
+      "description": "SR simplifies network operations by encoding paths as sequences of segments, enabling scalable and flexible traffic engineering. Recent studies focus on SR's integration with MPLS and IPv6, highlighting its benefits in reducing protocol overhead and enhancing network programmability.",
       "tags": "networking, MPLS, IPv6, traffic engineering"
     },
     {
       "acronym": "SR",
       "definition": "Speech Recognition",
-      "description": "Speech Recognition (SR) technology has advanced with deep learning models, enabling more accurate and robust transcription of spoken language. Research emphasizes the use of large-scale datasets and neural networks to improve recognition in diverse and noisy environments.",
+      "description": "SR technology has advanced with deep learning models, enabling more accurate and robust transcription of spoken language. Research emphasizes the use of large-scale datasets and neural networks to improve recognition in diverse and noisy environments.",
       "tags": "AI, deep learning, NLP, audio processing"
     },
     {
       "acronym": "SR OS",
       "definition": "Service Router Operating System",
-      "description": "The Service Router Operating System (SR OS) is a network operating system designed for high-performance IP routing. It supports advanced features like segment routing and integrates with various network management protocols to enhance scalability and reliability.",
+      "description": "SR OS is a network operating system designed for high-performance IP routing. It supports advanced features like segment routing and integrates with various network management protocols to enhance scalability and reliability.",
       "tags": "network OS, IP routing, segment routing, scalability"
     },
     {
@@ -4207,25 +4207,25 @@
     {
       "acronym": "SR-TE",
       "definition": "Segment Routing Traffic Engineering",
-      "description": "Segment Routing Traffic Engineering (SR-TE) combines segment routing with traffic engineering principles to optimize network resource utilization. Research highlights its ability to provide efficient path computation and fast reroute capabilities.",
+      "description": "SR-TE combines segment routing with traffic engineering principles to optimize network resource utilization. Research highlights its ability to provide efficient path computation and fast reroute capabilities.",
       "tags": "network optimization, path computation, fast reroute, MPLS"
     },
     {
       "acronym": "SRVCC",
       "definition": "Single Radio Voice Call Continuity",
-      "description": "Single Radio Voice Call Continuity (SRVCC) enables seamless handover of voice calls from LTE to legacy networks. Research discusses its implementation challenges and solutions to maintain call quality during transitions.",
+      "description": "SRVCC enables seamless handover of voice calls from LTE to legacy networks. Research discusses its implementation challenges and solutions to maintain call quality during transitions.",
       "tags": "voice call continuity, LTE, network handover, IMS"
     },
     {
       "acronym": "SS7",
       "definition": "Signaling System No. 7",
-      "description": "Signaling System No. 7 (SS7) is a set of protocols used for exchanging information in public switched telephone networks. Recent studies address its security vulnerabilities and propose measures to protect against potential threats.",
+      "description": "SS7 is a set of protocols used for exchanging information in public switched telephone networks. Recent studies address its security vulnerabilities and propose measures to protect against potential threats.",
       "tags": "telecommunication protocols, PSTN, network security, signaling"
     },
     {
       "acronym": "SSB",
       "definition": "Synchronization Signal Block",
-      "description": "Synchronization Signal Blocks (SSB) are used in 5G networks for cell search and initial access procedures. Research focuses on their design and role in beamforming to improve coverage and capacity in high-frequency bands.",
+      "description": "SSBs are used in 5G networks for cell search and initial access procedures. Research focuses on their design and role in beamforming to improve coverage and capacity in high-frequency bands.",
       "tags": "5G, initial access, beamforming, high-frequency bands"
     },
     {
@@ -4423,7 +4423,7 @@
     {
       "acronym": "ToR",
       "definition": "Terms of Reference",
-      "description": "a strategy-level document that defines the tasks and duties required of a project contractor, and highlights project background and objectives at high level.",
+      "description": "A strategy-level document that defines the tasks and duties required of a project contractor, and highlights project background and objectives at high level.",
       "tags": ""
     },
     {
@@ -4915,32 +4915,32 @@
     {
       "acronym": "VSAT",
       "definition": "Very Small Aperture Terminal",
-      "description": "",
-      "tags": ""
+      "description": "Enables broadband connectivity in remote areas, supporting IoT deployments and critical operations in sectors like energy and maritime. Recent studies highlight its role in bridging the digital divide and facilitating real-time data transmission where terrestrial infrastructure is lacking.",
+      "tags": "satellite communication, remote connectivity, IoT, broadband"
     },
     {
       "acronym": "VSS",
-      "definition": "Validate Solution Stack",
-      "description": "",
-      "tags": ""
+      "definition": "Virtual Switching System",
+      "description": "Consolidates multiple physical switches into a single logical entity, enhancing network redundancy and simplifying management. Research emphasizes its benefits in reducing downtime and improving network resilience.",
+      "tags": "network virtualization, redundancy, switch management"
     },
     {
       "acronym": "vSTP",
-      "definition": "Spanning Tree Protocol",
-      "description": "",
-      "tags": ""
+      "definition": "Virtual Spanning Tree Protocol",
+      "description": "An enhancement of the traditional Spanning Tree Protocol, allowing for per-VLAN spanning tree instances. Studies demonstrate its effectiveness in optimizing network performance by preventing loops and improving convergence times in complex VLAN environments.",
+      "tags": "network protocols, VLAN, loop prevention, convergence"
     },
     {
       "acronym": "VTS",
       "definition": "Vodafone Technology Standards",
-      "description": "a common set of strategic recommendations across Group Technology",
-      "tags": ""
+      "description": "Establishes a unified framework for technology deployment across Vodafone's global operations, streamlining processes and accelerating the adoption of emerging technologies like 5G and IoT.",
+      "tags": "telecommunications, standardization, 5G, IoT, interoperability"
     },
     {
       "acronym": "VULA",
       "definition": "Virtual Unbundled Local Access",
-      "description": "",
-      "tags": ""
+      "description": "A regulatory approach that allows alternative operators to access incumbent networks at a virtual level, facilitating competition in broadband services and promoting market entry and innovation.",
+      "tags": "telecom regulation, broadband access, market competition, network sharing"
     },
     {
       "acronym": "VXLAN",
