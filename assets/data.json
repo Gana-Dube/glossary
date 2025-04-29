@@ -176,9 +176,9 @@
     },
     {
       "acronym": "API",
-      "definition": "Application programming interface",
-      "description": "",
-      "tags": ""
+      "definition": "Application Programming Interface",
+      "description": "A set of rules and protocols that allows different software applications to communicate with each other",
+      "tags": ["script", "programming"]
     },
     {
       "acronym": "APN",
@@ -2094,9 +2094,9 @@
     },
     {
       "acronym": "JSON",
-      "definition": "Java Script Object Notation",
-      "description": "",
-      "tags": ""
+      "definition": "JavaScript Object Notation",
+      "description": "A lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate",
+      "tags": ["script", "data-format", "web-development"]
     },
     {
       "acronym": "K8s",
@@ -2289,6 +2289,17 @@
       "definition": "Line of Sight",
       "description": "",
       "tags": ""
+    },
+    {
+      "acronym": "LOC",
+      "definition": "Line of Code",
+      "description": "A software metric used to measure the size of a computer program by counting the number of lines in the text of the program's source code. Used for estimating programming productivity or effort.",
+      "tags": [
+      "script",
+      "development",
+      "metrics",
+      "programming"
+      ]
     },
     {
       "acronym": "LRF",
@@ -5190,6 +5201,12 @@
         "ML",
         "LLM"
       ]
+    },
+    {
+      "acronym": "Python",
+      "definition": "Python Programming Language",
+      "description": "A high-level, interpreted programming language known for its readability and versatility in web development, data analysis, AI, and more",
+      "tags": ["script", "programming-language"]
     }
   ]
 }

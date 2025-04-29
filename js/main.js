@@ -272,6 +272,98 @@ document.addEventListener("DOMContentLoaded", () => {
       cardContent.style.position = "relative";
       cardContent.appendChild(copyButton);
 
+      // --- Code Block Button Integration ---
+      // Check if the item has a "script" tag
+      const hasScriptTag = item.tags && (
+        (typeof item.tags === 'string' && item.tags.includes('script')) ||
+        (Array.isArray(item.tags) && item.tags.some(tag => tag === 'script'))
+      );
+
+      // Only create the code button if the item has a script tag
+      let codeButton;
+      if (hasScriptTag) {
+        codeButton = document.createElement("button");
+        codeButton.className = "button is-small is-light";
+        codeButton.style.cssText = `
+                  position: absolute;
+                  top: 10px; /* Same top as copy button */
+                  right: 52px; /* Position to the left of gemini button */
+                  border-radius: 4px;
+                  padding: 5px;
+                  z-index: 10;
+                  height: 32px;
+                  width: 32px;
+                  transition: background-color 0.3s ease;
+              `;
+        codeButton.title = "Get Python code example";
+
+        // Use the iconify icon as specified
+        codeButton.innerHTML = '<iconify-icon icon="fluent-color:code-block-16" width="16" height="16"></iconify-icon>';
+
+        // Add hover effects
+        codeButton.addEventListener("mouseenter", () => {
+          codeButton.classList.add("is-warning"); // Use a different color for code button
+        });
+        codeButton.addEventListener("mouseleave", () => {
+          codeButton.classList.remove("is-warning");
+        });
+
+        // Add click event handler
+        codeButton.addEventListener("click", async () => {
+          const acronym = item.acronym;
+          const definition = item.definition;
+          const description = item.description || "";
+
+          // Indicate loading state
+          codeButton.classList.add("is-loading");
+          codeButton.disabled = true;
+          aiResponseDiv.textContent = "Generating code example...";
+          aiResponseDiv.style.display = "block"; // Show loading message
+
+          try {
+            const response = await fetch("/api/give-me-code", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ acronym, definition, description }),
+            });
+
+            if (!response.ok) {
+              const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' }));
+              throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (data.code) {
+              // Format the code with syntax highlighting
+              aiResponseDiv.innerHTML = `<strong>Python Code Example:</strong><pre><code class="language-python">${data.code}</code></pre>`;
+              aiResponseDiv.style.display = "block";
+
+              // Apply syntax highlighting
+              document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+              });
+            } else {
+              throw new Error("No code received from AI.");
+            }
+
+          } catch (error) {
+            console.error("Error fetching code example:", error);
+            aiResponseDiv.textContent = `Error: ${error.message}`;
+            aiResponseDiv.style.display = "block";
+          } finally {
+            // Restore button state
+            codeButton.classList.remove("is-loading");
+            codeButton.disabled = false;
+          }
+        });
+
+        cardContent.appendChild(codeButton);
+      }
+      // --- End Code Block Button Integration ---
+
       // --- Gemini Button Integration ---
       const geminiButton = document.createElement("button");
       // Position it next to the copy button or adjust as needed
@@ -279,7 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
       geminiButton.style.cssText = `
                 position: absolute;
                 top: 10px; /* Same top as copy button */
-                right: 52px; /* Adjust this value to position left of copy button (10px + 32px width + 10px spacing) */
+                right: ${hasScriptTag ? '94' : '52'}px; /* Adjust position based on whether code button exists */
                 border-radius: 4px;
                 padding: 5px;
                 z-index: 10; /* Same z-index */
@@ -326,7 +418,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const acronym = item.acronym;
         const definition = item.definition;
         const description = item.description || ""; // Handle potentially missing description
-        const context = `Acronym: ${acronym}\nDefinition: ${definition}\nDescription: ${description}`;
 
         // Indicate loading state
         geminiButton.classList.add("is-loading");
@@ -655,6 +746,98 @@ document.addEventListener("DOMContentLoaded", () => {
       cardContent.appendChild(copyFeedback);
       cardContent.appendChild(copyButton);
 
+      // --- Code Block Button Integration ---
+      // Check if the item has a "script" tag
+      const hasScriptTag = item.tags && (
+        (typeof item.tags === 'string' && item.tags.includes('script')) ||
+        (Array.isArray(item.tags) && item.tags.some(tag => tag === 'script'))
+      );
+
+      // Only create the code button if the item has a script tag
+      let codeButton;
+      if (hasScriptTag) {
+        codeButton = document.createElement("button");
+        codeButton.className = "button is-small is-light";
+        codeButton.style.cssText = `
+                  position: absolute;
+                  top: 10px; /* Same top as copy button */
+                  right: 52px; /* Position to the left of gemini button */
+                  border-radius: 4px;
+                  padding: 5px;
+                  z-index: 10;
+                  height: 32px;
+                  width: 32px;
+                  transition: background-color 0.3s ease;
+              `;
+        codeButton.title = "Get Python code example";
+
+        // Use the iconify icon as specified
+        codeButton.innerHTML = '<iconify-icon icon="fluent-color:code-block-16" width="16" height="16"></iconify-icon>';
+
+        // Add hover effects
+        codeButton.addEventListener("mouseenter", () => {
+          codeButton.classList.add("is-warning"); // Use a different color for code button
+        });
+        codeButton.addEventListener("mouseleave", () => {
+          codeButton.classList.remove("is-warning");
+        });
+
+        // Add click event handler
+        codeButton.addEventListener("click", async () => {
+          const acronym = item.acronym;
+          const definition = item.definition;
+          const description = item.description || "";
+
+          // Indicate loading state
+          codeButton.classList.add("is-loading");
+          codeButton.disabled = true;
+          aiResponseDiv.textContent = "Generating code example...";
+          aiResponseDiv.style.display = "block"; // Show loading message
+
+          try {
+            const response = await fetch("/api/give-me-code", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ acronym, definition, description }),
+            });
+
+            if (!response.ok) {
+              const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' }));
+              throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (data.code) {
+              // Format the code with syntax highlighting
+              aiResponseDiv.innerHTML = `<strong>Python Code Example:</strong><pre><code class="language-python">${data.code}</code></pre>`;
+              aiResponseDiv.style.display = "block";
+
+              // Apply syntax highlighting
+              document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+              });
+            } else {
+              throw new Error("No code received from AI.");
+            }
+
+          } catch (error) {
+            console.error("Error fetching code example:", error);
+            aiResponseDiv.textContent = `Error: ${error.message}`;
+            aiResponseDiv.style.display = "block";
+          } finally {
+            // Restore button state
+            codeButton.classList.remove("is-loading");
+            codeButton.disabled = false;
+          }
+        });
+
+        cardContent.appendChild(codeButton);
+      }
+      // --- End Code Block Button Integration ---
+
       // --- Gemini Button Integration ---
       const geminiButton = document.createElement("button");
       // Position it next to the copy button or adjust as needed
@@ -662,7 +845,7 @@ document.addEventListener("DOMContentLoaded", () => {
       geminiButton.style.cssText = `
                 position: absolute;
                 top: 10px; /* Same top as copy button */
-                right: 52px; /* Adjust this value to position left of copy button (10px + 32px width + 10px spacing) */
+                right: ${hasScriptTag ? '94' : '52'}px; /* Adjust position based on whether code button exists */
                 border-radius: 4px;
                 padding: 5px;
                 z-index: 10; /* Same z-index */
@@ -709,7 +892,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const acronym = item.acronym;
         const definition = item.definition;
         const description = item.description || ""; // Handle potentially missing description
-        const context = `Acronym: ${acronym}\nDefinition: ${definition}\nDescription: ${description}`;
 
         // Indicate loading state
         geminiButton.classList.add("is-loading");
