@@ -1,5 +1,5 @@
-// Using node-fetch as Vercel might run older Node versions without global fetch
-const fetch = require('node-fetch'); // Make sure to install: npm install node-fetch
+// Using built-in fetch API (available in Node.js 18+)
+// Vercel uses Node.js 18+ by default
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
@@ -12,13 +12,13 @@ if (!OPENROUTER_API_KEY) {
 }
 
 module.exports = async (req, res) => {
-  // Basic CORS setup - adjust allowed origins as needed for production
+  // Allow requests from your Vercel domain (and localhost for testing)
   const allowedOrigin = process.env.NODE_ENV === 'development'
-      ? '*' // Allow all for local dev simplicity
-      : 'https://glossary-one.vercel.app'; // Your production domain
+      ? 'http://localhost:3000' // Or whatever port you use locally
+      : 'https://glossary-one.vercel.app'; // Correct production domain with https
   res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow Content-Type
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -49,9 +49,7 @@ module.exports = async (req, res) => {
       headers: {
         "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
-        // Optional: Add site URL/App name for tracking
-        // "HTTP-Referer": your_site_url,
-        // "X-Title": your_app_name,
+        "HTTP-Referer": allowedOrigin,
       },
       body: JSON.stringify({
         model: MODEL_NAME,
@@ -77,7 +75,7 @@ module.exports = async (req, res) => {
     // Basic cleanup: remove potential markdown backticks if the model included them
     const cleanedCode = codeContent.replace(/^```python\n?/, '').replace(/\n?```$/, '');
 
-    return res.status(200).json({ code: cleanedCode });
+    return res.status(200).json({ text: cleanedCode });
 
   } catch (error) {
     console.error("Error calling OpenRouter API:", error);
