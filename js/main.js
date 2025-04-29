@@ -5,6 +5,202 @@ document.addEventListener("DOMContentLoaded", () => {
   const voiceButton = document.getElementById("voiceButton");
   let isListening = false;
 
+  // Utility functions to avoid code duplication
+  function createCodeButton(item, cardContent, aiResponseDiv) {
+    // Check if the item has a "script" tag
+    const hasScriptTag = item.tags && (
+      (typeof item.tags === 'string' && item.tags.includes('script')) ||
+      (Array.isArray(item.tags) && item.tags.some(tag => tag === 'script'))
+    );
+
+    // Only create the code button if the item has a script tag
+    if (!hasScriptTag) return null;
+
+    const codeButton = document.createElement("button");
+    codeButton.className = "button is-small is-light";
+    codeButton.style.cssText = `
+      position: absolute;
+      top: 10px; /* Same top as copy button */
+      right: 52px; /* Position to the left of gemini button */
+      border-radius: 4px;
+      padding: 5px;
+      z-index: 10;
+      height: 32px;
+      width: 32px;
+      transition: background-color 0.3s ease;
+    `;
+    codeButton.title = "Get Python code example";
+
+    // Use the iconify icon as specified
+    codeButton.innerHTML = '<iconify-icon icon="fluent-color:code-block-16" width="16" height="16"></iconify-icon>';
+
+    // Add hover effects
+    codeButton.addEventListener("mouseenter", () => {
+      codeButton.classList.add("is-warning"); // Use a different color for code button
+    });
+    codeButton.addEventListener("mouseleave", () => {
+      codeButton.classList.remove("is-warning");
+    });
+
+    // Add click event handler
+    codeButton.addEventListener("click", async () => {
+      const acronym = item.acronym;
+      const definition = item.definition;
+      const description = item.description || "";
+
+      // Indicate loading state
+      codeButton.classList.add("is-loading");
+      codeButton.disabled = true;
+      aiResponseDiv.textContent = "Generating code example...";
+      aiResponseDiv.style.display = "block"; // Show loading message
+
+      try {
+        const response = await fetch("/api/give-me-code", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ acronym, definition, description }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' }));
+          throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.text) {
+          // Format the code with syntax highlighting
+          aiResponseDiv.innerHTML = `<strong>Python Code Example:</strong><pre><code class="language-python">${data.text}</code></pre>`;
+          aiResponseDiv.style.display = "block";
+
+          // Apply syntax highlighting
+          document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightElement(block);
+          });
+        } else {
+          throw new Error("No code received from AI.");
+        }
+
+      } catch (error) {
+        console.error("Error fetching code example:", error);
+        aiResponseDiv.textContent = `Error: ${error.message}`;
+        aiResponseDiv.style.display = "block";
+      } finally {
+        // Restore button state
+        codeButton.classList.remove("is-loading");
+        codeButton.disabled = false;
+      }
+    });
+
+    cardContent.appendChild(codeButton);
+    return codeButton;
+  }
+
+  function createGeminiButton(item, cardContent, aiResponseDiv, hasCodeButton) {
+    const geminiButton = document.createElement("button");
+    // Position it next to the copy button or adjust as needed
+    geminiButton.className = "button is-small is-light"; // Use 'is-light' like copy button
+    geminiButton.style.cssText = `
+      position: absolute;
+      top: 10px; /* Same top as copy button */
+      right: ${hasCodeButton ? '94' : '52'}px; /* Adjust position based on whether code button exists */
+      border-radius: 4px;
+      padding: 5px;
+      z-index: 10; /* Same z-index */
+      height: 32px; /* Same height */
+      width: 32px; /* Same width */
+      transition: background-color 0.3s ease;
+    `;
+    geminiButton.title = "Tell me more (AI)";
+
+    const geminiIcon = document.createElement("img");
+    geminiIcon.src = "assets/static/icons/google-gemini-icon.svg";
+    geminiIcon.alt = "Gemini Icon";
+    geminiIcon.style.width = "16px";
+    geminiIcon.style.height = "16px";
+    geminiIcon.style.verticalAlign = "middle"; // Helps center the icon in the button
+
+    geminiButton.appendChild(geminiIcon);
+
+    // Add hover effects similar to copy button
+    geminiButton.addEventListener("mouseenter", () => {
+      geminiButton.classList.add("is-info"); // Use a different color like 'is-info'
+    });
+    geminiButton.addEventListener("mouseleave", () => {
+      geminiButton.classList.remove("is-info");
+    });
+
+    geminiButton.addEventListener("click", async () => {
+      const acronym = item.acronym;
+      const definition = item.definition;
+      const description = item.description || ""; // Handle potentially missing description
+
+      // Indicate loading state
+      geminiButton.classList.add("is-loading");
+      geminiButton.disabled = true;
+      aiResponseDiv.textContent = "Fetching details...";
+      aiResponseDiv.style.display = "block"; // Show loading message
+
+      try {
+        const response = await fetch("/api/tell-me-more", { // Relative path to Vercel function
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ acronym, definition, description }), // Send context data
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' })); // Try to parse error
+          throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.text) {
+          // Use innerHTML to allow basic formatting if needed later, sanitize if necessary
+          aiResponseDiv.innerHTML = `<strong>AI Explanation:</strong> ${data.text}`;
+          aiResponseDiv.style.display = "block"; // Ensure it's visible
+        } else {
+          throw new Error("No text received from AI.");
+        }
+
+      } catch (error) {
+        console.error("Error fetching AI details:", error);
+        aiResponseDiv.textContent = `Error: ${error.message}`;
+        aiResponseDiv.style.display = "block";
+        // Optionally hide the error after a few seconds
+        // setTimeout(() => { aiResponseDiv.style.display = 'none'; }, 5000);
+      } finally {
+        // Restore button state
+        geminiButton.classList.remove("is-loading");
+        geminiButton.disabled = false;
+      }
+    });
+
+    cardContent.appendChild(geminiButton);
+    return geminiButton;
+  }
+
+  function createAIResponseDiv(cardContent) {
+    let aiResponseDiv = cardContent.querySelector(".ai-response");
+    if (!aiResponseDiv) {
+      aiResponseDiv = document.createElement("div");
+      aiResponseDiv.className = "ai-response content is-size-7 mt-3"; // Added 'content' for Bulma styling
+      aiResponseDiv.style.display = "none"; // Initially hidden
+      // Insert it before tags if they exist, otherwise append
+      const tagsContainer = cardContent.querySelector(".tags");
+      if (tagsContainer) {
+        cardContent.insertBefore(aiResponseDiv, tagsContainer);
+      } else {
+        cardContent.appendChild(aiResponseDiv);
+      }
+    }
+    return aiResponseDiv;
+  }
+
   // Add voice recognition setup
   if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
     const SpeechRecognition =
@@ -65,6 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showRandomAcronyms(); // Initialize random acronyms
     })
     .catch((error) => {
+      console.error("Error loading acronyms data:", error);
       showError("Failed to load acronyms data. Please try again later.");
     });
 
@@ -249,6 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 4000);
           })
           .catch((err) => {
+            console.error("Copy error:", err);
             showError("Failed to copy text");
           });
       });
@@ -272,199 +470,16 @@ document.addEventListener("DOMContentLoaded", () => {
       cardContent.style.position = "relative";
       cardContent.appendChild(copyButton);
 
-      // --- Code Block Button Integration ---
-      // Check if the item has a "script" tag
-      const hasScriptTag = item.tags && (
-        (typeof item.tags === 'string' && item.tags.includes('script')) ||
-        (Array.isArray(item.tags) && item.tags.some(tag => tag === 'script'))
-      );
+      // --- AI Integration ---
+      // Create AI response div first
+      const aiResponseDiv = createAIResponseDiv(cardContent);
 
-      // Only create the code button if the item has a script tag
-      let codeButton;
-      if (hasScriptTag) {
-        codeButton = document.createElement("button");
-        codeButton.className = "button is-small is-light";
-        codeButton.style.cssText = `
-                  position: absolute;
-                  top: 10px; /* Same top as copy button */
-                  right: 52px; /* Position to the left of gemini button */
-                  border-radius: 4px;
-                  padding: 5px;
-                  z-index: 10;
-                  height: 32px;
-                  width: 32px;
-                  transition: background-color 0.3s ease;
-              `;
-        codeButton.title = "Get Python code example";
+      // Create code button if applicable
+      const hasCodeButton = createCodeButton(item, cardContent, aiResponseDiv) !== null;
 
-        // Use the iconify icon as specified
-        codeButton.innerHTML = '<iconify-icon icon="fluent-color:code-block-16" width="16" height="16"></iconify-icon>';
-
-        // Add hover effects
-        codeButton.addEventListener("mouseenter", () => {
-          codeButton.classList.add("is-warning"); // Use a different color for code button
-        });
-        codeButton.addEventListener("mouseleave", () => {
-          codeButton.classList.remove("is-warning");
-        });
-
-        // Add click event handler
-        codeButton.addEventListener("click", async () => {
-          const acronym = item.acronym;
-          const definition = item.definition;
-          const description = item.description || "";
-
-          // Indicate loading state
-          codeButton.classList.add("is-loading");
-          codeButton.disabled = true;
-          aiResponseDiv.textContent = "Generating code example...";
-          aiResponseDiv.style.display = "block"; // Show loading message
-
-          try {
-            const response = await fetch("/api/give-me-code", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ acronym, definition, description }),
-            });
-
-            if (!response.ok) {
-              const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' }));
-              throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            if (data.code) {
-              // Format the code with syntax highlighting
-              aiResponseDiv.innerHTML = `<strong>Python Code Example:</strong><pre><code class="language-python">${data.code}</code></pre>`;
-              aiResponseDiv.style.display = "block";
-
-              // Apply syntax highlighting
-              document.querySelectorAll('pre code').forEach((block) => {
-                hljs.highlightElement(block);
-              });
-            } else {
-              throw new Error("No code received from AI.");
-            }
-
-          } catch (error) {
-            console.error("Error fetching code example:", error);
-            aiResponseDiv.textContent = `Error: ${error.message}`;
-            aiResponseDiv.style.display = "block";
-          } finally {
-            // Restore button state
-            codeButton.classList.remove("is-loading");
-            codeButton.disabled = false;
-          }
-        });
-
-        cardContent.appendChild(codeButton);
-      }
-      // --- End Code Block Button Integration ---
-
-      // --- Gemini Button Integration ---
-      const geminiButton = document.createElement("button");
-      // Position it next to the copy button or adjust as needed
-      geminiButton.className = "button is-small is-light"; // Use 'is-light' like copy button
-      geminiButton.style.cssText = `
-                position: absolute;
-                top: 10px; /* Same top as copy button */
-                right: ${hasScriptTag ? '94' : '52'}px; /* Adjust position based on whether code button exists */
-                border-radius: 4px;
-                padding: 5px;
-                z-index: 10; /* Same z-index */
-                height: 32px; /* Same height */
-                width: 32px; /* Same width */
-                transition: background-color 0.3s ease;
-            `;
-      geminiButton.title = "Tell me more (AI)";
-
-      const geminiIcon = document.createElement("img");
-      geminiIcon.src = "assets/static/icons/google-gemini-icon.svg";
-      geminiIcon.alt = "Gemini Icon";
-      geminiIcon.style.width = "16px";
-      geminiIcon.style.height = "16px";
-      geminiIcon.style.verticalAlign = "middle"; // Helps center the icon in the button
-
-      geminiButton.appendChild(geminiIcon);
-
-      // Add hover effects similar to copy button
-      geminiButton.addEventListener("mouseenter", () => {
-        geminiButton.classList.add("is-info"); // Use a different color like 'is-info'
-      });
-      geminiButton.addEventListener("mouseleave", () => {
-        geminiButton.classList.remove("is-info");
-      });
-
-      // Placeholder for AI response within the card content
-      let aiResponseDiv = cardContent.querySelector(".ai-response");
-      if (!aiResponseDiv) {
-        aiResponseDiv = document.createElement("div");
-        aiResponseDiv.className = "ai-response content is-size-7 mt-3"; // Added 'content' for Bulma styling
-        aiResponseDiv.style.display = "none"; // Initially hidden
-        // Insert it before tags if they exist, otherwise append
-        const tagsContainer = cardContent.querySelector(".tags");
-        if (tagsContainer) {
-            cardContent.insertBefore(aiResponseDiv, tagsContainer);
-        } else {
-            cardContent.appendChild(aiResponseDiv);
-        }
-      }
-
-
-      geminiButton.addEventListener("click", async () => {
-        const acronym = item.acronym;
-        const definition = item.definition;
-        const description = item.description || ""; // Handle potentially missing description
-
-        // Indicate loading state
-        geminiButton.classList.add("is-loading");
-        geminiButton.disabled = true;
-        aiResponseDiv.textContent = "Fetching details...";
-        aiResponseDiv.style.display = "block"; // Show loading message
-
-        try {
-          const response = await fetch("/api/tell-me-more", { // Relative path to Vercel function
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ acronym, definition, description }), // Send context data
-          });
-
-          if (!response.ok) {
-            const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' })); // Try to parse error
-            throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
-          }
-
-          const data = await response.json();
-
-          if (data.text) {
-             // Use innerHTML to allow basic formatting if needed later, sanitize if necessary
-            aiResponseDiv.innerHTML = `<strong>AI Explanation:</strong> ${data.text}`;
-            aiResponseDiv.style.display = "block"; // Ensure it's visible
-          } else {
-            throw new Error("No text received from AI.");
-          }
-
-        } catch (error) {
-          console.error("Error fetching AI details:", error);
-          aiResponseDiv.textContent = `Error: ${error.message}`;
-          aiResponseDiv.style.display = "block";
-          // Optionally hide the error after a few seconds
-          // setTimeout(() => { aiResponseDiv.style.display = 'none'; }, 5000);
-        } finally {
-          // Restore button state
-          geminiButton.classList.remove("is-loading");
-          geminiButton.disabled = false;
-        }
-      });
-
-      cardContent.appendChild(geminiButton); // Add the button to the card
-
-      // --- End Gemini Button Integration ---
+      // Create Gemini button
+      createGeminiButton(item, cardContent, aiResponseDiv, hasCodeButton);
+      // --- End AI Integration ---
 
       cardColumn.appendChild(card);
       resultsDiv.appendChild(cardColumn);
@@ -726,7 +741,8 @@ document.addEventListener("DOMContentLoaded", () => {
               copyFeedback.style.opacity = "0";
             }, 4000);
           })
-          .catch(() => {
+          .catch((err) => {
+            console.error("Copy error:", err);
             showError("Failed to copy text");
           });
       });
@@ -746,199 +762,16 @@ document.addEventListener("DOMContentLoaded", () => {
       cardContent.appendChild(copyFeedback);
       cardContent.appendChild(copyButton);
 
-      // --- Code Block Button Integration ---
-      // Check if the item has a "script" tag
-      const hasScriptTag = item.tags && (
-        (typeof item.tags === 'string' && item.tags.includes('script')) ||
-        (Array.isArray(item.tags) && item.tags.some(tag => tag === 'script'))
-      );
+      // --- AI Integration ---
+      // Create AI response div first
+      const aiResponseDiv = createAIResponseDiv(cardContent);
 
-      // Only create the code button if the item has a script tag
-      let codeButton;
-      if (hasScriptTag) {
-        codeButton = document.createElement("button");
-        codeButton.className = "button is-small is-light";
-        codeButton.style.cssText = `
-                  position: absolute;
-                  top: 10px; /* Same top as copy button */
-                  right: 52px; /* Position to the left of gemini button */
-                  border-radius: 4px;
-                  padding: 5px;
-                  z-index: 10;
-                  height: 32px;
-                  width: 32px;
-                  transition: background-color 0.3s ease;
-              `;
-        codeButton.title = "Get Python code example";
+      // Create code button if applicable
+      const hasCodeButton = createCodeButton(item, cardContent, aiResponseDiv) !== null;
 
-        // Use the iconify icon as specified
-        codeButton.innerHTML = '<iconify-icon icon="fluent-color:code-block-16" width="16" height="16"></iconify-icon>';
-
-        // Add hover effects
-        codeButton.addEventListener("mouseenter", () => {
-          codeButton.classList.add("is-warning"); // Use a different color for code button
-        });
-        codeButton.addEventListener("mouseleave", () => {
-          codeButton.classList.remove("is-warning");
-        });
-
-        // Add click event handler
-        codeButton.addEventListener("click", async () => {
-          const acronym = item.acronym;
-          const definition = item.definition;
-          const description = item.description || "";
-
-          // Indicate loading state
-          codeButton.classList.add("is-loading");
-          codeButton.disabled = true;
-          aiResponseDiv.textContent = "Generating code example...";
-          aiResponseDiv.style.display = "block"; // Show loading message
-
-          try {
-            const response = await fetch("/api/give-me-code", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ acronym, definition, description }),
-            });
-
-            if (!response.ok) {
-              const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' }));
-              throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            if (data.code) {
-              // Format the code with syntax highlighting
-              aiResponseDiv.innerHTML = `<strong>Python Code Example:</strong><pre><code class="language-python">${data.code}</code></pre>`;
-              aiResponseDiv.style.display = "block";
-
-              // Apply syntax highlighting
-              document.querySelectorAll('pre code').forEach((block) => {
-                hljs.highlightElement(block);
-              });
-            } else {
-              throw new Error("No code received from AI.");
-            }
-
-          } catch (error) {
-            console.error("Error fetching code example:", error);
-            aiResponseDiv.textContent = `Error: ${error.message}`;
-            aiResponseDiv.style.display = "block";
-          } finally {
-            // Restore button state
-            codeButton.classList.remove("is-loading");
-            codeButton.disabled = false;
-          }
-        });
-
-        cardContent.appendChild(codeButton);
-      }
-      // --- End Code Block Button Integration ---
-
-      // --- Gemini Button Integration ---
-      const geminiButton = document.createElement("button");
-      // Position it next to the copy button or adjust as needed
-      geminiButton.className = "button is-small is-light"; // Use 'is-light' like copy button
-      geminiButton.style.cssText = `
-                position: absolute;
-                top: 10px; /* Same top as copy button */
-                right: ${hasScriptTag ? '94' : '52'}px; /* Adjust position based on whether code button exists */
-                border-radius: 4px;
-                padding: 5px;
-                z-index: 10; /* Same z-index */
-                height: 32px; /* Same height */
-                width: 32px; /* Same width */
-                transition: background-color 0.3s ease;
-            `;
-      geminiButton.title = "Tell me more (AI)";
-
-      const geminiIcon = document.createElement("img");
-      geminiIcon.src = "assets/static/icons/google-gemini-icon.svg";
-      geminiIcon.alt = "Gemini Icon";
-      geminiIcon.style.width = "16px";
-      geminiIcon.style.height = "16px";
-      geminiIcon.style.verticalAlign = "middle"; // Helps center the icon in the button
-
-      geminiButton.appendChild(geminiIcon);
-
-      // Add hover effects similar to copy button
-      geminiButton.addEventListener("mouseenter", () => {
-        geminiButton.classList.add("is-info"); // Use a different color like 'is-info'
-      });
-      geminiButton.addEventListener("mouseleave", () => {
-        geminiButton.classList.remove("is-info");
-      });
-
-      // Placeholder for AI response within the card content
-      let aiResponseDiv = cardContent.querySelector(".ai-response");
-      if (!aiResponseDiv) {
-        aiResponseDiv = document.createElement("div");
-        aiResponseDiv.className = "ai-response content is-size-7 mt-3"; // Added 'content' for Bulma styling
-        aiResponseDiv.style.display = "none"; // Initially hidden
-        // Insert it before tags if they exist, otherwise append
-        const tagsContainer = cardContent.querySelector(".tags");
-        if (tagsContainer) {
-            cardContent.insertBefore(aiResponseDiv, tagsContainer);
-        } else {
-            cardContent.appendChild(aiResponseDiv);
-        }
-      }
-
-
-      geminiButton.addEventListener("click", async () => {
-        const acronym = item.acronym;
-        const definition = item.definition;
-        const description = item.description || ""; // Handle potentially missing description
-
-        // Indicate loading state
-        geminiButton.classList.add("is-loading");
-        geminiButton.disabled = true;
-        aiResponseDiv.textContent = "Fetching details...";
-        aiResponseDiv.style.display = "block"; // Show loading message
-
-        try {
-          const response = await fetch("/api/tell-me-more", { // Relative path to Vercel function
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ acronym, definition, description }), // Send context data
-          });
-
-          if (!response.ok) {
-            const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' })); // Try to parse error
-            throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
-          }
-
-          const data = await response.json();
-
-          if (data.text) {
-             // Use innerHTML to allow basic formatting if needed later, sanitize if necessary
-            aiResponseDiv.innerHTML = `<strong>AI Explanation:</strong> ${data.text}`;
-            aiResponseDiv.style.display = "block"; // Ensure it's visible
-          } else {
-            throw new Error("No text received from AI.");
-          }
-
-        } catch (error) {
-          console.error("Error fetching AI details:", error);
-          aiResponseDiv.textContent = `Error: ${error.message}`;
-          aiResponseDiv.style.display = "block";
-          // Optionally hide the error after a few seconds
-          // setTimeout(() => { aiResponseDiv.style.display = 'none'; }, 5000);
-        } finally {
-          // Restore button state
-          geminiButton.classList.remove("is-loading");
-          geminiButton.disabled = false;
-        }
-      });
-
-      cardContent.appendChild(geminiButton); // Add the button to the card
-
-      // --- End Gemini Button Integration ---
+      // Create Gemini button
+      createGeminiButton(item, cardContent, aiResponseDiv, hasCodeButton);
+      // --- End AI Integration ---
 
       cardColumn.appendChild(card);
       resultsDiv.appendChild(cardColumn);
