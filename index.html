@@ -77,11 +77,17 @@
                                     <input class="input" type="text" id="search" placeholder="Search for acronyms..." required> <!-- Removed is-rounded -->
                                 </div>
                                 <div class="control">
+                                    <button type="button" id="clearButton" class="button is-light has-text-grey-dark"> <!-- Clear button -->
+                                        <span class="icon">
+                                            <iconify-icon icon="solar:eraser-square-bold" width="24" height="24" style="color: #000"></iconify-icon>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="control">
                                     <button type="submit" class="button is-light has-text-grey-dark"> <!-- Muted color -->
                                         <span class="icon">
                                             <i class="fas fa-search"></i>
                                         </span>
-                                        <span>Search</span>
                                     </button>
                                 </div>
                             </div>
@@ -118,7 +124,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Right side: File Info & Refresh -->
                     <div class="level-right">
                          <div class="level-item">

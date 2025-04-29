@@ -498,6 +498,18 @@ document.addEventListener("DOMContentLoaded", () => {
     searchAcronyms();
   });
 
+  // Add event listener for the clear button
+  const clearButton = document.getElementById("clearButton");
+  clearButton.addEventListener("click", () => {
+    const searchInput = document.getElementById("search");
+    searchInput.value = ""; // Clear the search field
+    searchInput.focus(); // Focus back on the search field
+
+    // Clear the results area
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
+  });
+
   // Add after existing code
 
   const ACRONYM_PATTERNS = [
