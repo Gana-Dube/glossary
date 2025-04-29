@@ -178,7 +178,10 @@
       "acronym": "API",
       "definition": "Application Programming Interface",
       "description": "A set of rules and protocols that allows different software applications to communicate with each other",
-      "tags": ["script", "programming"]
+      "tags": [
+        "script",
+        "programming"
+      ]
     },
     {
       "acronym": "APN",
@@ -2096,7 +2099,11 @@
       "acronym": "JSON",
       "definition": "JavaScript Object Notation",
       "description": "A lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate",
-      "tags": ["script", "data-format", "web-development"]
+      "tags": [
+        "script",
+        "data-format",
+        "web-development"
+      ]
     },
     {
       "acronym": "K8s",
@@ -2295,10 +2302,10 @@
       "definition": "Line of Code",
       "description": "A software metric used to measure the size of a computer program by counting the number of lines in the text of the program's source code. Used for estimating programming productivity or effort.",
       "tags": [
-      "script",
-      "development",
-      "metrics",
-      "programming"
+        "script",
+        "development",
+        "metrics",
+        "programming"
       ]
     },
     {
@@ -3480,32 +3487,32 @@
     {
       "acronym": "PTP",
       "definition": "Precision Time Protocol",
-      "description": "",
-      "tags": ""
+      "description": "PTP, standardized as IEEE 1588, is crucial for achieving sub-microsecond synchronization across networked systems. Recent studies highlight its vulnerabilities to internal attacks, prompting the development of security enhancements like Trusted Supervisor Nodes (TSNs) to bolster its resilience.",
+      "tags": "IEEE 1588, time synchronization, network security"
     },
     {
       "acronym": "PTT",
       "definition": "Push to Talk",
-      "description": "",
-      "tags": ""
+      "description": "Modern PTT services have evolved beyond traditional walkie-talkie functionality, integrating with LTE and VoIP technologies to provide robust communication solutions in various scenarios, including emergency response and disaster relief.",
+      "tags": "VoIP, LTE, emergency communication"
     },
     {
       "acronym": "QE",
-      "definition": "Quality Estimate",
-      "description": "",
-      "tags": ""
+      "definition": "Quality Estimation",
+      "description": "In the context of machine translation, QE refers to the automatic prediction of translation quality without reference translations. Recent approaches employ multi-task learning and pre-trained language models to enhance the accuracy of QE systems.",
+      "tags": "machine translation, NLP, quality prediction"
     },
     {
       "acronym": "QnQ",
-      "definition": "Quality, Not Quantity",
-      "description": "",
-      "tags": ""
+      "definition": "Quality and Quantity",
+      "description": "The QnQ model integrates both the quality and quantity of user contributions to assess trustworthiness in participatory sensing applications. This dual-faceted approach aims to mitigate the impact of malicious or low-quality data submissions.",
+      "tags": "crowdsourcing, trust models, participatory sensing"
     },
     {
       "acronym": "QoE",
       "definition": "Quality of Experience",
-      "description": "",
-      "tags": ""
+      "description": "QoE encompasses the overall user satisfaction with a service, influenced by factors like network performance and content delivery. Advanced models now utilize machine learning to predict QoE, enabling proactive optimization of user experiences.",
+      "tags": "user experience, multimedia services, machine learning"
     },
     {
       "acronym": "QoS",
@@ -3918,50 +3925,50 @@
     {
       "acronym": "SDC",
       "definition": "Service Design and Configuration",
-      "description": "",
-      "tags": ""
+      "description": "SDC, particularly in medical device networks, leverages IEEE 11073 standards and Time-Sensitive Networking (TSN) to enable semantic interoperability and real-time communication, facilitating automatic configuration and ensuring safety-critical operations.",
+      "tags": "IEEE 11073, TSN, medical devices, interoperability"
     },
     {
       "acronym": "SDDC",
-      "definition": "Software-Defined data center",
-      "description": "",
-      "tags": ""
+      "definition": "Software-Defined Data Center",
+      "description": "SDDC abstracts and virtualizes all data center resources, including compute, storage, and networking, allowing for centralized management and automation, thus enhancing scalability and operational efficiency.",
+      "tags": "virtualization, data center, automation, cloud infrastructure"
     },
     {
       "acronym": "SDH",
       "definition": "Synchronous Digital Hierarchy",
-      "description": "",
-      "tags": ""
+      "description": "SDH is a standardized protocol for transmitting large volumes of data over optical fiber networks, offering high-speed, synchronized data transfer and facilitating efficient multiplexing of digital signals.",
+      "tags": "optical networks, multiplexing, telecommunications"
     },
     {
       "acronym": "SDK",
       "definition": "Software Development Kit",
-      "description": "",
-      "tags": ""
+      "description": "An SDK is a collection of software tools and libraries that developers use to create applications for specific platforms, providing APIs, documentation, and debugging tools to streamline development processes.",
+      "tags": "development tools, APIs, software engineering"
     },
     {
       "acronym": "SDL",
       "definition": "Supplementary Downlink",
-      "description": "",
-      "tags": ""
+      "description": "SDL enhances mobile network capacity by utilizing unpaired spectrum for downlink transmission, improving data throughput and user experience, especially in data-intensive applications.",
+      "tags": "mobile networks, spectrum utilization, LTE"
     },
     {
       "acronym": "SDN",
       "definition": "Software-Defined Networking",
-      "description": "",
-      "tags": ""
+      "description": "SDN decouples the control plane from the data plane in networking equipment, enabling centralized control, programmability, and dynamic management of network resources, thus fostering innovation and flexibility.",
+      "tags": "network architecture, programmability, centralized control"
     },
     {
       "acronym": "SD-WAN",
-      "definition": "Software defined",
-      "description": "Wide Area Network",
-      "tags": ""
+      "definition": "Software-Defined Wide Area Network",
+      "description": "SD-WAN applies SDN principles to WAN connections, allowing for intelligent routing, improved performance, and centralized management across multiple network paths, enhancing connectivity for distributed enterprises.",
+      "tags": "WAN optimization, network management, enterprise connectivity"
     },
     {
       "acronym": "SeGW",
       "definition": "Security Gateway",
-      "description": "",
-      "tags": ""
+      "description": "SeGW provides secure communication in mobile networks by handling authentication, encryption, and authorization processes, ensuring data integrity and protecting against unauthorized access.",
+      "tags": "network security, encryption, mobile networks"
     },
     {
       "acronym": "SEPP",
@@ -4168,58 +4175,58 @@
       "tags": ""
     },
     {
-      "acronym": "SR 1",
+      "acronym": "SR",
       "definition": "Segment Routing",
-      "description": "",
-      "tags": ""
+      "description": "Segment Routing (SR) simplifies network operations by encoding paths as sequences of segments, enabling scalable and flexible traffic engineering. Recent studies focus on SR's integration with MPLS and IPv6, highlighting its benefits in reducing protocol overhead and enhancing network programmability.",
+      "tags": "networking, MPLS, IPv6, traffic engineering"
     },
     {
-      "acronym": "SR 2",
+      "acronym": "SR",
       "definition": "Speech Recognition",
-      "description": "",
-      "tags": ""
+      "description": "Speech Recognition (SR) technology has advanced with deep learning models, enabling more accurate and robust transcription of spoken language. Research emphasizes the use of large-scale datasets and neural networks to improve recognition in diverse and noisy environments.",
+      "tags": "AI, deep learning, NLP, audio processing"
     },
     {
       "acronym": "SR OS",
       "definition": "Service Router Operating System",
-      "description": "",
-      "tags": ""
+      "description": "The Service Router Operating System (SR OS) is a network operating system designed for high-performance IP routing. It supports advanced features like segment routing and integrates with various network management protocols to enhance scalability and reliability.",
+      "tags": "network OS, IP routing, segment routing, scalability"
     },
     {
       "acronym": "SR-IOV",
-      "definition": "Single Root I/O Virtualisation",
-      "description": "",
-      "tags": ""
+      "definition": "Single Root I/O Virtualization",
+      "description": "Single Root I/O Virtualization (SR-IOV) allows multiple virtual machines to share a single physical network interface card, improving I/O efficiency and reducing latency. Research explores its applications in cloud computing and data center environments.",
+      "tags": "virtualization, I/O efficiency, cloud computing, data centers"
     },
     {
       "acronym": "SRS",
       "definition": "Sounding Reference Signal",
-      "description": "",
-      "tags": ""
+      "description": "Sounding Reference Signals (SRS) are used in wireless communication systems to estimate uplink channel conditions. Studies focus on optimizing SRS allocation to enhance channel state information accuracy, crucial for technologies like massive MIMO.",
+      "tags": "wireless communication, channel estimation, massive MIMO, 5G"
     },
     {
       "acronym": "SR-TE",
-      "definition": "Segment Routing",
-      "description": "Traffic Engineering",
-      "tags": ""
+      "definition": "Segment Routing Traffic Engineering",
+      "description": "Segment Routing Traffic Engineering (SR-TE) combines segment routing with traffic engineering principles to optimize network resource utilization. Research highlights its ability to provide efficient path computation and fast reroute capabilities.",
+      "tags": "network optimization, path computation, fast reroute, MPLS"
     },
     {
       "acronym": "SRVCC",
       "definition": "Single Radio Voice Call Continuity",
-      "description": "",
-      "tags": ""
+      "description": "Single Radio Voice Call Continuity (SRVCC) enables seamless handover of voice calls from LTE to legacy networks. Research discusses its implementation challenges and solutions to maintain call quality during transitions.",
+      "tags": "voice call continuity, LTE, network handover, IMS"
     },
     {
       "acronym": "SS7",
-      "definition": "Signalling System 7",
-      "description": "",
-      "tags": ""
+      "definition": "Signaling System No. 7",
+      "description": "Signaling System No. 7 (SS7) is a set of protocols used for exchanging information in public switched telephone networks. Recent studies address its security vulnerabilities and propose measures to protect against potential threats.",
+      "tags": "telecommunication protocols, PSTN, network security, signaling"
     },
     {
       "acronym": "SSB",
-      "definition": "Synchronization Signal Block Beam",
-      "description": "",
-      "tags": ""
+      "definition": "Synchronization Signal Block",
+      "description": "Synchronization Signal Blocks (SSB) are used in 5G networks for cell search and initial access procedures. Research focuses on their design and role in beamforming to improve coverage and capacity in high-frequency bands.",
+      "tags": "5G, initial access, beamforming, high-frequency bands"
     },
     {
       "acronym": "SSC",
@@ -5206,7 +5213,46 @@
       "acronym": "Python",
       "definition": "Python Programming Language",
       "description": "A high-level, interpreted programming language known for its readability and versatility in web development, data analysis, AI, and more",
-      "tags": ["script", "programming-language"]
+      "tags": [
+        "script",
+        "programming-language"
+      ]
+    },
+    {
+      "acronym": "SDG",
+      "definition": "Sustainable Development Goals",
+      "description": "A set of 17 global goals established by the United Nations in 2015, aimed at addressing global challenges such as poverty, inequality, climate change, and environmental degradation by 2030.",
+      "tags": "UN, sustainability, global goals"
+    },
+    {
+      "acronym": "DWDM",
+      "definition": "Dense Wavelength Division Multiplexing",
+      "description": "An optical networking technology that increases bandwidth by transmitting multiple data channels over a single fiber-optic cable using different light wavelengths.",
+      "tags": "optical networking, fiber optics, telecommunications"
+    },
+    {
+      "acronym": "MCP",
+      "definition": "Model Context Protocol",
+      "description": "An open standard that enables AI systems to connect and interact with external tools, data sources, and services through a standardized interface.",
+      "tags": "AI, protocol, integration"
+    },
+    {
+      "acronym": "SGD",
+      "definition": "Stochastic Gradient Descent",
+      "description": "An iterative optimization algorithm used to minimize a function by updating parameters in the opposite direction of the gradient of the function with respect to the parameters.",
+      "tags": "machine learning, optimization, algorithm"
+    },
+    {
+      "acronym": "SVM",
+      "definition": "Support Vector Machine",
+      "description": "A supervised machine learning algorithm used for classification and regression tasks by finding the optimal hyperplane that separates data into classes.",
+      "tags": "machine learning, classification, algorithm"
+    },
+    {
+      "acronym": "RL",
+      "definition": "Reinforcement Learning",
+      "description": "A type of machine learning where an agent learns to make decisions by performing actions and receiving feedback in the form of rewards or penalties.",
+      "tags": "machine learning, AI, decision making"
     }
   ]
 }
