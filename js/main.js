@@ -309,6 +309,10 @@ document.addEventListener("DOMContentLoaded", () => {
     resultsDiv.className = "columns is-multiline is-centered";
     errorDiv.classList.add("is-hidden"); // Hide previous errors
 
+    // Hide the badge initially
+    const badgeContainer = document.getElementById("badgeContainer");
+    badgeContainer.style.display = "none";
+
     if (!searchTerm) {
       showError("Please enter a search term");
       return;
@@ -330,6 +334,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (matches.length === 0) {
       showError(`No results found for "${searchTerm}"`);
       return;
+    } else {
+      // Update the badge if there are results
+      const resultBadge = document.getElementById("resultBadge");
+      resultBadge.textContent = matches.length;
+      // Show the badge container
+      badgeContainer.style.display = "block";
+
     }
 
     matches.forEach((item) => {
@@ -508,6 +519,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clear the results area
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = "";
+
+    // Hide the badge if there are no results
+    const badgeContainer = document.getElementById("badgeContainer");
+    badgeContainer.style.display = "none";
   });
 
   // Add after existing code
