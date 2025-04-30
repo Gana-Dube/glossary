@@ -3,50 +3,50 @@
     {
       "acronym": "2G",
       "definition": "2nd Generation",
-      "description": "",
-      "tags": ""
+      "description": "2G refers to the second-generation of cellular network technology, which introduced digital transmission, improved voice quality, and support for services like SMS (Short Message Service) [[1]]. It succeeded 1G and was first deployed globally in the early 1990s [[2]].",
+      "tags": ["Mobile Networks", "Telecommunications", "Digital Communication", "SMS"]
     },
     {
       "acronym": "3G",
       "definition": "3rd Generation",
-      "description": "",
-      "tags": ""
+      "description": "3G represents the third generation of mobile telecommunications technology, offering faster data transfer speeds and enabling advanced services such as video calling and mobile internet access.",
+      "tags": ["Mobile Networks", "Data Transfer", "Telecommunications", "Video Calling"]
     },
     {
       "acronym": "3GPP",
       "definition": "3rd Generation Partnership Project",
-      "description": "",
-      "tags": ""
+      "description": "3GPP is a collaboration between groups of telecommunications associations responsible for developing protocols for mobile telecommunications, including GSM, UMTS, LTE, and 5G NR [[3GPP.org]](https://www.3gpp.org/about-3gpp/about-3gpp).",
+      "tags": ["Standards Organization", "Mobile Protocols", "Telecommunications", "5G"]
     },
     {
       "acronym": "3GPP CR",
       "definition": "3GPP Change Request",
-      "description": "",
-      "tags": ""
+      "description": "A 3GPP Change Request (CR) is a formal document submitted to propose modifications or enhancements to existing 3GPP technical specifications [[3GPP TS 21.101]](https://www.3gpp.org/specifications).",
+      "tags": ["Technical Specification", "Change Management", "Mobile Standards", "Documentation"]
     },
     {
       "acronym": "3GPP TS",
       "definition": "3GPP Technical Specification",
-      "description": "",
-      "tags": ""
+      "description": "3GPP Technical Specifications (TS) define the standardized technical requirements and procedures for mobile communication systems, including radio interfaces, core networks, and service capabilities [[3GPP.org]](https://www.3gpp.org/specifications).",
+      "tags": ["Technical Standards", "Mobile Networks", "Specifications", "Documentation"]
     },
     {
       "acronym": "4G",
       "definition": "4th Generation",
-      "description": "",
-      "tags": ""
+      "description": "4G refers to the fourth generation of wireless communication technology, providing high-speed internet access and supporting advanced mobile broadband services such as streaming and VoIP [[ITUT]](https://www.itu.int/rec/T-REC-I.211-199308-I).",
+      "tags": ["Mobile Broadband", "High-Speed Data", "VoIP", "Streaming"]
     },
     {
       "acronym": "5G",
       "definition": "5th Generation",
-      "description": "",
-      "tags": ""
+      "description": "5G is the fifth generation of mobile network technology, designed to deliver significantly faster data rates, lower latency, and greater connectivity density compared to previous generations [[GSMA]](https://www.gsma.com/5g/what-is-5g/).",
+      "tags": ["Ultra-Low Latency", "High-Speed Connectivity", "IoT", "Mobile Networks"]
     },
     {
       "acronym": "5GC",
       "definition": "5G Core",
-      "description": "",
-      "tags": ""
+      "description": "The 5G Core (5GC) is the central network architecture component of 5G systems, responsible for managing user authentication, session management, mobility, and traffic routing in cloud-native and virtualized environments [[3GPP TS 23.501]](https://www.3gpp.org/specifications/204-specification-groups-work-items/specifications-and-ts/1983-ts-23-501).",
+      "tags": ["Network Architecture", "Cloud-Native", "Mobility Management", "5G Systems"]
     },
     {
       "acronym": "AA",
@@ -1929,38 +1929,32 @@
     {
       "acronym": "IODT",
       "definition": "InterOperability Device Testing",
-      "description": "",
-      "tags": ""
+      "description": "IODT refers to the process of verifying that different devices and systems can work together seamlessly, exchanging data and performing functions as intended across varied platforms and vendors.",
+      "tags": ["Testing", "Device Interoperability", "Systems Integration", "Quality Assurance"]
     },
     {
       "acronym": "IOM",
       "definition": "Input/Output Module",
-      "description": "",
-      "tags": ""
+      "description": "An IOM is a hardware or software component responsible for handling input and output operations in a computing or control system, facilitating communication between the system and external devices or networks.",
+      "tags": ["Hardware", "System Architecture", "Peripheral Interface", "Control Systems"]
     },
     {
       "acronym": "IoT",
       "definition": "Internet of Things",
-      "description": "",
-      "tags": ""
+      "description": "IoT refers to the network of interconnected physical devices embedded with sensors, software, and connectivity capabilities that enable them to collect, exchange, and act on data autonomously",
+      "tags": ["Connected Devices", "Smart Technology", "Networking", "Data Analytics"]
     },
     {
       "acronym": "IP",
       "definition": "Internet Protocol",
-      "description": "Fundamental protocol for relaying packets across network boundaries in computer networks",
-      "tags": [
-        "networking",
-        "internet-protocols"
-      ]
+      "description": "Fundamental protocol for relaying packets across network boundaries in computer networks, providing addressing and routing functionality for communication over the internet.",
+      "tags": ["Networking", "Internet Protocols", "Routing", "Communication"]
     },
     {
       "acronym": "IP",
       "definition": "Intellectual Property",
-      "description": "Legal rights that protect creations of the mind such as patents, trademarks, and copyrights",
-      "tags": [
-        "legal",
-        "business"
-      ]
+      "description": "Legal rights that protect creations of the mind such as patents, trademarks, and copyrights, granting the creator exclusive rights to use and distribute their intellectual assets.",
+      "tags": ["Legal", "Business Strategy", "Innovation", "Copyright"]
     },
     {
       "acronym": "IP",

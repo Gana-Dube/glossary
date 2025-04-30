@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (item.description) {
         const description = document.createElement("div");
         description.className = "content";
-        description.innerHTML = `<strong>Description:</strong> ${item.description}`;
+        description.innerHTML = `<strong>Description:</strong> ${convertMarkdownLinks(item.description)}`;
         cardContent.appendChild(description);
       }
 
@@ -882,5 +882,14 @@ document.addEventListener("DOMContentLoaded", () => {
       showError("No uploaded PDF acronyms available");
     }
   });
+
+  function convertMarkdownLinks(text) {
+    // Matches markdown links in the format [[alias]](url)
+    const linkRegex = /\[\[(.*?)\]\]\((.*?)\)/g;
+    return text.replace(linkRegex, (match, alias, url) => {
+      // Create an anchor tag with the alias as text and url as href
+      return `<a href="${url}" target="_blank" class="has-text-link">${alias}</a>`;
+    });
+  }
 
 });
