@@ -4433,34 +4433,28 @@
       "tags": ""
     },
     {
-      "acronym": "TR 1",
-      "definition": "Technical Recommendation",
-      "description": "",
-      "tags": ""
-    },
-    {
-      "acronym": "TR 2",
+      "acronym": "TR",
       "definition": "Technical Report",
-      "description": "",
-      "tags": ""
+      "description": "A structured document used to deliver detailed technical findings, methodologies, or analyses from engineering or scientific research, often preceding formal publication [[BytePlus]](https://www.byteplus.com/en/technical-report-meaning-types-structure).",
+      "tags": ["Documentation", "Research", "Analysis", "Specifications"]
     },
     {
       "acronym": "TRP",
       "definition": "Technical Recovery Plan",
-      "description": "",
-      "tags": ""
+      "description": "A plan detailing procedures for the restoration of critical IT systems, applications, and data following a disruption, ensuring minimal downtime and service continuity [[TechTarget]](https://www.techtarget.com/searchdisasterrecovery/Definition/business-continuity-and-disaster-recovery-BCDR).",
+      "tags": ["Disaster Recovery", "Business Continuity", "Risk Management", "IT Operations"]
     },
     {
       "acronym": "TRS",
       "definition": "Technical Requirements Specification",
-      "description": "",
-      "tags": ""
+      "description": "A formalized set of documented requirements that define the system's functionality, performance, and interface constraints, serving as a baseline for development and validation [[ScienceDirect]](https://www.sciencedirect.com/science/article/pii/S240593262030077X).",
+      "tags": ["Requirements Engineering", "System Design", "Documentation", "Project Planning"]
     },
     {
       "acronym": "TRX",
       "definition": "Transmitter and Receiver",
-      "description": "",
-      "tags": ""
+      "description": "A full-duplex communication module capable of both transmitting and receiving signals within wireless systems, commonly implemented in radio transceivers and mobile network devices [[IEEE Xplore]](https://ieeexplore.ieee.org/document/6823165).",
+      "tags": ["Communications", "Hardware", "Wireless Networks", "IoT"]
     },
     {
       "acronym": "TS",
