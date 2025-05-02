@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Utility functions to avoid code duplication
   function createCodeButton(item, cardContent, aiResponseDiv) {
     // Check if the item has a "script" tag
-    const hasScriptTag = item.tags && (
-      (typeof item.tags === 'string' && item.tags.includes('script')) ||
-      (Array.isArray(item.tags) && item.tags.some(tag => tag === 'script'))
+    const hasScriptTag = item.keywords && (
+      (typeof item.keywords === 'string' && item.keywords.includes('script')) ||
+      (Array.isArray(item.keywords) && item.keywords.some(tag => tag === 'script'))
     );
 
     // Only create the code button if the item has a script tag
@@ -257,11 +257,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json();
     })
     .then((data) => {
-      acronymsData = data;
-      showRandomAcronyms(); // Initialize random acronyms
+    acronymsData = data; // Data is now directly an array of acronyms
+    showRandomAcronyms(); // Initialize random acronyms
+
+    // ---> START: Update total acronym count badge <---
+    const totalBadgeContainer = document.getElementById("totalAcronymCountBadge");
+    const totalCountElement = document.getElementById("totalAcronymCount");
+    if (totalBadgeContainer && totalCountElement && Array.isArray(acronymsData)) {
+        totalCountElement.textContent = acronymsData.length; // Get total count
+        totalBadgeContainer.style.display = "inline-flex"; // Show the badge (inline-flex works well for tags)
+    } else {
+        // console.warn("Could not find total count badge elements or data is not an array."); // Removed log
+    }
+    // ---> END: Update total acronym count badge <---
     })
     .catch((error) => {
-      console.error("Error loading acronyms data:", error);
+      // console.error("Error loading acronyms data:", error); // Removed log
       showError("Failed to load acronyms data. Please try again later.");
     });
 
@@ -278,8 +289,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getRandomAcronyms(count = 5) {
-    if (!acronymsData || !acronymsData.acronyms.length) return [];
-    const shuffled = [...acronymsData.acronyms].sort(() => 0.5 - Math.random());
+    if (!acronymsData || !acronymsData.length) return [];
+    const shuffled = [...acronymsData].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
   }
 
@@ -327,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const regex = new RegExp(`^${escapeRegex(searchTerm)}`, "i");
 
     // Filter only by acronym for exact match
-    const matches = acronymsData.acronyms.filter((item) =>
+    const matches = acronymsData.filter((item) =>
       regex.test(item.acronym)
     );
 
@@ -390,16 +401,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Add tags section
-      if (item.tags && item.tags.length > 0) {
+      if (item.keywords && item.keywords.length > 0) {
         const tagsContainer = document.createElement("div");
         tagsContainer.className = "tags";
         tagsContainer.style.cssText = "margin: 0.5rem 0 0 0;";
 
-        // Split tags if it's a string, or use array directly
+        // Split keywords if it's a string, or use array directly
         const tagsList =
-          typeof item.tags === "string"
-            ? item.tags.split(",").map((t) => t.trim())
-            : item.tags;
+          typeof item.keywords === "string"
+            ? item.keywords.split(",").map((t) => t.trim())
+            : item.keywords;
 
         tagsList
           .filter((tag) => tag && tag.length > 0)
@@ -457,7 +468,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 4000);
           })
           .catch((err) => {
-            console.error("Copy error:", err);
+            // console.error("Copy error:", err); // Removed log
             showError("Failed to copy text");
           });
       });
@@ -528,7 +539,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add after existing code
 
   const ACRONYM_PATTERNS = [
-    /([\w\s\-\&]+?)\s*\(\s*([A-Za-z0-9\-.]+)\s*\)/g, // Pattern: definition (ACRONYM)
+    // Pattern: definition (ACRONYM) - most common format
+    /([\w\s\-\&\.]+?)\s*\(\s*([A-Z][A-Za-z0-9\-.]{1,10})\s*\)/g,
+
+    // Pattern: ACRONYM (definition) - alternative format
+    /([A-Z][A-Za-z0-9\-.]{1,10})\s*\(\s*([\w\s\-\&\.]+?)\s*\)/g,
+
+    // Pattern: ACRONYM - definition
+    /([A-Z][A-Za-z0-9\-.]{1,10})\s*[\-–—:]\s*([\w\s\-\&\.]+?)(?=\.|,|;|$)/g
   ];
 
   async function parsePDF(file, pdfDoc = null) {
@@ -558,37 +576,109 @@ document.addEventListener("DOMContentLoaded", () => {
         progressBar.value = (i / pdf.numPages) * 100;
       }
 
+      // console.log("Extracted text length:", extractedText.length); // Removed log
+      // console.log("Sample text:", extractedText.substring(0, 500) + "..."); // Removed log
+
       // Try to use Python processing first
       if (window.processPDFWithPython) {
         try {
           showError("Processing with Python - this may take a moment...");
+          // console.log("Calling window.processPDFWithPython with text length:", extractedText.length); // Removed log
+
           const pythonResults = await window.processPDFWithPython(extractedText);
           progressBar.classList.add("is-hidden");
 
-          if (pythonResults && pythonResults.length > 0) {
-            return pythonResults;
+          // console.log("Python extraction results received:", pythonResults); // Removed log
+          // console.log("Python results type:", typeof pythonResults); // Removed log
+          // console.log("Python results is array?", Array.isArray(pythonResults)); // Removed log
+
+          if (pythonResults) {
+            if (Array.isArray(pythonResults)) {
+              // console.log("Python results length:", pythonResults.length); // Removed log
+
+              if (pythonResults.length > 0) {
+                // Validate each result has required properties
+                const validResults = pythonResults.filter(item =>
+                  item &&
+                  typeof item === 'object' &&
+                  item.acronym &&
+                  item.definition
+                );
+
+                console.log(`Found ${validResults.length} valid acronyms out of ${pythonResults.length}`);
+                console.log("Sample valid result:", validResults.length > 0 ? JSON.stringify(validResults[0]) : "none");
+
+                if (validResults.length > 0) {
+                  // Ensure each item has all required properties
+                  const formattedResults = validResults.map(item => ({
+                    acronym: item.acronym,
+                    definition: item.definition,
+                    description: item.description || "",
+                    keywords: item.keywords || ["PDF Import"],
+                    id: item.id || `${item.acronym.toLowerCase()}-pdf`
+                  }));
+
+                  console.log("Returning formatted Python results:", formattedResults.length);
+                  return formattedResults;
+                }
+              }
+            } else {
+              console.error("Python results is not an array:", pythonResults);
+            }
+          } else {
+            console.error("Python results is null or undefined");
           }
+
           // If Python processing returned no results, fall back to JavaScript
           showError("Python processing found no acronyms, using JavaScript fallback");
         } catch (error) {
           console.error("Python processing failed:", error);
+          console.error("Error details:", error.message);
           showError("Python processing failed, using JavaScript fallback");
         }
+      } else {
+        console.log("Python processing function is not available, using JavaScript fallback");
       }
 
       // Fallback to JavaScript processing if Python is not available or failed
+      // console.log("Starting JavaScript fallback processing..."); // Removed log
       const acronyms = new Map();
 
       ACRONYM_PATTERNS.forEach((pattern) => {
         let match;
-        while ((match = pattern.exec(extractedText)) !== null) {
-          // match[1] is the definition
-          // match[2] is the acronym
-          let definitionText = match[1].trim();
-          const acronymText = match[2].trim();
+        let matchCount = 0;
 
-          // Only proceed if acronym length is at least 2
-          if (acronymText.length >= 2) {
+        // console.log("Using pattern:", pattern); // Removed log
+
+        // Reset the lastIndex property to ensure we start from the beginning
+        pattern.lastIndex = 0;
+
+        while ((match = pattern.exec(extractedText)) !== null) {
+          matchCount++;
+
+          // Get the two groups from the match
+          const firstGroup = match[1].trim();
+          const secondGroup = match[2].trim();
+
+          let acronymText, definitionText;
+
+          // Determine which is the acronym and which is the definition
+          // Acronyms are typically uppercase and shorter than definitions
+          if (firstGroup.length < secondGroup.length &&
+              /^[A-Z][A-Za-z0-9\-.]{1,10}$/.test(firstGroup)) {
+            // First group is likely the acronym
+            acronymText = firstGroup;
+            definitionText = secondGroup;
+            console.log(`Match ${matchCount} (pattern ${pattern.source}): "${acronymText}" = "${definitionText}" (acronym first)`);
+          } else {
+            // Second group is likely the acronym
+            acronymText = secondGroup;
+            definitionText = firstGroup;
+            console.log(`Match ${matchCount} (pattern ${pattern.source}): "${acronymText}" = "${definitionText}" (definition first)`);
+          }
+
+          // Only proceed if acronym length is at least 2 and contains at least one uppercase letter
+          if (acronymText.length >= 2 && /[A-Z]/.test(acronymText)) {
             // Fix: Check if the definition exists and starts with the same letter as the acronym.
             // If not, try to find the first word that matches.
             if (definitionText.length > 0 &&
@@ -599,21 +689,38 @@ document.addEventListener("DOMContentLoaded", () => {
               );
               if (fixedIndex !== -1) {
                 definitionText = words.slice(fixedIndex).join(" ");
+                // console.log(`Fixed definition: "${definitionText}"`); // Removed log
               }
             }
 
-            acronyms.set(acronymText, {
+            const acronymItem = {
               acronym: acronymText,
               definition: definitionText,
-              tags: ["PDF Import"],
-            });
+              description: "",
+              keywords: ["PDF Import"],
+              id: `${acronymText.toLowerCase()}-pdf`
+            };
+
+            acronyms.set(acronymText, acronymItem);
+            // console.log(`Added acronym: ${JSON.stringify(acronymItem)}`); // Removed log
           }
         }
+        // console.log(`Pattern ${pattern} found ${matchCount} matches`); // Removed log
       });
 
+      const results = Array.from(acronyms.values());
+      // console.log(`JavaScript extraction found ${results.length} acronyms`); // Removed log
+
+      if (results.length > 0) {
+        // console.log("Sample results:", JSON.stringify(results.slice(0, 3))); // Removed log
+      } else {
+        // console.log("No acronyms found with JavaScript extraction"); // Removed log
+      }
+
       progressBar.classList.add("is-hidden");
-      return Array.from(acronyms.values());
+      return results;
     } catch (error) {
+      // console.error("PDF parsing error:", error); // Removed log
       progressBar.classList.add("is-hidden");
       throw error;
     }
@@ -656,9 +763,52 @@ document.addEventListener("DOMContentLoaded", () => {
     // Ensure the container uses the Bulma classes for centered layout:
     resultsDiv.className = "columns is-multiline is-centered";
 
-    acronyms.forEach((item) => {
-      // Create Bulma card
-      const cardColumn = document.createElement("div");
+    // console.log("showUploadedAcronyms received:", acronyms); // Removed log
+    // console.log("Type of acronyms:", typeof acronyms); // Removed log
+    // console.log("Is array?", Array.isArray(acronyms)); // Removed log
+
+    if (!acronyms) {
+      showError("No acronyms data received");
+      return;
+    }
+
+    if (!Array.isArray(acronyms)) {
+      showError("Invalid acronyms data format");
+      console.error("Expected array but got:", typeof acronyms);
+      return;
+    }
+
+    if (acronyms.length === 0) {
+      showError("No acronyms found in the document");
+      return;
+    }
+
+    // Update the badge with the count of valid acronyms
+    const badgeContainer = document.getElementById("badgeContainer");
+    const resultBadge = document.getElementById("resultBadge");
+    resultBadge.textContent = acronyms.length;
+    badgeContainer.style.display = "block";
+
+    // Log the first item to see its structure
+    if (acronyms.length > 0) {
+      console.log("First acronym item structure:", JSON.stringify(acronyms[0]));
+    }
+
+    console.log(`Starting loop to create ${acronyms.length} cards...`);
+    let cardsCreated = 0;
+
+    acronyms.forEach((item, index) => {
+      // console.log(`Processing item ${index + 1}/${acronyms.length}:`, item.acronym); // Removed log
+      try {
+        // Validate item has required properties
+        if (!item || !item.acronym || !item.definition) {
+          console.warn(`Skipping invalid item at index ${index}:`, item);
+          return; // Skip this item
+        }
+
+        // console.log(`  - Creating card for ${item.acronym}`); // Removed log
+        // Create Bulma card
+        const cardColumn = document.createElement("div");
       cardColumn.className = "column is-two-fifths";
 
       const card = document.createElement("div");
@@ -707,14 +857,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Optional: add tags if provided
-      if (item.tags && item.tags.length > 0) {
+      if (item.keywords && item.keywords.length > 0) {
         const tagsContainer = document.createElement("div");
         tagsContainer.className = "tags";
         tagsContainer.style.cssText = "margin: 0.5rem 0 0 0;";
         const tagsList =
-          typeof item.tags === "string"
-            ? item.tags.split(",").map((t) => t.trim())
-            : item.tags;
+          typeof item.keywords === "string"
+            ? item.keywords.split(",").map((t) => t.trim())
+            : item.keywords;
 
         tagsList
           .filter((tag) => tag && tag.length > 0)
@@ -800,12 +950,24 @@ document.addEventListener("DOMContentLoaded", () => {
       createGeminiButton(item, cardContent, aiResponseDiv, hasCodeButton);
       // --- End AI Integration ---
 
+      card.appendChild(cardContent); // Add the populated content to the card element
+
       cardColumn.appendChild(card);
       resultsDiv.appendChild(cardColumn);
+      cardsCreated++;
+      // console.log(`  - Appended card for ${item.acronym} to resultsDiv. Total cards in DOM: ${resultsDiv.children.length}`); // Removed log
+      } catch (error) {
+        // console.error(`Error processing item at index ${index}:`, item, error); // Removed log
+        // Optionally, display an error message for this specific card
+      }
     });
+
+    // console.log(`Finished loop. Created and attempted to append ${cardsCreated} cards.`); // Removed log
+    // console.log(`Final number of children in resultsDiv: ${resultsDiv.children.length}`); // Removed log
   }
 
   async function handlePDFFile(file) {
+    // console.log("handlePDFFile called with file:", file.name, "size:", file.size, "type:", file.type); // Removed log
     document.getElementById("fileName").textContent = file.name;
 
     try {
@@ -814,36 +976,82 @@ document.addEventListener("DOMContentLoaded", () => {
       pageCountElement.style.display = "none"; // Hide initially
 
       // Get page count from the PDF
+      console.log("Reading PDF file...");
       const arrayBuffer = await file.arrayBuffer();
+      console.log("File loaded into memory, size:", arrayBuffer.byteLength);
+
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       const numPages = pdf.numPages;
+      console.log("PDF loaded with PDF.js, pages:", numPages);
 
       // Display the page count
       pageCountElement.textContent = `PDF contains ${numPages} pages`;
       pageCountElement.style.display = "block"; // Make visible
 
+      console.log("Calling parsePDF to extract acronyms...");
       const extractedAcronyms = await parsePDF(file, pdf); // Pass the pdf object to avoid loading twice
 
-      if (extractedAcronyms.length > 0) {
-        // Filter out duplicates before merging
-        const newAcronyms = extractedAcronyms.filter(
-          (newAcronym) =>
-            !acronymsData.acronyms.some(
-              (existing) => existing.acronym === newAcronym.acronym
-            )
-        );
+      console.log("Extracted acronyms returned from parsePDF:", extractedAcronyms);
+      console.log("Type of extractedAcronyms:", typeof extractedAcronyms);
+      console.log("Is array?", Array.isArray(extractedAcronyms));
 
-        acronymsData.acronyms = [...acronymsData.acronyms, ...newAcronyms];
-        showUploadedAcronyms(newAcronyms);
-        showError(
-          `Successfully imported ${newAcronyms.length} new acronyms from PDF`
-        );
+      if (extractedAcronyms && Array.isArray(extractedAcronyms)) {
+        console.log("Number of extracted acronyms:", extractedAcronyms.length);
+
+        if (extractedAcronyms.length > 0) {
+          // Log the first few acronyms for debugging
+          // console.log("First few extracted acronyms:", extractedAcronyms.slice(0, 3).map(a => `${a.acronym}: ${a.definition}`)); // Removed log
+
+          // Filter out duplicates before merging
+          const newAcronyms = extractedAcronyms.filter(
+            (newAcronym) =>
+              newAcronym &&
+              newAcronym.acronym &&
+              newAcronym.definition &&
+              !acronymsData.some(
+                (existing) => existing.acronym === newAcronym.acronym
+              )
+          );
+
+          // console.log(`Found ${newAcronyms.length} new unique acronyms`); // Removed log
+
+          if (newAcronyms.length > 0) {
+            // Add the new acronyms to the global data
+            acronymsData = [...acronymsData, ...newAcronyms];
+            // console.log("Updated acronymsData, new total:", acronymsData.length); // Removed log
+
+            // Show all uploaded acronyms, not just new ones
+            const uploadedAcronyms = acronymsData.filter(item =>
+              item && item.keywords &&
+              (Array.isArray(item.keywords) ?
+                item.keywords.includes("PDF Import") :
+                item.keywords === "PDF Import")
+            );
+
+            console.log(`Displaying ${uploadedAcronyms.length} uploaded acronyms`);
+            console.log("Sample of uploaded acronyms to display:",
+              uploadedAcronyms.slice(0, 3).map(a => `${a.acronym}: ${a.definition}`));
+
+            // This is where we display the acronyms
+            showUploadedAcronyms(uploadedAcronyms);
+            showError(
+              `Successfully imported ${newAcronyms.length} new acronyms from PDF`
+            );
+          } else {
+            showError("No new acronyms found in the PDF");
+          }
+        } else {
+          console.log("No acronyms found in the extracted data");
+          showError("No acronyms found in the PDF");
+        }
       } else {
-        showError("No acronyms found in the PDF");
+        console.error("Invalid data returned from parsePDF:", extractedAcronyms);
+        showError("Error extracting acronyms from PDF");
       }
     } catch (error) {
       showError("Error processing PDF file");
-      console.error(error);
+      console.error("PDF processing error:", error);
+      console.error("Error details:", error.message, error.stack);
     }
   }
 
@@ -881,14 +1089,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Refresh button for uploaded acronyms (filters items from PDF import)
   document.getElementById("refreshUploaded").addEventListener("click", () => {
-    if (!acronymsData || !acronymsData.acronyms) {
+    if (!acronymsData || !acronymsData) {
       showError("No acronyms data available");
       return;
     }
 
     // Filter for acronyms uploaded via PDF (which have "PDF Import" tag)
-    const uploadedAcronyms = acronymsData.acronyms.filter(item =>
-      item.tags && item.tags.includes("PDF Import")
+    const uploadedAcronyms = acronymsData.filter(item =>
+      item.keywords && item.keywords.includes("PDF Import")
     );
 
     if (uploadedAcronyms.length > 0) {
@@ -901,7 +1109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function convertMarkdownLinks(text) {
     // Matches markdown links in the format [[alias]](url)
     const linkRegex = /\[\[(.*?)\]\]\((.*?)\)/g;
-    return text.replace(linkRegex, (match, alias, url) => {
+    return text.replace(linkRegex, (_match, alias, url) => {
       // Create an anchor tag with the alias as text and url as href
       return `<a href="${url}" target="_blank" class="has-text-link">${alias}</a>`;
     });

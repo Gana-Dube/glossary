@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({ text });
 
   } catch (error) {
-    console.error("Error calling Google AI API:", error);
+    // console.error("Error calling Google AI API:", error); // Removed log
     // Avoid sending detailed internal errors to the client
     let clientMessage = "Failed to get explanation from AI.";
     if (error.message.includes('API key not valid')) {

@@ -7,7 +7,7 @@ const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
 const MODEL_NAME = "mistralai/mistral-small-24b-instruct-2501:free";
 
 if (!OPENROUTER_API_KEY) {
-  console.error("Missing OPENROUTER_API_KEY environment variable.");
+  // console.error("Missing OPENROUTER_API_KEY environment variable."); // Removed log
   // Avoid throwing error here to allow deployment, but log it.
 }
 
@@ -61,7 +61,7 @@ module.exports = async (req, res) => {
 
     if (!response.ok) {
       const errorData = await response.text(); // Get raw text for debugging
-      console.error("OpenRouter API Error:", response.status, errorData);
+      // console.error("OpenRouter API Error:", response.status, errorData); // Removed log
       throw new Error(`OpenRouter API request failed with status ${response.status}`);
     }
 
