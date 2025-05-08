@@ -1,5 +1,5 @@
-// filepath: /Users/gana/Documents/telco_glossary/api/tell-me-more.js
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+// filepath: /Users/gana/Documents/glossary/api/tell-me-more.js
+const { GoogleGenerativeAI } = require("@google/generative-ai-js");
 
 // IMPORTANT: Access your API key from environment variables
 const API_KEY = process.env.GOOGLE_API_KEY;
@@ -9,7 +9,7 @@ if (!API_KEY) {
 }
 
 const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" }); // Or your preferred model
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" }); // Using latest model
 
 // Export the handler function for Vercel
 module.exports = async (req, res) => {
