@@ -1,5 +1,5 @@
 // filepath: /Users/gana/Documents/glossary/api/tell-me-more.js
-const { GoogleGenerativeAI } = require("@google/generative-ai-js");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 // IMPORTANT: Access your API key from environment variables
 const API_KEY = process.env.GOOGLE_API_KEY;
