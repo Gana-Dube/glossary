@@ -163,8 +163,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const definition = item.definition;
       const description = item.description || "";
 
-      // Construct a prompt for the diagram
-      const diagramPrompt = `Create a Mermaid diagram that illustrates the concept of ${acronym} (${definition})${description ? `. Additional context: ${description}` : ''}. Choose an appropriate diagram type (flowchart, sequence, class, etc.) that best represents this concept.`;
+      // Construct a prompt for the diagram with improved guidelines
+      const diagramPrompt = `Create a Mermaid diagram that illustrates the concept of ${acronym} (${definition})${description ? `. Additional context: ${description}` : ''}.
+Choose an appropriate diagram type (flowchart, sequence, class, etc.) that best represents this concept.
+
+IMPORTANT SYNTAX RULES:
+1. Do not use commas in node labels or text - use spaces or underscores instead
+2. For notes, use "note over A and B" instead of "note over A,B"
+3. Keep the diagram simple and focused on the core concept
+4. Ensure all syntax is valid Mermaid.js code`;
 
       // Indicate loading state
       mermaidButton.classList.add("is-loading");
@@ -190,22 +197,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (data.mermaidCode) {
           // Clean up the mermaid code (remove markdown backticks if present)
-          const cleanMermaidCode = data.mermaidCode.replace(/^```mermaid\n?|\n?```$/g, '');
+          let cleanMermaidCode = data.mermaidCode.replace(/^```mermaid\n?|\n?```$/g, '');
+          
+          // Sanitize the mermaid code to handle common syntax errors
+          cleanMermaidCode = sanitizeMermaidCode(cleanMermaidCode);
 
           // Display the mermaid code
           aiResponseDiv.innerHTML = `<strong>Diagram:</strong><div class="mermaid">${cleanMermaidCode}</div>`;
           aiResponseDiv.style.display = "block";
 
-          // Initialize mermaid rendering
+          // Initialize mermaid rendering with error handling
           if (window.mermaid) {
-            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+            try {
+              window.mermaid.initialize({
+                startOnLoad: true,
+                securityLevel: 'loose',
+                flowchart: { useMaxWidth: true }
+              });
+              window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+            } catch (mermaidError) {
+              console.error("Mermaid rendering error:", mermaidError);
+              aiResponseDiv.innerHTML = `<strong>Diagram Error:</strong> Could not render diagram due to syntax error.<br>
+               <details>
+                 <summary>Show raw diagram code</summary>
+                 <pre>${cleanMermaidCode}</pre>
+               </details>`;
+            }
           } else {
             // If mermaid.js is not loaded yet, load it dynamically
             const script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
             script.onload = () => {
-              window.mermaid.initialize({ startOnLoad: true });
-              window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+              try {
+                window.mermaid.initialize({ 
+                  startOnLoad: true,
+                  securityLevel: 'loose',
+                  flowchart: { useMaxWidth: true }
+                });
+                window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+              } catch (mermaidError) {
+                console.error("Mermaid rendering error:", mermaidError);
+                aiResponseDiv.innerHTML = `<strong>Diagram Error:</strong> Could not render diagram due to syntax error.<br>
+                 <details>
+                   <summary>Show raw diagram code</summary>
+                   <pre>${cleanMermaidCode}</pre>
+                 </details>`;
+              }
             };
             document.head.appendChild(script);
           }
@@ -225,6 +262,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cardContent.appendChild(mermaidButton);
     return mermaidButton;
+  }
+
+  // Helper function to sanitize Mermaid code
+  function sanitizeMermaidCode(code) {
+    // Replace commas in text with spaces or other characters when they're not part of valid syntax
+    // This is a simplified approach - a more comprehensive solution would need to parse the diagram type
+
+    // For state diagrams, fix the "note over X,Y" syntax which often causes problems
+    code = code.replace(/note\s+over\s+([^:,]+),([^:]+):/g, 'note over $1 and $2:');
+
+    // For flowcharts, ensure node IDs don't contain commas
+    code = code.replace(/(\w+),(\w+)(\[.+?\])/g, '$1_$2$3');
+
+    // For sequence diagrams, fix participant names with commas
+    code = code.replace(/participant\s+"([^"]*),([^"]*)"/g, 'participant "$1_$2"');
+
+    return code;
   }
 
   function createGeminiButton(item, cardContent, aiResponseDiv, hasCodeButton) {
