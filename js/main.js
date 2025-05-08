@@ -5,6 +5,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const voiceButton = document.getElementById("voiceButton");
   let isListening = false;
 
+  // Function to calculate button positions based on which buttons exist
+  function calculateButtonPositions(hasCodeButton, hasMermaidButton) {
+    const positions = {
+      copy: 10, // Copy button is always at position 10px from right
+    };
+
+    if (hasCodeButton && hasMermaidButton) {
+      // All three buttons exist
+      positions.code = 52;      // 42px from copy
+      positions.mermaid = 94;   // 42px from code
+      positions.gemini = 136;   // 42px from mermaid
+    } else if (hasCodeButton) {
+      // Only code and gemini (no mermaid)
+      positions.code = 52;
+      positions.gemini = 94;
+    } else if (hasMermaidButton) {
+      // Only mermaid and gemini (no code)
+      positions.mermaid = 52;
+      positions.gemini = 94;
+    } else {
+      // Only gemini button
+      positions.gemini = 52;
+    }
+
+    return positions;
+  }
+
   // Utility functions to avoid code duplication
   function createCodeButton(item, cardContent, aiResponseDiv) {
     // Check if the item has a "script" tag
@@ -96,6 +123,108 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cardContent.appendChild(codeButton);
     return codeButton;
+  }
+
+  function createMermaidButton(item, cardContent, aiResponseDiv, rightPosition) {
+    const mermaidButton = document.createElement("button");
+    mermaidButton.className = "button is-small is-light";
+    mermaidButton.style.cssText = `
+      position: absolute;
+      top: 10px;
+      right: ${rightPosition}px;
+      border-radius: 4px;
+      padding: 5px;
+      z-index: 10;
+      height: 32px;
+      width: 32px;
+      transition: background-color 0.3s ease;
+    `;
+    mermaidButton.title = "Generate diagram";
+
+    const mermaidIcon = document.createElement("img");
+    mermaidIcon.src = "assets/static/icons/mermaid-icon.svg";
+    mermaidIcon.alt = "Mermaid Icon";
+    mermaidIcon.style.width = "16px";
+    mermaidIcon.style.height = "16px";
+    mermaidIcon.style.verticalAlign = "middle";
+
+    mermaidButton.appendChild(mermaidIcon);
+
+    // Add hover effects
+    mermaidButton.addEventListener("mouseenter", () => {
+      mermaidButton.classList.add("is-danger"); // Use a different color for mermaid button
+    });
+    mermaidButton.addEventListener("mouseleave", () => {
+      mermaidButton.classList.remove("is-danger");
+    });
+
+    mermaidButton.addEventListener("click", async () => {
+      const acronym = item.acronym;
+      const definition = item.definition;
+      const description = item.description || "";
+
+      // Construct a prompt for the diagram
+      const diagramPrompt = `Create a Mermaid diagram that illustrates the concept of ${acronym} (${definition})${description ? `. Additional context: ${description}` : ''}. Choose an appropriate diagram type (flowchart, sequence, class, etc.) that best represents this concept.`;
+
+      // Indicate loading state
+      mermaidButton.classList.add("is-loading");
+      mermaidButton.disabled = true;
+      aiResponseDiv.textContent = "Generating diagram...";
+      aiResponseDiv.style.display = "block";
+
+      try {
+        const response = await fetch("/api/show-me-diagram", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ diagramPrompt }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' }));
+          throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.mermaidCode) {
+          // Clean up the mermaid code (remove markdown backticks if present)
+          const cleanMermaidCode = data.mermaidCode.replace(/^```mermaid\n?|\n?```$/g, '');
+
+          // Display the mermaid code
+          aiResponseDiv.innerHTML = `<strong>Diagram:</strong><div class="mermaid">${cleanMermaidCode}</div>`;
+          aiResponseDiv.style.display = "block";
+
+          // Initialize mermaid rendering
+          if (window.mermaid) {
+            window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+          } else {
+            // If mermaid.js is not loaded yet, load it dynamically
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+            script.onload = () => {
+              window.mermaid.initialize({ startOnLoad: true });
+              window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+            };
+            document.head.appendChild(script);
+          }
+        } else {
+          throw new Error("No diagram code received.");
+        }
+
+      } catch (error) {
+        console.error("Error generating diagram:", error);
+        aiResponseDiv.textContent = `Error: ${error.message}`;
+        aiResponseDiv.style.display = "block";
+      } finally {
+        mermaidButton.classList.remove("is-loading");
+        mermaidButton.disabled = false;
+      }
+    });
+
+    cardContent.appendChild(mermaidButton);
+    return mermaidButton;
   }
 
   function createGeminiButton(item, cardContent, aiResponseDiv, hasCodeButton) {
@@ -499,8 +628,102 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create code button if applicable
       const hasCodeButton = createCodeButton(item, cardContent, aiResponseDiv) !== null;
 
-      // Create Gemini button
-      createGeminiButton(item, cardContent, aiResponseDiv, hasCodeButton);
+      // Determine if we should show mermaid button (can be based on keywords or always show)
+      const hasMermaidButton = true; // Always show for now, could be conditional
+
+      // Calculate positions for all buttons
+      const positions = calculateButtonPositions(hasCodeButton, hasMermaidButton);
+
+      // Create Gemini button with updated position
+      const geminiButton = document.createElement("button");
+      geminiButton.className = "button is-small is-light";
+      geminiButton.style.cssText = `
+        position: absolute;
+        top: 10px;
+        right: ${positions.gemini}px;
+        border-radius: 4px;
+        padding: 5px;
+        z-index: 10;
+        height: 32px;
+        width: 32px;
+        transition: background-color 0.3s ease;
+      `;
+      geminiButton.title = "Tell me more (AI)";
+
+      const geminiIcon = document.createElement("img");
+      geminiIcon.src = "assets/static/icons/google-gemini-icon.svg";
+      geminiIcon.alt = "Gemini Icon";
+      geminiIcon.style.width = "16px";
+      geminiIcon.style.height = "16px";
+      geminiIcon.style.verticalAlign = "middle";
+
+      geminiButton.appendChild(geminiIcon);
+
+      // Add hover effects similar to copy button
+      geminiButton.addEventListener("mouseenter", () => {
+        geminiButton.classList.add("is-info");
+      });
+      geminiButton.addEventListener("mouseleave", () => {
+        geminiButton.classList.remove("is-info");
+      });
+
+      geminiButton.addEventListener("click", async () => {
+        const acronym = item.acronym;
+        const definition = item.definition;
+        const description = item.description || "";
+
+        // Indicate loading state
+        geminiButton.classList.add("is-loading");
+        geminiButton.disabled = true;
+        aiResponseDiv.textContent = "Fetching details...";
+        aiResponseDiv.style.display = "block";
+
+        try {
+          const response = await fetch("/api/tell-me-more", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ acronym, definition, description }),
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' }));
+            throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (data.text) {
+            aiResponseDiv.innerHTML = `<strong>AI Explanation:</strong> ${data.text}`;
+            aiResponseDiv.style.display = "block";
+          } else {
+            throw new Error("No text received from AI.");
+          }
+        } catch (error) {
+          console.error("Error fetching AI details:", error);
+          aiResponseDiv.textContent = `Error: ${error.message}`;
+          aiResponseDiv.style.display = "block";
+        } finally {
+          geminiButton.classList.remove("is-loading");
+          geminiButton.disabled = false;
+        }
+      });
+
+      cardContent.appendChild(geminiButton);
+
+      // Create Mermaid button if applicable
+      if (hasMermaidButton) {
+        createMermaidButton(item, cardContent, aiResponseDiv, positions.mermaid);
+      }
+
+      // Update code button position if it exists
+      if (hasCodeButton) {
+        const codeButton = cardContent.querySelector('[title="Get Python code example"]');
+        if (codeButton) {
+          codeButton.style.right = `${positions.code}px`;
+        }
+      }
       // --- End AI Integration ---
 
       cardColumn.appendChild(card);
@@ -946,8 +1169,102 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create code button if applicable
       const hasCodeButton = createCodeButton(item, cardContent, aiResponseDiv) !== null;
 
-      // Create Gemini button
-      createGeminiButton(item, cardContent, aiResponseDiv, hasCodeButton);
+      // Determine if we should show mermaid button (can be based on keywords or always show)
+      const hasMermaidButton = true; // Always show for now, could be conditional
+
+      // Calculate positions for all buttons
+      const positions = calculateButtonPositions(hasCodeButton, hasMermaidButton);
+
+      // Create Gemini button with updated position
+      const geminiButton = document.createElement("button");
+      geminiButton.className = "button is-small is-light";
+      geminiButton.style.cssText = `
+        position: absolute;
+        top: 10px;
+        right: ${positions.gemini}px;
+        border-radius: 4px;
+        padding: 5px;
+        z-index: 10;
+        height: 32px;
+        width: 32px;
+        transition: background-color 0.3s ease;
+      `;
+      geminiButton.title = "Tell me more (AI)";
+
+      const geminiIcon = document.createElement("img");
+      geminiIcon.src = "assets/static/icons/google-gemini-icon.svg";
+      geminiIcon.alt = "Gemini Icon";
+      geminiIcon.style.width = "16px";
+      geminiIcon.style.height = "16px";
+      geminiIcon.style.verticalAlign = "middle";
+
+      geminiButton.appendChild(geminiIcon);
+
+      // Add hover effects similar to copy button
+      geminiButton.addEventListener("mouseenter", () => {
+        geminiButton.classList.add("is-info");
+      });
+      geminiButton.addEventListener("mouseleave", () => {
+        geminiButton.classList.remove("is-info");
+      });
+
+      geminiButton.addEventListener("click", async () => {
+        const acronym = item.acronym;
+        const definition = item.definition;
+        const description = item.description || "";
+
+        // Indicate loading state
+        geminiButton.classList.add("is-loading");
+        geminiButton.disabled = true;
+        aiResponseDiv.textContent = "Fetching details...";
+        aiResponseDiv.style.display = "block";
+
+        try {
+          const response = await fetch("/api/tell-me-more", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ acronym, definition, description }),
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' }));
+            throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          if (data.text) {
+            aiResponseDiv.innerHTML = `<strong>AI Explanation:</strong> ${data.text}`;
+            aiResponseDiv.style.display = "block";
+          } else {
+            throw new Error("No text received from AI.");
+          }
+        } catch (error) {
+          console.error("Error fetching AI details:", error);
+          aiResponseDiv.textContent = `Error: ${error.message}`;
+          aiResponseDiv.style.display = "block";
+        } finally {
+          geminiButton.classList.remove("is-loading");
+          geminiButton.disabled = false;
+        }
+      });
+
+      cardContent.appendChild(geminiButton);
+
+      // Create Mermaid button if applicable
+      if (hasMermaidButton) {
+        createMermaidButton(item, cardContent, aiResponseDiv, positions.mermaid);
+      }
+
+      // Update code button position if it exists
+      if (hasCodeButton) {
+        const codeButton = cardContent.querySelector('[title="Get Python code example"]');
+        if (codeButton) {
+          codeButton.style.right = `${positions.code}px`;
+        }
+      }
       // --- End AI Integration ---
 
       card.appendChild(cardContent); // Add the populated content to the card element
