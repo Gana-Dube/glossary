@@ -18,6 +18,6 @@
   "homepage": "https://github.com/Gana-Dube/glossary#readme",
   "description": "",
   "dependencies": {
-    "@google/generative-ai": "^0.24.0"
+    "@google/generative-ai": "^0.24.1"
   }
 }
