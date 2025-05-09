@@ -173,7 +173,32 @@ IMPORTANT SYNTAX RULES:
 1. Do not use commas in node labels or text - use spaces or underscores instead
 2. For notes, use "note over A and B" instead of "note over A,B"
 3. Keep the diagram simple and focused on the core concept
-4. Ensure all syntax is valid Mermaid.js code`;
+4. Ensure all syntax is valid Mermaid.js code
+
+SEQUENCE DIAGRAM RULES:
+- Start with "sequenceDiagram" on its own line
+- Define participants like: "participant User as \"User/Developer\""
+- Each message must be on its own line: "User->>Service: Request data"
+- Notes must use format: "note over User Service: This is a note"
+- Activation syntax: "activate Service" and "deactivate Service" on separate lines
+- DO NOT use square brackets [] around any part of the sequence diagram
+- DO NOT mix flowchart and sequence diagram syntax
+
+FLOWCHART RULES:
+- Start with "flowchart TD" or "flowchart LR" on its own line
+- DO NOT use square brackets around the direction indicator (write "flowchart LR" not "flowchart [LR]")
+- Define nodes like: "A[\"Text here\"]" or "B(\"Text here\")"
+- Connections must use proper arrows: "A --> B"
+- Each connection should be on its own line
+- DO NOT use semicolons at the end of lines
+- Use proper subgraph syntax if needed
+- Note syntax should be: "note over A,B: Text here" or "note right of C: Text here"
+- DO NOT use quotes or square brackets in note syntax
+
+CLASS DIAGRAM RULES:
+- Start with "classDiagram" on its own line
+- Define classes like: "class User { +name: string }"
+- Relationships must use proper syntax: "User <|-- Admin"`;
 
       // Indicate loading state
       mermaidButton.classList.add("is-loading");
