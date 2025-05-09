@@ -42,122 +42,221 @@
     "id": "3gpp-cr-1",
     "acronym": "3GPP CR",
     "definition": "3GPP Change Request",
-    "description": "A 3GPP Change Request (CR) is a formal document submitted to propose modifications or enhancements to existing 3GPP technical specifications [[3GPP TS 21.101]](https://www.3gpp.org/specifications).",
+    "description": "A 3GPP Change Request (CR) is a formal document submitted to propose modifications or enhancements to existing 3GPP technical specifications. CRs follow a structured review and approval process to maintain consistency and quality in telecommunications standards.",
     "keywords": [
       "Technical Specification",
       "Change Management",
       "Mobile Standards",
-      "Documentation"
+      "Documentation",
+      "Standards Development",
+      "Telecommunications"
     ],
-    "related": []
+    "related": [
+      "3gpp-1",
+      "3gpp-ts-1"
+    ]
   },
   {
     "id": "3gpp-ts-1",
     "acronym": "3GPP TS",
     "definition": "3GPP Technical Specification",
-    "description": "3GPP Technical Specifications (TS) define the standardized technical requirements and procedures for mobile communication systems, including radio interfaces, core networks, and service capabilities [[3GPP.org]](https://www.3gpp.org/specifications).",
+    "description": "3GPP Technical Specifications (TS) define the standardized technical requirements and procedures for mobile communication systems. These specifications cover radio interfaces, core networks, service capabilities, and security aspects, serving as the foundation for global mobile telecommunications standards.",
     "keywords": [
       "Technical Standards",
       "Mobile Networks",
       "Specifications",
-      "Documentation"
+      "Documentation",
+      "Telecommunications",
+      "Standardization"
     ],
-    "related": []
+    "related": [
+      "3gpp-1",
+      "3gpp-cr-1"
+    ]
   },
   {
     "id": "4g-1",
     "acronym": "4G",
     "definition": "4th Generation",
-    "description": "4G refers to the fourth generation of wireless communication technology, providing high-speed internet access and supporting advanced mobile broadband services such as streaming and VoIP [[ITUT]](https://www.itu.int/rec/T-REC-I.211-199308-I).",
+    "description": "4G refers to the fourth generation of wireless communication technology, providing high-speed internet access and supporting advanced mobile broadband services. It enables speeds up to 100Mbps for mobile users and introduced key technologies like LTE and WiMAX, revolutionizing mobile data consumption through high-quality streaming, video calls, and mobile gaming.",
     "keywords": [
       "Mobile Broadband",
       "High-Speed Data",
       "VoIP",
-      "Streaming"
+      "Streaming",
+      "LTE",
+      "Mobile Networks",
+      "Telecommunications"
     ],
-    "related": []
+    "related": [
+      "lte-1",
+      "3g-1",
+      "5g-1"
+    ]
   },
   {
     "id": "5g-1",
     "acronym": "5G",
     "definition": "5th Generation",
-    "description": "5G is the fifth generation of mobile network technology, designed to deliver significantly faster data rates, lower latency, and greater connectivity density compared to previous generations [[GSMA]](https://www.gsma.com/5g/what-is-5g/).",
+    "description": "5G is the fifth generation of mobile network technology, introducing revolutionary capabilities including ultra-low latency (<1ms), massive device connectivity (up to 1 million devices per square km), and peak data rates up to 20 Gbps. It enables new use cases across industries through network slicing, edge computing, and advanced radio technologies.",
     "keywords": [
       "Ultra-Low Latency",
       "High-Speed Connectivity",
       "IoT",
-      "Mobile Networks"
+      "Mobile Networks",
+      "Network Slicing",
+      "Edge Computing",
+      "mmWave",
+      "Massive MIMO"
     ],
-    "related": []
+    "related": [
+      "4g-1",
+      "nr-1",
+      "embb-1",
+      "urllc-1"
+    ]
   },
   {
     "id": "5gc-1",
     "acronym": "5GC",
     "definition": "5G Core",
-    "description": "The 5G Core (5GC) is the central network architecture component of 5G systems, responsible for managing user authentication, session management, mobility, and traffic routing in cloud-native and virtualized environments [[3GPP TS 23.501]](https://www.3gpp.org/specifications/204-specification-groups-work-items/specifications-and-ts/1983-ts-23-501).",
+    "description": "The 5G Core (5GC) is a cloud-native network architecture implementing service-based principles and network function virtualization. It introduces key features like network slicing, edge computing support, and enhanced security through a modular, microservices-based design. The architecture separates control and user planes while supporting both 5G and legacy access networks.",
     "keywords": [
       "Network Architecture",
       "Cloud-Native",
       "Mobility Management",
-      "5G Systems"
+      "5G Systems",
+      "Network Slicing",
+      "Service-Based Architecture",
+      "Network Functions",
+      "Microservices"
     ],
-    "related": []
+    "related": [
+      "5g-1",
+      "nf-1",
+      "upf-1",
+      "amf-1",
+      "smf-1"
+    ]
   },
   {
     "id": "a-sbc-1",
     "acronym": "A-SBC",
     "definition": "Access-Session Border Controller",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A network element that provides security, interoperability, and session control at the border between different IP networks, specifically focused on the access side of the network.",
+    "keywords": [
+      "Network Security",
+      "Session Control",
+      "VoIP",
+      "SIP",
+      "Script"
+    ],
+    "related": [
+      "sbc-1",
+      "sip-1"
+    ]
   },
   {
     "id": "aa-1",
     "acronym": "AA",
     "definition": "Application Assurance",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A suite of features and capabilities that monitor, manage and control application delivery and performance to ensure optimal end-user experience. It includes traffic classification, policy enforcement, and QoS management.",
+    "keywords": [
+      "Application Performance",
+      "Quality of Service",
+      "Traffic Management",
+      "Network Monitoring",
+      "Policy Enforcement"
+    ],
+    "related": [
+      "qos-1",
+      "qoe-1"
+    ]
   },
   {
     "id": "aaa-1",
     "acronym": "AAA",
     "definition": "Authentication, Authorization, and Accounting",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A framework for intelligently controlling access to network resources, enforcing policies, auditing usage, and providing information necessary for billing and analysis. The three security processes work together to ensure secure network management and resource tracking.",
+    "keywords": [
+      "Network Security",
+      "Access Control",
+      "User Management",
+      "Security Framework",
+      "Network Management"
+    ],
+    "related": [
+      "radius-1",
+      "iam-1"
+    ]
   },
   {
     "id": "acd-1",
     "acronym": "ACD",
     "definition": "Automatic Call Distributor",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A telecommunications system that automatically routes incoming calls to specific agents or departments based on predefined rules, caller requirements, and agent availability. It's crucial for call centers to manage high call volumes efficiently.",
+    "keywords": [
+      "Call Center",
+      "Telecommunications",
+      "Call Routing",
+      "Customer Service",
+      "Voice Communications"
+    ],
+    "related": [
+      "ivr-1",
+      "cti-1"
+    ]
   },
   {
     "id": "acid-1",
     "acronym": "ACID",
     "definition": "Atomicity, Consistency, Isolation, and Durability",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A set of properties that guarantee database transactions are processed reliably. Atomicity ensures transactions are all-or-nothing, Consistency ensures data validity, Isolation ensures concurrent transactions don't interfere, and Durability ensures committed transactions remain saved.",
+    "keywords": [
+      "Database",
+      "Transaction Processing",
+      "Data Integrity",
+      "Database Design",
+      "Reliability"
+    ],
+    "related": [
+      "db-1",
+      "rdbms-1"
+    ]
   },
   {
     "id": "acl-1",
     "acronym": "ACL",
     "definition": "Access Control List",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A list of permissions attached to an object in a computer system. ACLs specify which users or system processes are granted access to objects, as well as what operations are allowed on given objects.",
+    "keywords": [
+      "Security",
+      "Access Control",
+      "Permissions",
+      "Network Security",
+      "System Administration"
+    ],
+    "related": [
+      "rbac-1",
+      "iam-1"
+    ]
   },
   {
     "id": "acm-1",
     "acronym": "ACM",
     "definition": "Adaptive Code Modulation",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A technique used in wireless communications that automatically adjusts the modulation scheme based on channel conditions to optimize data throughput while maintaining reliable transmission.",
+    "keywords": [
+      "Wireless Communications",
+      "Signal Processing",
+      "Network Optimization",
+      "Radio Technology",
+      "Data Transmission"
+    ],
+    "related": [
+      "qam-1",
+      "ofdm-1"
+    ]
   },
   {
     "id": "acr-1",
@@ -216,12 +315,47 @@
     "related": []
   },
   {
-    "id": "ai-1",
+    "id": "aigc-1",
+    "acronym": "AIGC",
+    "definition": "AI-Generated Content",
+    "description": "Content (text, images, audio, video) that is created by artificial intelligence models rather than humans. This includes content from large language models, text-to-image models, and other generative AI systems.",
+    "keywords": [
+      "AI",
+      "GenAI",
+      "Content Generation",
+      "Digital Media",
+      "Creative AI"
+    ],
+    "related": [
+      "llm-1",
+      "gpt-1",
+      "diffusion-model-1"
+    ]
+  },
+  {
+    "id": "ai-1", 
     "acronym": "AI",
     "definition": "Artificial Intelligence",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "The simulation of human intelligence by machines, particularly computer systems. AI encompasses various subfields including machine learning, natural language processing, computer vision, and robotics. Modern AI systems leverage deep learning and neural networks to perform complex tasks such as pattern recognition, decision making, language understanding, image processing, and autonomous control. Recent advances include large language models, generative AI, and reinforcement learning systems.",
+    "keywords": [
+      "Machine Learning",
+      "Deep Learning",
+      "Neural Networks",
+      "Natural Language Processing",
+      "Computer Vision",
+      "Generative AI",
+      "Reinforcement Learning",
+      "Pattern Recognition",
+      "Decision Making"
+    ],
+    "related": [
+      "ml-1",
+      "nlp-2",
+      "llm-1",
+      "bert-1",
+      "gpt-1",
+      "rl-1"
+    ]
   },
   {
     "id": "amap-1",
@@ -283,10 +417,13 @@
     "id": "api-1",
     "acronym": "API",
     "definition": "Application Programming Interface",
-    "description": "A set of rules and protocols that allows different software applications to communicate with each other",
+    "description": "A set of standardized protocols and tools that enables different software applications to communicate with each other. APIs define the methods and data formats that applications can use to request and exchange information, forming the foundation of modern software integration and web services.",
     "keywords": [
       "script",
-      "programming"
+      "programming",
+      "software-development",
+      "integration",
+      "web-services"
     ],
     "related": []
   },
@@ -879,20 +1016,37 @@
     "related": []
   },
   {
-    "id": "co-1-1",
-    "acronym": "CO 1",
+    "id": "co-1",
+    "acronym": "CO",
     "definition": "Central Office",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A telecommunications facility housing switching equipment and network infrastructure that connects subscribers to the broader network. Central offices serve as critical nodes in telecommunications networks, hosting equipment for voice, data, and internet services.",
+    "keywords": [
+      "Telecommunications",
+      "Infrastructure",
+      "Network Node",
+      "Switching Equipment",
+      "Facility"
+    ],
+    "related": [
+      "pop-1",
+      "msc-s-1"
+    ]
   },
   {
-    "id": "co-2-1",
-    "acronym": "CO 2",
+    "id": "co-2",
+    "acronym": "CO",
     "definition": "Controller",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A network element responsible for managing and coordinating network resources, traffic flow, and operational parameters in telecommunications systems. Controllers can operate at various network layers and may handle functions like resource allocation, traffic management, and policy enforcement.",
+    "keywords": [
+      "Network Management",
+      "Control Plane",
+      "Resource Management",
+      "Network Operations"
+    ],
+    "related": [
+      "sdn-1",
+      "ric-1"
+    ]
   },
   {
     "id": "cob-1",
@@ -1212,6 +1366,22 @@
     "related": []
   },
   {
+    "id": "cot-1",
+    "acronym": "CoT",
+    "definition": "Chain of Thought",
+    "description": "A prompting technique for language models where the model is encouraged to break down complex problems into intermediate steps, showing its reasoning process before arriving at the final answer.",
+    "keywords": [
+      "AI",
+      "LLM",
+      "Prompt Engineering",
+      "Reasoning"
+    ],
+    "related": [
+      "llm-1",
+      "prompt-engineering-1"
+    ]
+  },
+  {
     "id": "capex-1",
     "acronym": "CapEx",
     "definition": "capital expenditures",
@@ -1367,6 +1537,29 @@
       "Uplink/Downlink"
     ],
     "related": []
+  },
+  {
+    "id": "dpo-1",
+    "acronym": "DPO",
+    "definition": "Direct Preference Optimization",
+    "description": "A method for fine-tuning language models to align with human preferences, directly optimizing a policy that best satisfies the preferences without needing an explicit reward model. DPO uses a simple classification loss on preference data (pairs of preferred and dispreferred responses) and has been shown to be as effective or more effective than methods like RLHF, while being simpler to implement and train.",
+    "keywords": [
+      "AI",
+      "Machine Learning",
+      "LLM",
+      "Fine-tuning",
+      "Alignment",
+      "Preference Learning",
+      "Optimization"
+    ],
+    "related": [
+      "ai-1",
+      "ml-1",
+      "llm-1",
+      "rlhf-1",
+      "sft-1",
+      "fine-tuning-1"
+    ]
   },
   {
     "id": "dmg-1",
@@ -2516,6 +2709,21 @@
     "related": []
   },
   {
+    "id": "icl-1",
+    "acronym": "ICL",
+    "definition": "In-Context Learning",
+    "description": "A capability of large language models to learn new tasks from examples provided in the prompt without updating model weights. The model uses examples in the input context to understand and perform new tasks.",
+    "keywords": [
+      "AI",
+      "LLM",
+      "Machine Learning",
+      "Prompt Engineering"
+    ],
+    "related": [
+      "llm-1"
+    ]
+  },
+  {
     "id": "ide-1",
     "acronym": "IDE",
     "definition": "Integrated Device Electronics",
@@ -2859,13 +3067,36 @@
     "id": "json-1",
     "acronym": "JSON",
     "definition": "JavaScript Object Notation",
-    "description": "A lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate",
+    "description": "A lightweight, text-based data interchange format that is both human-readable and machine-parseable. JSON has become the de facto standard for web APIs and configuration files, using a simple syntax of key-value pairs and arrays to represent complex data structures.",
     "keywords": [
       "script",
       "data-format",
-      "web-development"
+      "web-development",
+      "data-interchange",
+      "configuration"
     ],
     "related": []
+  },
+  {
+    "id": "kv-cache-1",
+    "acronym": "KV Cache",
+    "definition": "Key-Value Cache",
+    "description": "In the context of Transformer-based language models, a KV Cache is an optimization technique used during autoregressive decoding (text generation). It stores the computed key and value vectors from previous attention layers for previously generated tokens, so they don't need to be recomputed for subsequent tokens, speeding up inference.",
+    "keywords": [
+      "AI",
+      "LLM",
+      "Transformer",
+      "Inference",
+      "Optimization",
+      "NLP",
+      "Deep Learning"
+    ],
+    "related": [
+      "ai-1",
+      "llm-1",
+      "transformer-1",
+      "nlp-2"
+    ]
   },
   {
     "id": "k8s-1",
@@ -3133,6 +3364,31 @@
     "related": []
   },
   {
+    "id": "lora-1",
+    "acronym": "LoRA",
+    "definition": "Low-Rank Adaptation",
+    "description": "A parameter-efficient fine-tuning (PEFT) technique that freezes pre-trained model weights and injects trainable rank decomposition matrices into each layer of the Transformer architecture. This significantly reduces the number of trainable parameters when adapting large models to specific tasks, making fine-tuning more efficient.",
+    "keywords": [
+      "AI",
+      "Machine Learning",
+      "LLM",
+      "Fine-tuning",
+      "PEFT",
+      "Efficiency",
+      "Model Adaptation",
+      "Deep Learning",
+      "Transformer"
+    ],
+    "related": [
+      "ai-1",
+      "ml-1",
+      "llm-1",
+      "fine-tuning-1",
+      "peft-1",
+      "transformer-1"
+    ]
+  },
+  {
     "id": "lrf-1",
     "acronym": "LRF",
     "definition": "Location Retrieval Function",
@@ -3149,20 +3405,38 @@
     "related": []
   },
   {
-    "id": "lsp-1-1",
-    "acronym": "LSP 1",
-    "definition": "label switched path",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "id": "lsp-1",
+    "acronym": "LSP",
+    "definition": "Label Switched Path",
+    "description": "A specific path through an MPLS network followed by a packet based on its label. LSPs provide a mechanism for traffic engineering and establishing predetermined paths for data flow, enabling QoS guarantees and efficient routing.",
+    "keywords": [
+      "MPLS",
+      "Network Routing",
+      "Traffic Engineering",
+      "Path Selection",
+      "Label Switching"
+    ],
+    "related": [
+      "mpls-1",
+      "rsvp-te-1",
+      "ldp-1"
+    ]
   },
   {
-    "id": "lsp-2-1",
-    "acronym": "LSP 2",
+    "id": "lsp-2",
+    "acronym": "LSP",
     "definition": "Link State Protocol",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "description": "A routing protocol where routers exchange information about their direct network connections to build a complete map of network topology. This enables efficient route calculation and rapid convergence after network changes.",
+    "keywords": [
+      "Network Routing",
+      "Topology Discovery",
+      "Route Calculation",
+      "Network Protocol"
+    ],
+    "related": [
+      "ospf-1",
+      "is-is-1"
+    ]
   },
   {
     "id": "lsr-1",
@@ -3243,6 +3517,26 @@
     "description": "",
     "keywords": [],
     "related": []
+  },
+  {
+    "id": "maa-1",
+    "acronym": "MAA",
+    "definition": "Model-Assisted Annotation",
+    "description": "A process where a machine learning model pre-annotates data, and human annotators then review, correct, and validate these annotations. This approach aims to speed up the data labeling process and improve annotation consistency, especially for large datasets. It's a form of human-in-the-loop machine learning.",
+    "keywords": [
+      "AI",
+      "Machine Learning",
+      "Data Labeling",
+      "Annotation",
+      "Human-in-the-loop",
+      "Supervised Learning",
+      "Data Preparation"
+    ],
+    "related": [
+      "ai-1",
+      "ml-1",
+      "sft-1"
+    ]
   },
   {
     "id": "mac-1",
@@ -3397,6 +3691,26 @@
     "related": []
   },
   {
+    "id": "mlops-1",
+    "acronym": "MLOps",
+    "definition": "Machine Learning Operations",
+    "description": "A set of practices that aims to deploy and maintain machine learning models in production reliably and efficiently. It combines ML, DevOps, and Data Engineering to automate and streamline the ML lifecycle, including data gathering, model training, deployment, monitoring, and governance.",
+    "keywords": [
+      "AI",
+      "Machine Learning",
+      "DevOps",
+      "Data Engineering",
+      "Automation",
+      "Model Deployment",
+      "Model Lifecycle Management"
+    ],
+    "related": [
+      "ai-1",
+      "ml-1",
+      "devops-1"
+    ]
+  },
+  {
     "id": "mld-1",
     "acronym": "MLD",
     "definition": "Multicast Listener Discovery",
@@ -3419,6 +3733,25 @@
     "description": "A key control node in the LTE Evolved Packet Core (EPC) responsible for idle mode UE tracking, paging procedures, and bearer activation/deactivation processes.",
     "keywords": [],
     "related": []
+  },
+  {
+    "id": "moe-1",
+    "acronym": "MOE",
+    "definition": "Mixture of Experts",
+    "description": "A machine learning technique, often used in large neural networks, where multiple specialized \"expert\" sub-models are combined. A gating network determines which expert(s) process a given input, allowing models to scale capacity efficiently without proportionally increasing computational cost for every input.",
+    "keywords": [
+      "AI",
+      "Machine Learning",
+      "Neural Networks",
+      "LLM",
+      "Model Architecture",
+      "Efficiency"
+    ],
+    "related": [
+      "llm-1",
+      "ai-1",
+      "ml-1"
+    ]
   },
   {
     "id": "mnp-1",
@@ -3725,6 +4058,25 @@
     "related": []
   },
   {
+    "id": "ner-1",
+    "acronym": "NER",
+    "definition": "Named Entity Recognition",
+    "description": "A subtask of information extraction that seeks to locate and classify named entities in unstructured text into pre-defined categories such as person names, organizations, locations, medical codes, time expressions, quantities, monetary values, percentages, etc. NER systems are crucial for many NLP applications like question answering, machine translation, and information retrieval.",
+    "keywords": [
+      "AI",
+      "NLP",
+      "Information Extraction",
+      "Text Analysis",
+      "Machine Learning",
+      "Data Mining"
+    ],
+    "related": [
+      "ai-1",
+      "nlp-2",
+      "ml-1"
+    ]
+  },
+  {
     "id": "nerg-1",
     "acronym": "NERG",
     "definition": "Network Enhanced Residential Gateway",
@@ -3868,10 +4220,13 @@
     "id": "nlp-2",
     "acronym": "NLP",
     "definition": "Natural Language Processing",
-    "description": "A field of AI focused on enabling computers to understand, interpret, and generate human language.",
+    "description": "A branch of artificial intelligence focused on enabling computers to understand, interpret, and generate human language in useful ways. NLP combines computational linguistics, machine learning, and deep learning to process and analyze large amounts of natural language data.",
     "keywords": [
       "AI",
-      "Language"
+      "Language",
+      "Machine Learning",
+      "Text Processing",
+      "Computational Linguistics"
     ],
     "related": []
   },
@@ -4400,6 +4755,26 @@
     "related": []
   },
   {
+    "id": "palm-1",
+    "acronym": "PaLM",
+    "definition": "Pathways Language Model",
+    "description": "A dense decoder-only Transformer model developed by Google, trained on the Pathways system. It is known for its large scale (e.g., 540 billion parameters) and strong performance on a wide range of language tasks, including reasoning and code generation.",
+    "keywords": [
+      "AI",
+      "LLM",
+      "Transformer",
+      "Google",
+      "NLP",
+      "Deep Learning"
+    ],
+    "related": [
+      "ai-1",
+      "llm-1",
+      "transformer-1",
+      "nlp-2"
+    ]
+  },
+  {
     "id": "pan-1",
     "acronym": "PAN",
     "definition": "Personal Area Network",
@@ -4528,6 +4903,28 @@
     "related": []
   },
   {
+    "id": "peft-1",
+    "acronym": "PEFT",
+    "definition": "Parameter Efficient Fine Tuning",
+    "description": "A set of techniques used to adapt large pre-trained models (like LLMs) to new tasks by fine-tuning only a small subset of their parameters, or by adding a small number of new parameters. This reduces computational and storage costs compared to full fine-tuning. Examples include LoRA, prompt tuning, and adapter layers.",
+    "keywords": [
+      "AI",
+      "Machine Learning",
+      "LLM",
+      "Fine-tuning",
+      "Efficiency",
+      "Model Adaptation",
+      "Deep Learning"
+    ],
+    "related": [
+      "ai-1",
+      "ml-1",
+      "llm-1",
+      "fine-tuning-1",
+      "lora-1"
+    ]
+  },
+  {
     "id": "pe-1",
     "acronym": "PE",
     "definition": "Provider Edge",
@@ -4614,6 +5011,26 @@
     "description": "",
     "keywords": [],
     "related": []
+  },
+  {
+    "id": "prb-1",
+    "acronym": "PRB",
+    "definition": "Physical Resource Block",
+    "description": "The smallest unit of radio resources that can be allocated to a user in LTE and 5G NR systems. A PRB consists of 12 consecutive subcarriers in the frequency domain and a slot in the time domain. PRBs are fundamental to resource scheduling and determining system capacity in cellular networks.",
+    "keywords": [
+      "Radio Resources",
+      "Resource Allocation",
+      "LTE",
+      "5G NR",
+      "Cellular Networks",
+      "Bandwidth Management",
+      "Resource Scheduling"
+    ],
+    "related": [
+      "rb-1",
+      "ofdm-1",
+      "nr-1"
+    ]
   },
   {
     "id": "pon-1",
@@ -4783,10 +5200,13 @@
     "id": "python-1",
     "acronym": "Python",
     "definition": "Python Programming Language",
-    "description": "A high-level, interpreted programming language known for its readability and versatility in web development, data analysis, AI, and more",
+    "description": "A high-level, interpreted programming language emphasizing code readability and simplicity. Python's extensive standard library and rich ecosystem of third-party packages make it popular for web development, scientific computing, data analysis, artificial intelligence, and automation tasks.",
     "keywords": [
       "script",
-      "programming-language"
+      "programming-language",
+      "automation",
+      "data-science",
+      "web-development"
     ],
     "related": []
   },
@@ -4845,6 +5265,30 @@
     "description": "",
     "keywords": [],
     "related": []
+  },
+  {
+    "id": "qlora-1",
+    "acronym": "QLoRA",
+    "definition": "Quantized Low-Rank Adaptation",
+    "description": "An efficient fine-tuning technique for large language models that combines LoRA with quantization. QLoRA reduces memory usage significantly by quantizing the pre-trained model to 4-bit precision and then fine-tuning a small number of adapter parameters (LoRA) on top of the quantized model. This allows fine-tuning very large models on limited hardware.",
+    "keywords": [
+      "AI",
+      "LLM",
+      "Fine-tuning",
+      "PEFT",
+      "Quantization",
+      "LoRA",
+      "Efficiency",
+      "Model Adaptation",
+      "Deep Learning"
+    ],
+    "related": [
+      "ai-1",
+      "llm-1",
+      "fine-tuning-1",
+      "peft-1",
+      "lora-1"
+    ]
   },
   {
     "id": "ra-1",
@@ -5049,6 +5493,48 @@
     "description": "",
     "keywords": [],
     "related": []
+  },
+  {
+    "id": "rom-1",
+    "acronym": "ROM",
+    "definition": "Retrieval-Oriented Model",
+    "description": "An AI model, particularly in the context of language processing, that is designed or fine-tuned to excel at retrieving relevant information from a large corpus of documents or a knowledge base in response to a query. These models are often a core component of Retrieval-Augmented Generation (RAG) systems.",
+    "keywords": [
+      "AI",
+      "NLP",
+      "Information Retrieval",
+      "Search",
+      "RAG",
+      "LLM"
+    ],
+    "related": [
+      "ai-1",
+      "nlp-2",
+      "rag-1",
+      "llm-1"
+    ]
+  },
+  {
+    "id": "rlhf-1",
+    "acronym": "RLHF",
+    "definition": "Reinforcement Learning with Human Feedback",
+    "description": "A machine learning technique that combines reinforcement learning with human feedback to align AI models, particularly large language models, with human preferences and desired behaviors. Human evaluators rank or rate model outputs, and this feedback is used to train a reward model, which then guides the fine-tuning of the LLM.",
+    "keywords": [
+      "AI",
+      "Machine Learning",
+      "LLM",
+      "Reinforcement Learning",
+      "Human Feedback",
+      "Alignment",
+      "Fine-tuning"
+    ],
+    "related": [
+      "ai-1",
+      "ml-1",
+      "llm-1",
+      "rl-1",
+      "fine-tuning-1"
+    ]
   },
   {
     "id": "rip-1",
@@ -5441,6 +5927,30 @@
     "description": "SDN decouples the control plane from the data plane in networking equipment, enabling centralized control, programmability, and dynamic management of network resources, thus fostering innovation and flexibility.",
     "keywords": [],
     "related": []
+  },
+  {
+    "id": "sft-1",
+    "acronym": "SFT",
+    "definition": "Supervised Fine-Tuning",
+    "description": "A process of adapting a pre-trained model (often a large language model) to a specific downstream task by further training it on a labeled dataset relevant to that task. SFT uses input-output pairs (e.g., prompt-response) to teach the model the desired behavior or knowledge for the target application. It is a common step in preparing LLMs for specialized use cases.",
+    "keywords": [
+      "AI",
+      "Machine Learning",
+      "LLM",
+      "Fine-tuning",
+      "Supervised Learning",
+      "Model Adaptation",
+      "NLP",
+      "Deep Learning"
+    ],
+    "related": [
+      "ai-1",
+      "ml-1",
+      "llm-1",
+      "fine-tuning-1",
+      "peft-1",
+      "rlhf-1"
+    ]
   },
   {
     "id": "sepp-1",
@@ -6199,6 +6709,26 @@
     "related": []
   },
   {
+    "id": "tot-1",
+    "acronym": "ToT",
+    "definition": "Tree of Thoughts",
+    "description": "A prompting framework that generalizes Chain of Thought (CoT) by enabling language models to explore multiple reasoning paths for problem-solving. It allows the model to generate diverse intermediate thoughts (a 'tree' of thoughts), evaluate their viability, and use search algorithms (like breadth-first or depth-first search) to navigate these paths and find more robust solutions.",
+    "keywords": [
+      "AI",
+      "LLM",
+      "Prompt Engineering",
+      "Reasoning",
+      "Problem Solving",
+      "Search Algorithms"
+    ],
+    "related": [
+      "ai-1",
+      "llm-1",
+      "cot-1",
+      "prompt-engineering-1"
+    ]
+  },
+  {
     "id": "transformer-1",
     "acronym": "Transformer",
     "definition": "Transformer Architecture",
@@ -6501,6 +7031,28 @@
     "description": "",
     "keywords": [],
     "related": []
+  },
+  {
+    "id": "vlm-1",
+    "acronym": "VLM",
+    "definition": "Vision Language Model",
+    "description": "An AI model that can process and understand information from both visual (images, videos) and textual modalities. VLMs are capable of tasks such as image captioning, visual question answering (VQA), and generating text based on visual input. They integrate computer vision and natural language processing techniques.",
+    "keywords": [
+      "AI",
+      "Machine Learning",
+      "Deep Learning",
+      "Computer Vision",
+      "NLP",
+      "Multimodal AI",
+      "Image Processing",
+      "LLM"
+    ],
+    "related": [
+      "ai-1",
+      "ml-1",
+      "nlp-2",
+      "llm-1"
+    ]
   },
   {
     "id": "ves-1",
