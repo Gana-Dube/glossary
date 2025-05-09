@@ -1,8 +1,14 @@
-const AWANLLM_API_KEY = process.env.AWANLLM_API_KEY;
-const AWANLLM_MODEL_NAME = process.env.AWANLLM_MODEL_NAME || "Meta-Llama-3.1-70B-Instruct"; // Or your preferred model
+// Using built-in fetch API (available in Node.js 18+)
+// Vercel uses Node.js 18+ by default
 
-if (!AWANLLM_API_KEY) {
-  throw new Error("Missing AWANLLM_API_KEY environment variable.");
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions";
+// Using the specified model
+const MODEL_NAME = "qwen/qwen-72b:free";
+
+if (!OPENROUTER_API_KEY) {
+  // Avoid throwing error here to allow deployment, but log it.
+  console.error("Missing OPENROUTER_API_KEY environment variable.");
 }
 
 // Export the handler function for Vercel
@@ -25,6 +31,10 @@ module.exports = async (req, res) => {
     return res.status(405).json({ detail: `Method ${req.method} Not Allowed` });
   }
 
+  if (!OPENROUTER_API_KEY) {
+    return res.status(500).json({ detail: "Server configuration error: Missing API Key." });
+  }
+
   try {
     const { diagramPrompt } = req.body;
 
@@ -32,35 +42,35 @@ module.exports = async (req, res) => {
       return res.status(400).json({ detail: "Missing 'diagramPrompt' in request body." });
     }
 
-    const awanPayload = {
-      model: AWANLLM_MODEL_NAME,
-      messages: [
-        {
-          role: "system",
-          content: "You are an expert in generating Mermaid.js markdown diagrams. Your response should ONLY be the Mermaid code block itself, starting with ```mermaid and ending with ```. Do not include any other explanatory text, greetings, or apologies."
-        },
-        {
-          role: "user",
-          content: diagramPrompt
-        }
-      ],
-      max_tokens: 1500, // Adjust as needed
-      stream: false // Easier to handle in serverless
-    };
-
-    const response = await fetch("https://api.awanllm.com/v1/chat/completions", {
+    const response = await fetch(OPENROUTER_API_URL, {
       method: "POST",
       headers: {
+        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${AWANLLM_API_KEY}`
+        "HTTP-Referer": allowedOrigin,
       },
-      body: JSON.stringify(awanPayload)
+      body: JSON.stringify({
+        model: MODEL_NAME,
+        messages: [
+          {
+            role: "system",
+            content: "You are an expert in generating Mermaid.js markdown diagrams. Your response should ONLY be the Mermaid code block itself, starting with ```mermaid and ending with ```. Do not include any other explanatory text, greetings, or apologies. Follow all syntax rules for Mermaid diagrams precisely."
+          },
+          {
+            role: "user",
+            content: diagramPrompt
+          }
+        ],
+        max_tokens: 1500 // Adjust as needed
+      })
     });
 
     if (!response.ok) {
       const errorData = await response.text();
-      console.error("AwanLLM API Error:", errorData);
-      return res.status(response.status).json({ detail: `Failed to get diagram from AwanLLM. Status: ${response.status}. ${errorData}` });
+      console.error("OpenRouter API Error:", errorData);
+      return res.status(response.status).json({ 
+        detail: `Failed to get diagram from OpenRouter. Status: ${response.status}. ${errorData}` 
+      });
     }
 
     const data = await response.json();
@@ -68,6 +78,7 @@ module.exports = async (req, res) => {
     let mermaidCode = "";
     if (data.choices && data.choices.length > 0 && data.choices[0].message && data.choices[0].message.content) {
       mermaidCode = data.choices[0].message.content.trim();
+      
       // Ensure it's a valid mermaid block, sometimes LLMs add extra quotes or text
       if (mermaidCode.startsWith("```mermaid") && mermaidCode.endsWith("```")) {
         // It's good
@@ -86,8 +97,8 @@ module.exports = async (req, res) => {
          mermaidCode = "```mermaid\n" + mermaidCode + "\n```";
       }
     } else {
-      console.error("Unexpected response structure from AwanLLM:", data);
-      return res.status(500).json({ detail: "Received unexpected response structure from AwanLLM." });
+      console.error("Unexpected response structure from OpenRouter:", data);
+      return res.status(500).json({ detail: "Received unexpected response structure from OpenRouter." });
     }
 
     return res.status(200).json({ mermaidCode });
