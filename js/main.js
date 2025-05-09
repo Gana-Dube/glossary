@@ -6,28 +6,30 @@ document.addEventListener("DOMContentLoaded", () => {
   let isListening = false;
 
   // Function to calculate button positions based on which buttons exist
-  function calculateButtonPositions(hasCodeButton, hasMermaidButton) {
+  function calculateButtonPositions(hasCodeButton, hasMermaidButton, hasResearchButton) {
     const positions = {
       copy: 10, // Copy button is always at position 10px from right
     };
 
-    if (hasCodeButton && hasMermaidButton) {
-      // All three buttons exist
-      positions.code = 52;      // 42px from copy
-      positions.mermaid = 94;   // 42px from code
-      positions.gemini = 136;   // 42px from mermaid
-    } else if (hasCodeButton) {
-      // Only code and gemini (no mermaid)
-      positions.code = 52;
-      positions.gemini = 94;
-    } else if (hasMermaidButton) {
-      // Only mermaid and gemini (no code)
-      positions.mermaid = 52;
-      positions.gemini = 94;
-    } else {
-      // Only gemini button
-      positions.gemini = 52;
+    // Calculate positions based on which buttons exist
+    let nextPosition = 52; // Start 42px from copy button
+
+    if (hasCodeButton) {
+      positions.code = nextPosition;
+      nextPosition += 42;
     }
+
+    if (hasMermaidButton) {
+      positions.mermaid = nextPosition;
+      nextPosition += 42;
+    }
+
+    if (hasResearchButton) {
+      positions.research = nextPosition;
+      nextPosition += 42;
+    }
+
+    positions.gemini = nextPosition; // Gemini button is always the last one
 
     return positions;
   }
@@ -684,9 +686,15 @@ IMPORTANT SYNTAX RULES:
 
       // Determine if we should show mermaid button (can be based on keywords or always show)
       const hasMermaidButton = true; // Always show for now, could be conditional
+      
+      // Determine if we should show research button (always show for now)
+      const hasResearchButton = true;
 
       // Calculate positions for all buttons
-      const positions = calculateButtonPositions(hasCodeButton, hasMermaidButton);
+      const positions = calculateButtonPositions(hasCodeButton, hasMermaidButton, hasResearchButton);
+
+      // Create Research button
+      createResearchButton(item, cardContent, aiResponseDiv, positions.research);
 
       // Create Gemini button with updated position
       const geminiButton = document.createElement("button");
@@ -1225,9 +1233,15 @@ IMPORTANT SYNTAX RULES:
 
       // Determine if we should show mermaid button (can be based on keywords or always show)
       const hasMermaidButton = true; // Always show for now, could be conditional
+      
+      // Determine if we should show research button (always show for now)
+      const hasResearchButton = true;
 
       // Calculate positions for all buttons
-      const positions = calculateButtonPositions(hasCodeButton, hasMermaidButton);
+      const positions = calculateButtonPositions(hasCodeButton, hasMermaidButton, hasResearchButton);
+
+      // Create Research button
+      createResearchButton(item, cardContent, aiResponseDiv, positions.research);
 
       // Create Gemini button with updated position
       const geminiButton = document.createElement("button");
@@ -1484,6 +1498,119 @@ IMPORTANT SYNTAX RULES:
       // Create an anchor tag with the alias as text and url as href
       return `<a href="${url}" target="_blank" class="has-text-link">${alias}</a>`;
     });
+  }
+
+  // Function to create research button for research papers
+  function createResearchButton(item, cardContent, aiResponseDiv, rightPosition) {
+    const researchButton = document.createElement("button");
+    researchButton.className = "button is-small is-light";
+    researchButton.style.cssText = `
+      position: absolute;
+      top: 10px;
+      right: ${rightPosition}px;
+      border-radius: 4px;
+      padding: 5px;
+      z-index: 10;
+      height: 32px;
+      width: 32px;
+      transition: background-color 0.3s ease;
+    `;
+    researchButton.title = "Find research papers";
+
+    const researchIcon = document.createElement("img");
+    researchIcon.src = "assets/static/icons/core-api-icon.svg";
+    researchIcon.alt = "Research Icon";
+    researchIcon.style.width = "16px";
+    researchIcon.style.height = "16px";
+    researchIcon.style.verticalAlign = "middle";
+
+    researchButton.appendChild(researchIcon);
+
+    // Add hover effects
+    researchButton.addEventListener("mouseenter", () => {
+      researchButton.classList.add("is-success"); // Use a different color for research button
+    });
+    researchButton.addEventListener("mouseleave", () => {
+      researchButton.classList.remove("is-success");
+    });
+
+    researchButton.addEventListener("click", async () => {
+      const acronym = item.acronym;
+      const definition = item.definition;
+      const description = item.description || "";
+
+      // Construct a query for research papers
+      const query = `${acronym} ${definition}`;
+
+      // Indicate loading state
+      researchButton.classList.add("is-loading");
+      researchButton.disabled = true;
+      aiResponseDiv.textContent = "Searching for research papers...";
+      aiResponseDiv.style.display = "block";
+
+      try {
+        const response = await fetch("/api/return-research-data", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ query }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' }));
+          throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data && data.results && data.results.length > 0) {
+          // Format the research results
+          let resultsHtml = `<strong>Research Papers:</strong><ul class="research-papers">`;
+
+          data.results.forEach(paper => {
+            resultsHtml += `<li class="research-paper">`;
+            resultsHtml += `<p class="paper-title"><strong>${paper.title || 'Untitled'}</strong></p>`;
+
+            if (paper.authors && paper.authors.length > 0) {
+              const authorNames = paper.authors.map(author => author.name).join(', ');
+              resultsHtml += `<p class="paper-authors">Authors: ${authorNames}</p>`;
+            }
+
+            if (paper.abstract) {
+              resultsHtml += `<p class="paper-abstract">${paper.abstract.substring(0, 200)}${paper.abstract.length > 200 ? '...' : ''}</p>`;
+            }
+
+            if (paper.doi) {
+              resultsHtml += `<p class="paper-doi">DOI: <a href="https://doi.org/${paper.doi}" target="_blank">${paper.doi}</a></p>`;
+            }
+
+            if (paper.downloadUrl) {
+              resultsHtml += `<p class="paper-download"><a href="${paper.downloadUrl}" target="_blank" class="button is-small is-info is-light">Download Paper</a></p>`;
+            }
+
+            resultsHtml += `</li>`;
+          });
+
+          resultsHtml += `</ul>`;
+          aiResponseDiv.innerHTML = resultsHtml;
+          aiResponseDiv.style.display = "block";
+        } else {
+          aiResponseDiv.innerHTML = `<strong>Research:</strong> No relevant research papers found.`;
+          aiResponseDiv.style.display = "block";
+        }
+      } catch (error) {
+        console.error("Error fetching research papers:", error);
+        aiResponseDiv.textContent = `Error: ${error.message}`;
+        aiResponseDiv.style.display = "block";
+      } finally {
+        researchButton.classList.remove("is-loading");
+        researchButton.disabled = false;
+      }
+    });
+
+    cardContent.appendChild(researchButton);
+    return researchButton;
   }
 
 });
