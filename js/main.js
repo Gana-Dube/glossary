@@ -166,49 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const description = item.description || "";
 
       // Construct a prompt for the diagram with improved guidelines
-      const diagramPrompt = `Create a Mermaid diagram that illustrates the concept of ${acronym} (${definition})${description ? `. Additional context: ${description}` : ''}.
-Choose an appropriate diagram type (flowchart, sequence, class, etc.) that best represents this concept.
-
-IMPORTANT SYNTAX RULES:
-1. Do not use commas in node labels or text - use spaces or underscores instead
-2. For notes, use "note over A and B" instead of "note over A,B"
-3. Keep the diagram simple and focused on the core concept
-4. Ensure all syntax is valid Mermaid.js code
-5. DO NOT use semicolons at the end of lines
-6. DO NOT use square brackets [] around diagram type declarations
-7. DO NOT use quotes around note text
-
-SEQUENCE DIAGRAM RULES:
-- Start with "sequenceDiagram" on its own line
-- Define participants like: "participant User as \"User/Developer\""
-- Each message must be on its own line: "User->>Service: Request data"
-- Notes must use format: "note over User,Service: This is a note"
-- Activation syntax: "activate Service" and "deactivate Service" on separate lines
-- DO NOT use square brackets [] around any part of the sequence diagram
-- DO NOT mix flowchart and sequence diagram syntax
-
-FLOWCHART RULES:
-- Start with "flowchart TD" or "flowchart LR" on its own line
-- DO NOT use square brackets around the direction indicator (write "flowchart LR" not "flowchart [LR]")
-- Define nodes like: "A[Text here]" or "B(Text here)"
-- Connections must use proper arrows: "A --> B" or "A -->|label| B"
-- DO NOT use the syntax "-->|text|>" - the correct format is "-->|text|"
-- Each connection should be on its own line
-- DO NOT use semicolons at the end of lines
-- Use proper subgraph syntax if needed
-- Note syntax should be: "note over A,B: Text here" or "note right of C: Text here"
-- DO NOT use quotes or square brackets in note syntax
-
-GRAPH RULES:
-- Start with "graph TD" or "graph LR" on its own line
-- Follow the same rules as flowcharts
-- DO NOT use square brackets around the direction indicator
-
-CLASS DIAGRAM RULES:
-- Start with "classDiagram" on its own line
-- Define classes like: "class User { +name: string }"
-- Relationships must use proper syntax: "User <|-- Admin"
-- DO NOT use square brackets or quotes in class definitions`;
+      const diagramPrompt = `Create a Mermaid diagram that illustrates the concept of ${acronym} (${definition})${description ? `. Additional context: ${description}` : ''}`;
 
       // Indicate loading state
       mermaidButton.classList.add("is-loading");
