@@ -1,5 +1,5 @@
 const AWANLLM_API_KEY = process.env.AWANLLM_API_KEY;
-const AWANLLM_MODEL_NAME = process.env.AWANLLM_MODEL_NAME || "Meta-Llama-3.1-8B-Instruct"; // Or your preferred model
+const AWANLLM_MODEL_NAME = process.env.AWANLLM_MODEL_NAME || "Meta-Llama-3.1-70B-Instruct"; // Or your preferred model
 
 if (!AWANLLM_API_KEY) {
   throw new Error("Missing AWANLLM_API_KEY environment variable.");
