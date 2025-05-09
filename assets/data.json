@@ -3,7 +3,7 @@
     "id": "2g-1",
     "acronym": "2G",
     "definition": "2nd Generation",
-    "description": "2G refers to the second-generation of cellular network technology, which introduced digital transmission, improved voice quality, and support for services like SMS (Short Message Service) [[1]]. It succeeded 1G and was first deployed globally in the early 1990s [[2]].",
+    "description": "2G refers to the second-generation of cellular network technology, first commercially launched in 1991. It marked the transition from analog to digital transmission, introducing three key advantages: digitally encrypted phone conversations, more efficient use of radio frequency spectrum enabling more users per frequency band, and mobile data services starting with SMS. The most common 2G technology was GSM, which became the first globally adopted mobile communications framework. Later enhancements (2.5G/2.75G) included GPRS and EDGE, enabling data transfer speeds up to 384 kbit/s.",
     "keywords": [
       "Mobile Networks",
       "Telecommunications",
@@ -4209,15 +4209,7 @@
     "related": []
   },
   {
-    "id": "nlp-1",
-    "acronym": "NLP",
-    "definition": "Natural Language Processing",
-    "description": "",
-    "keywords": [],
-    "related": []
-  },
-  {
-    "id": "nlp-2",
+    "id": "nlp-",
     "acronym": "NLP",
     "definition": "Natural Language Processing",
     "description": "A branch of artificial intelligence focused on enabling computers to understand, interpret, and generate human language in useful ways. NLP combines computational linguistics, machine learning, and deep learning to process and analyze large amounts of natural language data.",

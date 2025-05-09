@@ -280,7 +280,27 @@ IMPORTANT SYNTAX RULES:
     // For sequence diagrams, fix participant names with commas
     code = code.replace(/participant\s+"([^"]*),([^"]*)"/g, 'participant "$1_$2"');
 
-    return code;
+    // Fix issues with text after node labels without proper formatting
+    // This handles cases where text appears after node identifiers without proper syntax
+    code = code.replace(/(\w+)(\s{2,})([A-Za-z])/g, '$1["$3');
+
+    // Clean up any lines that have text without proper node formatting
+    const lines = code.split('\n');
+    const cleanedLines = lines.map(line => {
+      // If a line has a node identifier followed by text without proper syntax, fix it
+      if (line.match(/^\s*[A-Za-z0-9_-]+\s+[A-Za-z].+$/)) {
+        // Extract the node ID and the text
+        const match = line.match(/^\s*([A-Za-z0-9_-]+)\s+(.+)$/);
+        if (match) {
+          const [_, nodeId, text] = match;
+          // Format it properly as a node with a label
+          return `    ${nodeId}["${text}"]`;
+        }
+      }
+      return line;
+    });
+
+    return cleanedLines.join('\n');
   }
 
   function createGeminiButton(item, cardContent, aiResponseDiv, hasCodeButton) {
