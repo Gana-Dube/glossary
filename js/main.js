@@ -216,14 +216,49 @@ IMPORTANT SYNTAX RULES:
                 securityLevel: 'loose',
                 flowchart: { useMaxWidth: true }
               });
-              window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+
+              // Use mermaid.render with a promise to catch errors
+              const mermaidContainer = document.querySelectorAll('.mermaid')[0];
+              const containerId = 'mermaid-diagram-' + Date.now();
+              mermaidContainer.id = containerId;
+
+              window.mermaid.render(containerId)
+                .then(result => {
+                  // Successful rendering
+                  mermaidContainer.innerHTML = result.svg;
+                })
+                .catch(mermaidError => {
+                  console.error("Mermaid rendering error:", mermaidError);
+                  // Create a more detailed error display with accordion
+                  aiResponseDiv.innerHTML = `
+                    <div class="notification is-warning">
+                      <strong>Diagram Error:</strong> Could not render diagram due to syntax error.
+                    </div>
+                    <div class="box">
+                      <details class="failed-code-accordion">
+                        <summary class="has-text-danger">Show failed diagram code</summary>
+                        <div class="content mt-2">
+                          <p class="has-text-grey-dark">Error message: ${mermaidError.str || mermaidError.message || 'Unknown error'}</p>
+                          <pre class="has-background-grey-lighter p-2">${cleanMermaidCode}</pre>
+                        </div>
+                      </details>
+                    </div>`;
+                });
             } catch (mermaidError) {
-              console.error("Mermaid rendering error:", mermaidError);
-              aiResponseDiv.innerHTML = `<strong>Diagram Error:</strong> Could not render diagram due to syntax error.<br>
-               <details>
-                 <summary>Show raw diagram code</summary>
-                 <pre>${cleanMermaidCode}</pre>
-               </details>`;
+              console.error("Mermaid initialization error:", mermaidError);
+              aiResponseDiv.innerHTML = `
+                <div class="notification is-warning">
+                  <strong>Diagram Error:</strong> Could not initialize Mermaid renderer.
+                </div>
+                <div class="box">
+                  <details class="failed-code-accordion">
+                    <summary class="has-text-danger">Show failed diagram code</summary>
+                    <div class="content mt-2">
+                      <p class="has-text-grey-dark">Error message: ${mermaidError.message || 'Unknown error'}</p>
+                      <pre class="has-background-grey-lighter p-2">${cleanMermaidCode}</pre>
+                    </div>
+                  </details>
+                </div>`;
             }
           } else {
             // If mermaid.js is not loaded yet, load it dynamically
@@ -236,14 +271,49 @@ IMPORTANT SYNTAX RULES:
                   securityLevel: 'loose',
                   flowchart: { useMaxWidth: true }
                 });
-                window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+
+                // Use mermaid.render with a promise to catch errors
+                const mermaidContainer = document.querySelectorAll('.mermaid')[0];
+                const containerId = 'mermaid-diagram-' + Date.now();
+                mermaidContainer.id = containerId;
+
+                window.mermaid.render(containerId)
+                  .then(result => {
+                    // Successful rendering
+                    mermaidContainer.innerHTML = result.svg;
+                  })
+                  .catch(mermaidError => {
+                    console.error("Mermaid rendering error:", mermaidError);
+                    // Create a more detailed error display with accordion
+                    aiResponseDiv.innerHTML = `
+                      <div class="notification is-warning">
+                        <strong>Diagram Error:</strong> Could not render diagram due to syntax error.
+                      </div>
+                      <div class="box">
+                        <details class="failed-code-accordion">
+                          <summary class="has-text-danger">Show failed diagram code</summary>
+                          <div class="content mt-2">
+                            <p class="has-text-grey-dark">Error message: ${mermaidError.str || mermaidError.message || 'Unknown error'}</p>
+                            <pre class="has-background-grey-lighter p-2">${cleanMermaidCode}</pre>
+                          </div>
+                        </details>
+                      </div>`;
+                  });
               } catch (mermaidError) {
-                console.error("Mermaid rendering error:", mermaidError);
-                aiResponseDiv.innerHTML = `<strong>Diagram Error:</strong> Could not render diagram due to syntax error.<br>
-                 <details>
-                   <summary>Show raw diagram code</summary>
-                   <pre>${cleanMermaidCode}</pre>
-                 </details>`;
+                console.error("Mermaid initialization error:", mermaidError);
+                aiResponseDiv.innerHTML = `
+                  <div class="notification is-warning">
+                    <strong>Diagram Error:</strong> Could not initialize Mermaid renderer.
+                  </div>
+                  <div class="box">
+                    <details class="failed-code-accordion">
+                      <summary class="has-text-danger">Show failed diagram code</summary>
+                      <div class="content mt-2">
+                        <p class="has-text-grey-dark">Error message: ${mermaidError.message || 'Unknown error'}</p>
+                        <pre class="has-background-grey-lighter p-2">${cleanMermaidCode}</pre>
+                      </div>
+                    </details>
+                  </div>`;
               }
             };
             document.head.appendChild(script);
