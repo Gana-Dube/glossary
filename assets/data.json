@@ -935,6 +935,25 @@
     "keywords": [],
     "related": []
   },
+{
+    "id": "cla-1",
+    "acronym": "cla",
+    "definition": "Closed Loop Automation",
+    "description": "A network management approach where systems continuously monitor, analyze, decide, and execute actions without human intervention. It involves collecting data from network elements, analyzing it against policies or AI models, making decisions, and implementing corrective actions automatically, creating a feedback loop that improves over time. Closed loop automation is fundamental to autonomous networks and zero-touch operations.",
+    "keywords": [
+      "Network Automation",
+      "Autonomous Networks",
+      "Self-healing",
+      "AI-driven Operations",
+      "Zero-touch"
+    ],
+    "related": [
+      "ai-1",
+      "ml-1",
+      "son-1",
+      "ztp-1"
+    ]
+  },
   {
     "id": "clv-1",
     "acronym": "CLV",
@@ -1047,6 +1066,38 @@
       "sdn-1",
       "ric-1"
     ]
+  },
+  {
+    "id": "cbng-1",
+    "acronym": "cBNG",
+    "definition": "Cloud Broadband Network Gateway",
+    "description": "",
+    "keywords": [],
+    "related": []
+  },
+  {
+    "id": "cenm-1",
+    "acronym": "cENM",
+    "definition": "Cloud Native ENM",
+    "description": "",
+    "keywords": [],
+    "related": []
+  },
+  {
+    "id": "cims-1",
+    "acronym": "cIMS",
+    "definition": "cloud IP Multimedia Subsystem",
+    "description": "",
+    "keywords": [],
+    "related": []
+  },
+  {
+    "id": "cndra-1",
+    "acronym": "cnDRA",
+    "definition": "Cloud Native Diameter Routing Agent",
+    "description": "",
+    "keywords": [],
+    "related": []
   },
   {
     "id": "cob-1",
@@ -7403,36 +7454,23 @@
     "related": []
   },
   {
-    "id": "cbng-1",
-    "acronym": "cBNG",
-    "definition": "Cloud Broadband Network Gateway",
-    "description": "",
-    "keywords": [],
-    "related": []
-  },
-  {
-    "id": "cenm-1",
-    "acronym": "cENM",
-    "definition": "Cloud Native ENM",
-    "description": "",
-    "keywords": [],
-    "related": []
-  },
-  {
-    "id": "cims-1",
-    "acronym": "cIMS",
-    "definition": "cloud IP Multimedia Subsystem",
-    "description": "",
-    "keywords": [],
-    "related": []
-  },
-  {
-    "id": "cndra-1",
-    "acronym": "cnDRA",
-    "definition": "Cloud Native Diameter Routing Agent",
-    "description": "",
-    "keywords": [],
-    "related": []
+    "id": "ztsm-1",
+    "acronym": "ZTSM",
+    "definition": "Zero-touch Security Management",
+    "description": "An approach to security management that leverages automation, AI, and ML techniques to enable fully automated end-to-end network and service security management without human intervention. It aims to detect, analyze, and mitigate security threats in real-time across multiple technological domains while maintaining service continuity and performance.",
+    "keywords": [
+      "Security Automation",
+      "AI Security",
+      "Network Security",
+      "Autonomous Security",
+      "5G Security"
+    ],
+    "related": [
+      "ztp-1",
+      "ai-1",
+      "sdn-1",
+      "nfv-1"
+    ]
   },
   {
     "id": "e-pdg-1",
@@ -7609,5 +7647,101 @@
     "description": "An enhancement of the traditional Spanning Tree Protocol, allowing for per-VLAN spanning tree instances. Studies demonstrate its effectiveness in optimizing network performance by preventing loops and improving convergence times in complex VLAN environments.",
     "keywords": [],
     "related": []
+  },
+  {
+    "id": "ns-1",
+    "acronym": "NS",
+    "definition": "Network Slicing",
+    "description": "A network architecture that enables the creation of multiple virtual networks on top of a shared physical infrastructure. Each network slice is an isolated end-to-end network tailored to fulfill specific requirements requested by a particular application or service. Network slicing is a key capability of 5G and beyond networks, allowing operators to provide customized connectivity with specific performance characteristics (bandwidth, latency, reliability) for different use cases simultaneously.",
+    "keywords": [
+      "5G",
+      "Network Virtualization",
+      "End-to-end Isolation",
+      "Service Customization",
+      "Resource Allocation"
+    ],
+    "related": [
+      "ns-1",
+      "nsi-1",
+      "nssi-1",
+      "nsmf-1",
+      "nssmf-1",
+      "5g-1"
+    ]
+  },
+  {
+    "id": "mano-1",
+    "acronym": "MANO",
+    "definition": "Management and Orchestration",
+    "description": "An ETSI-defined framework for the management and orchestration of virtualized network functions in NFV environments. MANO consists of three main components: the NFV Orchestrator (NFVO) for resource/service orchestration, the VNF Manager (VNFM) for lifecycle management of VNF instances, and the Virtualized Infrastructure Manager (VIM) for controlling and managing NFV infrastructure resources. MANO enables automated deployment, configuration, and coordination of virtualized network services.",
+    "keywords": [
+      "NFV",
+      "Orchestration",
+      "Virtualization",
+      "Network Management",
+      "Service Lifecycle"
+    ],
+    "related": [
+      "nfv-1",
+      "nfvo-1",
+      "vnfm-1",
+      "vim-1",
+      "vnf-1"
+    ]
+  },
+  {
+    "id": "lcm-3-1",
+    "acronym": "LCM",
+    "definition": "Lifecycle Management",
+    "description": "The comprehensive process of managing the entire lifecycle of a network service, function, or slice from instantiation through operation to termination. In virtualized and cloud-native environments, LCM includes automated processes for onboarding, instantiation, scaling, healing, updating, and decommissioning of network functions and services. Modern LCM approaches emphasize closed-loop automation and policy-driven management to reduce operational complexity and enable dynamic resource optimization.",
+    "keywords": [
+      "Service Management",
+      "Automation",
+      "Orchestration",
+      "NFV",
+      "Cloud-native"
+    ],
+    "related": [
+      "nfv-1",
+      "mano-1",
+      "vnfm-1",
+      "closed-loop-1"
+    ]
+  },
+  {
+    "id": "beyond-5g-1",
+    "acronym": "Beyond 5G",
+    "definition": "Beyond 5G",
+    "description": "A term referring to the evolution and enhancement of 5G technologies and the transition toward 6G. Beyond 5G encompasses advanced technologies and concepts that extend current 5G capabilities, including terahertz communications, integrated sensing and communication, AI-native networks, holographic communications, and quantum networking. It aims to address limitations of 5G while laying the groundwork for future 6G systems, with research focusing on extreme performance, sustainability, and novel applications.",
+    "keywords": [
+      "6G",
+      "Future Networks",
+      "Terahertz",
+      "Advanced Communications",
+      "Network Evolution"
+    ],
+    "related": [
+      "5g-1",
+      "6g-1",
+      "ai-1"
+    ]
+  },
+  {
+    "id": "6g-1",
+    "acronym": "6G",
+    "definition": "6th Generation",
+    "description": "The sixth generation of wireless technology expected to succeed 5G in the 2030s. 6G aims to provide significantly enhanced capabilities including terabit-per-second data rates, microsecond latency, extremely high reliability, and support for advanced applications like holographic communications, extended reality, and digital twins. Key enabling technologies include terahertz communications, intelligent surfaces, AI-native networking, quantum communications, and integrated sensing and communication. 6G research emphasizes sustainability, trustworthiness, and human-centric design.",
+    "keywords": [
+      "Future Networks",
+      "Terahertz",
+      "AI-native",
+      "Quantum Communications",
+      "Holographic Communications"
+    ],
+    "related": [
+      "5g-1",
+      "beyond-5g-1",
+      "ai-1"
+    ]
   }
 ]
