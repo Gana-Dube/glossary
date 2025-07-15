@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glossary</title>
     <!-- Favicon from favicon.io -->
-    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/svgs/solid/list.svg">
+    <link rel="icon" type="image/png"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/svgs/solid/list.svg">
     <!-- Bulma CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <!-- Add after Bulma CSS -->
@@ -20,162 +22,179 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
 </head>
+
 <body>
-<section class="section">
-<div class="container">
-    <!-- Title Banner Option 3: Dark Notification -->
-    <div class="columns is-centered mb-4">
-        <div class="column is-four-fifths"> <!-- Adjust width as needed -->
-            <div class="notification py-4">
-                <div class="level is-mobile">
-                    <div class="level-left">
-                        <div class="level-item">
-                            <!-- Total Acronym Count Badge -->
-                            <span id="totalAcronymCountBadge" class="tag is-gray is-medium" style="display: none;">
-                                Total: <span id="totalAcronymCount">0</span>
-                            </span>
+    <section class="section">
+        <div class="container">
+            <!-- Modern Header -->
+            <div class="modern-header">
+                <div class="header-content">
+                    <div class="header-left">
+                        <span id="totalAcronymCountBadge" class="count-badge" style="display: none;">
+                            <span class="count-number" id="totalAcronymCount">0</span>
+                            <span class="count-label">Total</span>
+                        </span>
+                    </div>
+                    <div class="header-center">
+                        <div class="logo-container">
+                            <div class="logo-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h1 class="main-title">Glossary</h1>
                         </div>
+                        <p class="subtitle">Your comprehensive acronym reference</p>
                     </div>
-                    <div class="level-item is-flex-grow-1 has-text-centered">
-                        <h1 class="title" style="text-transform: uppercase;">Glossary</h1>
-                    </div>
-                    <div class="level-right">
-                        <div class="level-item">
-                            <p class="is-size-5">Gana Dube</p>
+                    <div class="header-right">
+                        <div class="author-info">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="author-name">Gana Dube</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Wrapper column to match title width -->
-    <div class="columns is-centered">
-        <div class="column is-four-fifths">
-            <!-- Suggested Acronyms & Search Form Side-by-Side (Nested Columns) -->
-            <div class="columns">
-                <!-- Suggested Acronyms Column -->
-                <div class="column is-half">
-                    <div class="box py-3 px-4" style="height: 100%;">
-                        <div class="level is-mobile"> <!-- Use level for left/right alignment -->
-                            <div class="level-left">
-                                <div class="level-item">
-                                    <div>
-                                        <p class="has-text-grey mb-2 is-size-7">Random Generated Acronyms:</p>
-                                        <div class="tags" id="suggestedAcronyms"></div>
+            <!-- Wrapper column to match title width -->
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <!-- Suggested Acronyms & Search Form Side-by-Side (Nested Columns) -->
+                    <div class="columns">
+                        <!-- Suggested Acronyms Column -->
+                        <div class="column is-half">
+                            <div class="box py-3 px-4" style="height: 100%;">
+                                <div class="level is-mobile"> <!-- Use level for left/right alignment -->
+                                    <div class="level-left">
+                                        <div class="level-item">
+                                            <div>
+                                                <p class="has-text-grey mb-2 is-size-7">Random Generated Acronyms:</p>
+                                                <div class="tags" id="suggestedAcronyms"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="level-right" style="position: relative; height: 100%;">
+                                        <div class="level-item" style="position: absolute; top: 0; right: 0;">
+                                            <button class="button is-small is-ghost" id="refreshRandomAcronyms">
+                                                <span class="icon">
+                                                    <iconify-icon icon="f7:rotate-right-fill" width="24" height="24"
+                                                        style="color: #000"></iconify-icon>
+                                                </span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="level-right" style="position: relative; height: 100%;">
-                                <div class="level-item" style="position: absolute; top: 0; right: 0;">
-                                    <button class="button is-small is-ghost" id="refreshRandomAcronyms">
-                                        <span class="icon">
-                                            <iconify-icon icon="f7:rotate-right-fill" width="24" height="24"  style="color: #000"></iconify-icon>
-                                        </span>
-                                    </button>
-                                </div>
+                        </div>
+
+                        <!-- Search Form Column -->
+                        <div class="column is-half is-flex is-align-items-center">
+                            <div class="box px-4" style="height: 100%; width: 100%;">
+                                <!-- Added box container with padding and width -->
+                                <form id="searchForm">
+                                    <div class="field is-grouped"> <!-- Changed from has-addons to is-grouped -->
+                                        <div class="control">
+                                            <button type="button" id="voiceButton" class="button is-light">
+                                                <!-- Moved to left, muted color -->
+                                                <span class="icon has-text-grey">
+                                                    <i class="fas fa-microphone"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="control is-expanded">
+                                            <input class="input" type="text" id="search"
+                                                placeholder="Search for acronyms..." required>
+                                            <!-- Removed is-rounded -->
+                                        </div>
+                                        <div class="control" id="badgeContainer" style="display: none;">
+                                            <span class="tag is-gray is-medium" id="resultBadge"
+                                                style="height: 2.5rem; padding: 0 1rem;">0</span>
+                                        </div>
+                                        <div class="control">
+                                            <button type="button" id="clearButton"
+                                                class="button is-light has-text-grey-dark"> <!-- Clear button -->
+                                                <span class="icon">
+                                                    <iconify-icon icon="solar:eraser-square-bold" width="24" height="24"
+                                                        style="color: #000"></iconify-icon>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="control">
+                                            <button type="submit" class="button is-light has-text-grey-dark">
+                                                <!-- Muted color -->
+                                                <span class="icon">
+                                                    <i class="fas fa-search"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Error Message -->
+                                <div id="errorMessage" class="notification is-danger is-light is-hidden mt-2"></div>
+                                <!-- Changed to is-light -->
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Search Form Column -->
-                <div class="column is-half is-flex is-align-items-center">
-                    <div class="box px-4" style="height: 100%; width: 100%;"> <!-- Added box container with padding and width -->
-                        <form id="searchForm">
-                            <div class="field is-grouped"> <!-- Changed from has-addons to is-grouped -->
-                                <div class="control">
-                                    <button type="button" id="voiceButton" class="button is-light"> <!-- Moved to left, muted color -->
-                                        <span class="icon has-text-grey">
-                                            <i class="fas fa-microphone"></i>
-                                        </span>
-                                    </button>
-                                </div>
-                                <div class="control is-expanded">
-                                    <input class="input" type="text" id="search" placeholder="Search for acronyms..." required> <!-- Removed is-rounded -->
-                                </div>
-                                <div class="control" id="badgeContainer" style="display: none;">
-                                    <span class="tag is-gray is-medium" id="resultBadge" style="height: 2.5rem; padding: 0 1rem;">0</span>
-                                </div>
-                                <div class="control">
-                                    <button type="button" id="clearButton" class="button is-light has-text-grey-dark"> <!-- Clear button -->
-                                        <span class="icon">
-                                            <iconify-icon icon="solar:eraser-square-bold" width="24" height="24" style="color: #000"></iconify-icon>
-                                        </span>
-                                    </button>
-                                </div>
-                                <div class="control">
-                                    <button type="submit" class="button is-light has-text-grey-dark"> <!-- Muted color -->
-                                        <span class="icon">
-                                            <i class="fas fa-search"></i>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- Error Message -->
-                        <div id="errorMessage" class="notification is-danger is-light is-hidden mt-2"></div> <!-- Changed to is-light -->
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- PDF Upload Section - Option 3: Horizontal Level Layout -->
-    <div class="columns is-centered">
-        <div class="column is-four-fifths"> <!-- Keep PDF upload centered but potentially wider -->
-            <div class="box">
-                 <p class="has-text-grey mb-2 is-size-7">Upload PDF Document:</p>
-                <div class="level is-mobile pdf-upload-level">
-                    <!-- Left side: File Input Button -->
-                    <div class="level-left">
-                        <div class="level-item">
-                             <div class="file">
-                                <label class="file-label">
-                                    <input class="file-input" type="file" accept=".pdf" id="pdfInput">
-                                    <span class="file-cta has-background-white-ter"> <!-- Muted CTA -->
-                                        <span class="file-icon">
-                                            <i class="fas fa-upload"></i>
+            <!-- PDF Upload Section - Option 3: Horizontal Level Layout -->
+            <div class="columns is-centered">
+                <div class="column is-four-fifths"> <!-- Keep PDF upload centered but potentially wider -->
+                    <div class="box">
+                        <p class="has-text-grey mb-2 is-size-7">Upload PDF Document:</p>
+                        <div class="level is-mobile pdf-upload-level">
+                            <!-- Left side: File Input Button -->
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <div class="file">
+                                        <label class="file-label">
+                                            <input class="file-input" type="file" accept=".pdf" id="pdfInput">
+                                            <span class="file-cta has-background-white-ter"> <!-- Muted CTA -->
+                                                <span class="file-icon">
+                                                    <i class="fas fa-upload"></i>
+                                                </span>
+                                                <span class="file-label">
+                                                    Upload PDF
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right side: File Info & Refresh -->
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <span id="fileName" class="tag">No file selected</span>
+                                </div>
+                                <div class="level-item">
+                                    <p id="pageCount" class="has-text-grey is-size-7" style="display: none;"></p>
+                                </div>
+                                <div class="level-item">
+                                    <button id="refreshUploaded" class="button is-small is-light"
+                                        title="Refresh/Clear Selection">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-redo"></i>
                                         </span>
-                                        <span class="file-label">
-                                            Upload PDF
-                                        </span>
-                                    </span>
-                                </label>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Right side: File Info & Refresh -->
-                    <div class="level-right">
-                         <div class="level-item">
-                            <span id="fileName" class="tag">No file selected</span>
-                        </div>
-                         <div class="level-item">
-                             <p id="pageCount" class="has-text-grey is-size-7" style="display: none;"></p>
-                        </div>
-                        <div class="level-item">
-                            <button id="refreshUploaded" class="button is-small is-light" title="Refresh/Clear Selection">
-                                <span class="icon is-small">
-                                    <i class="fas fa-redo"></i>
-                                </span>
-                            </button>
-                        </div>
+                        <!-- Progress Bar -->
+                        <progress class="progress is-grey-lighter is-small is-hidden" id="pdfProgress" value="0"
+                            max="100">0%</progress>
                     </div>
                 </div>
-                <!-- Progress Bar -->
-                <progress class="progress is-grey-lighter is-small is-hidden" id="pdfProgress" value="0" max="100">0%</progress>
             </div>
+
+            <!-- Search Results -->
+            <div class="columns is-multiline" id="results" style="margin-top: 1em;"></div>
         </div>
-    </div>
+    </section>
 
-    <!-- Search Results -->
-    <div class="columns is-multiline" id="results" style="margin-top: 1em;"></div>
-</div>
-</section>
-
-<!-- Bulma JavaScript (optional, for interactive components) -->
-<script src="js/pyodide-integration.js"></script>
-<script src="js/main.js"></script>
+    <!-- Bulma JavaScript (optional, for interactive components) -->
+    <script src="js/pyodide-integration.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
