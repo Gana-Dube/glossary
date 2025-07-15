@@ -11,6 +11,7 @@
     <!-- Add after Bulma CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
@@ -24,20 +25,33 @@
 <div class="container">
     <!-- Title Banner Option 3: Dark Notification -->
     <div class="columns is-centered mb-4">
-        <div class="column is-three-quarters"> <!-- Adjust width as needed -->
-            <div class="notification is-dark has-text-centered py-4" style="display: flex; align-items: center; justify-content: center; position: relative;">
-                <!-- Total Acronym Count Badge -->
-                <span id="totalAcronymCountBadge" class="tag is-gray is-medium" style="display: none; position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%);">
-                    Total: <span id="totalAcronymCount">0</span>
-                </span>
-                <h1 class="title has-text-white" style="text-transform: uppercase;">Glossary</h1>
+        <div class="column is-four-fifths"> <!-- Adjust width as needed -->
+            <div class="notification py-4">
+                <div class="level is-mobile">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <!-- Total Acronym Count Badge -->
+                            <span id="totalAcronymCountBadge" class="tag is-gray is-medium" style="display: none;">
+                                Total: <span id="totalAcronymCount">0</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level-item is-flex-grow-1 has-text-centered">
+                        <h1 class="title" style="text-transform: uppercase;">Glossary</h1>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <p class="is-size-5">Gana Dube</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Wrapper column to match title width -->
     <div class="columns is-centered">
-        <div class="column is-three-quarters">
+        <div class="column is-four-fifths">
             <!-- Suggested Acronyms & Search Form Side-by-Side (Nested Columns) -->
             <div class="columns">
                 <!-- Suggested Acronyms Column -->
@@ -109,10 +123,10 @@
 
     <!-- PDF Upload Section - Option 3: Horizontal Level Layout -->
     <div class="columns is-centered">
-        <div class="column is-half"> <!-- Keep PDF upload centered but potentially wider -->
+        <div class="column is-four-fifths"> <!-- Keep PDF upload centered but potentially wider -->
             <div class="box">
                  <p class="has-text-grey mb-2 is-size-7">Upload PDF Document:</p>
-                <div class="level is-mobile">
+                <div class="level is-mobile pdf-upload-level">
                     <!-- Left side: File Input Button -->
                     <div class="level-left">
                         <div class="level-item">
@@ -135,7 +149,7 @@
                     <!-- Right side: File Info & Refresh -->
                     <div class="level-right">
                          <div class="level-item">
-                            <span id="fileName" class="tag is-light is-medium">No file selected</span>
+                            <span id="fileName" class="tag">No file selected</span>
                         </div>
                          <div class="level-item">
                              <p id="pageCount" class="has-text-grey is-size-7" style="display: none;"></p>
@@ -150,13 +164,13 @@
                     </div>
                 </div>
                 <!-- Progress Bar -->
-                <progress class="progress is-grey-lighter is-small is-hidden mt-2" id="pdfProgress" value="0" max="100">0%</progress>
+                <progress class="progress is-grey-lighter is-small is-hidden" id="pdfProgress" value="0" max="100">0%</progress>
             </div>
         </div>
     </div>
 
     <!-- Search Results -->
-    <div class="columns is-multiline" id="results" style="margin-top: 2em;"></div>
+    <div class="columns is-multiline" id="results" style="margin-top: 1em;"></div>
 </div>
 </section>
 

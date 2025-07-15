@@ -1,0 +1,50 @@
+/* Responsive adjustments for random acronym tags */
+#suggestedAcronyms .tag {
+    font-size: 0.85rem; /* Slightly smaller default font size */
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    height: 2em; /* Adjust tag height */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    #suggestedAcronyms .tag {
+        font-size: 0.7rem; /* Even smaller on mobile */
+        padding-left: 0.4em;
+        padding-right: 0.4em;
+        height: 1.75em; /* Further adjust tag height */
+    }
+
+    #refreshRandomAcronyms {
+        width: 28px; /* Smaller button size */
+        height: 28px;
+        padding: 3px; /* Adjust padding */
+    }
+
+    #refreshRandomAcronyms .iconify-icon {
+        width: 18px !important; /* Smaller icon size */
+        height: 18px !important;
+    }
+}
+
+html, body {
+    min-height: 100vh; /* Ensure full viewport height */
+}
+
+body {
+    background: linear-gradient(to bottom right, #e0f2f7, #e6e6fa); /* Subtle blue to lavender gradient */
+}
+
+.pdf-upload-level {
+    margin-bottom: 0.5rem !important; /* Reduce the bottom margin */
+}
+
+.notification {
+    background: linear-gradient(to right, #f5f7fa, #e0e6ed); /* Light grey to light blue-grey gradient */
+    color: #363636; /* Darken text color for contrast */
+}
+
+#fileName {
+    background-color: transparent !important;
+    padding: 0 !important; /* Remove padding to make it less like a button */
+}

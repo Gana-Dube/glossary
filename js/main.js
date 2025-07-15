@@ -569,7 +569,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const randomAcronyms = getRandomAcronyms();
     randomAcronyms.forEach((item) => {
       const tag = document.createElement("a");
-      tag.className = "tag is-primary is-light is-medium is-clickable";
+      tag.className = "tag is-primary is-light is-clickable";
       tag.textContent = item.acronym;
       tag.addEventListener("click", () => {
         document.getElementById("search").value = item.acronym;
@@ -625,7 +625,7 @@ document.addEventListener("DOMContentLoaded", () => {
     matches.forEach((item) => {
       // Create Bulma card
       const cardColumn = document.createElement("div");
-      cardColumn.className = "column is-two-fifths";
+      cardColumn.className = "column is-half";
 
       const card = document.createElement("div");
       card.className = "card";
@@ -759,6 +759,29 @@ document.addEventListener("DOMContentLoaded", () => {
       // Add position relative to card for absolute positioning
       cardContent.style.position = "relative";
       cardContent.appendChild(copyButton);
+
+      // Create Delete button
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "button is-small is-light";
+      deleteButton.style.cssText = `
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        border-radius: 4px;
+        padding: 5px;
+        z-index: 10;
+        height: 24px;
+        width: 24px;
+        transition: background-color 0.3s ease;
+      `;
+      deleteButton.title = "Remove card";
+      deleteButton.innerHTML = '<iconify-icon icon="fa:remove" width="12" height="12"></iconify-icon>';
+
+      deleteButton.addEventListener("click", () => {
+        cardColumn.remove(); // Remove the entire card column
+      });
+
+      cardContent.appendChild(deleteButton);
 
       // --- AI Integration ---
       // Create AI response div first
@@ -1177,7 +1200,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // console.log(`  - Creating card for ${item.acronym}`); // Removed log
         // Create Bulma card
         const cardColumn = document.createElement("div");
-      cardColumn.className = "column is-two-fifths";
+      cardColumn.className = "column is-half";
 
       const card = document.createElement("div");
       card.className = "card";
@@ -1306,6 +1329,29 @@ document.addEventListener("DOMContentLoaded", () => {
       cardContent.style.position = "relative";
       cardContent.appendChild(copyFeedback);
       cardContent.appendChild(copyButton);
+
+      // Create Delete button
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "button is-small is-light";
+      deleteButton.style.cssText = `
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        border-radius: 4px;
+        padding: 5px;
+        z-index: 10;
+        height: 24px;
+        width: 24px;
+        transition: background-color 0.3s ease;
+      `;
+      deleteButton.title = "Remove card";
+      deleteButton.innerHTML = '<iconify-icon icon="fa:remove" width="12" height="12"></iconify-icon>';
+
+      deleteButton.addEventListener("click", () => {
+        cardColumn.remove(); // Remove the entire card column
+      });
+
+      cardContent.appendChild(deleteButton);
 
       // --- AI Integration ---
       // Create AI response div first
