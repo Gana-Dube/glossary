@@ -252,6 +252,22 @@ body {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.8);
     overflow: hidden;
+    color: #363636;
+}
+
+.card .card-content {
+    color: #363636;
+}
+
+.card .title,
+.card .subtitle,
+.card .content {
+    color: #363636 !important;
+}
+
+.card .subtitle strong,
+.card .content strong {
+    color: #363636 !important;
 }
 
 /* Form Elements Styling */
@@ -296,15 +312,30 @@ body {
     margin-bottom: 0.5rem !important;
 }
 
+.file {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.file:hover {
+    z-index: 10;
+    transform: translateY(-2px);
+}
+
 .file-cta {
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.1);
     color: #4a4a4a;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
-.file-cta:hover {
+.file:hover .file-cta {
     background: #f9f9f9;
     color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
 }
 
 #fileName {
