@@ -4,8 +4,9 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 // IMPORTANT: Access your API key from environment variables
 const API_KEY = process.env.GOOGLE_API_KEY;
 
+// Don't throw error immediately, handle it in the request
 if (!API_KEY) {
-  throw new Error("Missing GOOGLE_API_KEY environment variable.");
+  console.error("Missing GOOGLE_API_KEY environment variable.");
 }
 
 const genAI = new GoogleGenerativeAI(API_KEY);
@@ -38,6 +39,10 @@ module.exports = async (req, res) => {
 
     if (!acronym || !definition) {
       return res.status(400).json({ detail: "Missing acronym or definition in request body." });
+    }
+
+    if (!API_KEY) {
+      return res.status(500).json({ detail: "Google API key is not configured." });
     }
 
     // Construct a prompt for the AI

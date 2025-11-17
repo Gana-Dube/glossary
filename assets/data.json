@@ -7743,5 +7743,164 @@
       "beyond-5g-1",
       "ai-1"
     ]
+  },
+  {
+    "id": "arn-1",
+    "acronym": "ARN",
+    "definition": "Amazon Resource Name",
+    "description": "Amazon Resource Names (ARNs) uniquely identify AWS resources. We require an ARN when you need to specify a resource unambiguously across all of AWS, such as in IAM policies, Amazon Relational Database Service (Amazon RDS) tags, and API calls. While ARNs, like any identifying information, should be used and shared carefully, they are not considered secret, sensitive, or confidential information.",
+    "keywords": [
+      "AWS",
+      "Resource Identification",
+      "IAM",
+      "Cloud Computing"
+    ],
+    "related": []
+  },
+  {
+    "id": "iam-1",
+    "acronym": "IAM",
+    "definition": "Identity and Access Management",
+    "description": "AWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS resources. With IAM, you can manage permissions that control which AWS resources users can access. You use IAM to control who is authenticated (signed in) and authorized (has permissions) to use resources. IAM provides the infrastructure necessary to control authentication and authorization for your AWS accounts.",
+    "keywords": [
+      "AWS",
+      "Security",
+      "Access Control",
+      "Authentication",
+      "Authorization"
+    ],
+    "related": [
+      "arn-1"
+    ]
+  },
+  {
+    "id": "ec2-1",
+    "acronym": "EC2",
+    "definition": "Elastic Compute Cloud",
+    "description": "Amazon Elastic Compute Cloud (Amazon EC2) provides on-demand, scalable computing capacity in the Amazon Web Services (AWS) Cloud. Using Amazon EC2 reduces hardware costs so you can develop and deploy applications faster. You can use Amazon EC2 to launch as many or as few virtual servers as you need, configure security and networking, and manage storage.",
+    "keywords": [
+      "AWS",
+      "Cloud Computing",
+      "Virtual Servers",
+      "Scalability",
+      "Compute"
+    ],
+    "related": []
+  },
+  {
+    "id": "s3-1",
+    "acronym": "S3",
+    "definition": "Simple Storage Service",
+    "description": "Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. Customers of all sizes and industries can use Amazon S3 to store and protect any amount of data for a range of use cases, such as data lakes, websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics.",
+    "keywords": [
+      "AWS",
+      "Object Storage",
+      "Cloud Storage",
+      "Scalability",
+      "Data Management"
+    ],
+    "related": []
+  },
+  {
+    "id": "vpc-1",
+    "acronym": "VPC",
+    "definition": "Virtual Private Cloud",
+    "description": "With Amazon Virtual Private Cloud (Amazon VPC), you can launch AWS resources in a logically isolated virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.",
+    "keywords": [
+      "AWS",
+      "Networking",
+      "Cloud Security",
+      "Virtual Network",
+      "Isolation"
+    ],
+    "related": [
+      "ec2-1"
+    ]
+  },
+  {
+    "id": "rds-1",
+    "acronym": "RDS",
+    "definition": "Relational Database Service",
+    "description": "Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks.",
+    "keywords": [
+      "AWS",
+      "Database",
+      "Relational Database",
+      "Managed Service",
+      "Scalability"
+    ],
+    "related": []
+  },
+  {
+    "id": "lambda-1",
+    "acronym": "Lambda",
+    "definition": "AWS Lambda",
+    "description": "AWS Lambda is a serverless compute service for running code without having to provision or manage servers. You pay only for the compute time you consume. Lambda automatically scales your application by running code in response to each trigger, allowing you to build highly available, event-driven applications.",
+    "keywords": [
+      "AWS",
+      "Serverless",
+      "Compute",
+      "Event-driven",
+      "Functions"
+    ],
+    "related": []
+  },
+  {
+    "id": "cloudformation-1",
+    "acronym": "CloudFormation",
+    "definition": "AWS CloudFormation",
+    "description": "AWS CloudFormation is an infrastructure as code (IaC) service that allows you to easily model, provision, and manage AWS and third-party resources. It helps you speed up cloud provisioning with infrastructure as code, enabling you to treat your infrastructure the same way you treat application code.",
+    "keywords": [
+      "AWS",
+      "Infrastructure as Code",
+      "Automation",
+      "DevOps",
+      "Resource Management"
+    ],
+    "related": []
+  },
+  {
+    "id": "apigateway-1",
+    "acronym": "API Gateway",
+    "definition": "Amazon API Gateway",
+    "description": "Amazon API Gateway helps you build HTTP, REST, and WebSocket APIs with a fully managed service that makes it easy to create, publish, maintain, manage, monitor, and secure APIs. It acts as a front door for applications to access data, business logic, or functionality from your backend services.",
+    "keywords": [
+      "AWS",
+      "API Management",
+      "REST",
+      "WebSocket",
+      "Microservices"
+    ],
+    "related": [
+      "lambda-1"
+    ]
+  },
+  {
+    "id": "cloudwatch-1",
+    "acronym": "CloudWatch",
+    "definition": "Amazon CloudWatch",
+    "description": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time, and offers many tools to give you system-wide observability of your application performance, operational health, and resource utilization.",
+    "keywords": [
+      "AWS",
+      "Monitoring",
+      "Observability",
+      "Metrics",
+      "Alarms"
+    ],
+    "related": []
+  },
+  {
+    "id": "dynamodb-1",
+    "acronym": "DynamoDB",
+    "definition": "Amazon DynamoDB",
+    "description": "Amazon DynamoDB is a serverless, NoSQL, fully managed database with single-digit millisecond performance at any scale. DynamoDB addresses your needs to overcome scaling and operational complexities of relational databases. It is purpose-built and optimized for operational workloads that require consistent performance at any scale.",
+    "keywords": [
+      "AWS",
+      "NoSQL",
+      "Database",
+      "Serverless",
+      "Performance"
+    ],
+    "related": []
   }
 ]
