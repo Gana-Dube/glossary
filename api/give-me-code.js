@@ -1,6 +1,6 @@
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const MODEL_NAME = process.env.OPENROUTER_MODEL || 'mistralai/mistral-small-24b-instruct-2501:free';
+const MODEL_NAME = process.env.OPENROUTER_MODEL || 'google/gemma-3-27b-it:free';
 const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_APP_URL || 'https://glossary-one.vercel.app';
 
 module.exports = async (req, res) => {
@@ -69,14 +69,6 @@ module.exports = async (req, res) => {
     const cleanedCode = codeContent.replace(/^```python\n?/, '').replace(/\n?```$/, '');
     return res.status(200).json({ text: cleanedCode });
   } catch (error) {
-    let clientMessage = 'Failed to get code example from AI.';
-    if (error.name === 'AbortError') {
-      clientMessage = 'Request timed out. Please try again.';
-    } else if (error.message && error.message.includes('401')) {
-      clientMessage = 'AI API Authentication failed. Check server key.';
-    } else if (error.message && error.message.includes('429')) {
-      clientMessage = 'AI API rate limit reached. Please try again later.';
-    }
-    return res.status(500).json({ error: clientMessage });
+    return res.status(500).json({ error: error.message || 'Failed to get code example from AI.' });
   }
 };

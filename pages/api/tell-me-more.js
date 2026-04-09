@@ -1,7 +1,5 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
-const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
+const MODEL_NAME = process.env.OPENROUTER_EXPLAIN_MODEL || 'nvidia/nemotron-3-super-120b-a12b:free';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -9,8 +7,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 
-  if (!process.env.GOOGLE_API_KEY) {
-    return res.status(500).json({ error: 'Google API key is not configured.' });
+  if (!process.env.OPENROUTER_API_KEY) {
+    return res.status(500).json({ error: 'Server configuration error: Missing API Key.' });
   }
 
   const { acronym, definition, description } = req.body || {};
@@ -18,24 +16,41 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing acronym or definition in request body.' });
   }
 
-  const prompt = `Explain the following telecommunications acronym in a single, concise paragraph suitable for a glossary:\n\nAcronym: ${acronym}\nDefinition: ${definition}\n${description ? `Description: ${description}\n` : ''}\nExplanation:`;
+  const prompt = `You are a helpful telecommunications expert. Provide clear, concise explanations.\n\nExplain the following telecommunications acronym in a single, concise paragraph suitable for a glossary:\n\nAcronym: ${acronym}\nDefinition: ${definition}\n${description ? `Description: ${description}\n` : ''}\nExplanation:`;
 
   try {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
-    let text;
+    const timeout = setTimeout(() => controller.abort(), 20000);
+    let data;
     try {
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      text = response.text();
+      const response = await fetch(OPENROUTER_API_URL, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: MODEL_NAME,
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 400,
+        }),
+        signal: controller.signal,
+      });
+
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.error?.message || `OpenRouter error: ${response.status}`);
+      }
+
+      data = await response.json();
     } finally {
       clearTimeout(timeout);
     }
+
+    const text = data.choices?.[0]?.message?.content?.trim();
+    if (!text) return res.status(500).json({ error: 'Received empty response from AI.' });
     return res.status(200).json({ text });
   } catch (error) {
-    let clientMessage = 'Failed to get explanation from AI.';
-    if (error.message?.includes('API key not valid')) clientMessage = 'AI API Key is invalid or missing.';
-    else if (error.name === 'AbortError') clientMessage = 'Request timed out. Please try again.';
-    return res.status(500).json({ error: clientMessage });
+    return res.status(500).json({ error: error.message || 'Failed to get explanation from AI.' });
   }
 }

@@ -1,6 +1,6 @@
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const MODEL_NAME = process.env.OPENROUTER_DIAGRAM_MODEL || 'qwen/qwen-72b:free';
+const MODEL_NAME = process.env.OPENROUTER_DIAGRAM_MODEL || 'nvidia/nemotron-3-super-120b-a12b:free';
 const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_APP_URL || 'https://glossary-one.vercel.app';
 
 module.exports = async (req, res) => {
@@ -45,11 +45,7 @@ module.exports = async (req, res) => {
         body: JSON.stringify({
           model: MODEL_NAME,
           messages: [
-            {
-              role: 'system',
-              content: 'You are an expert in generating Mermaid.js markdown diagrams. Your response should ONLY be the Mermaid code block itself, starting with ```mermaid and ending with ```. Do not include any other explanatory text, greetings, or apologies. Follow all syntax rules for Mermaid diagrams precisely.',
-            },
-            { role: 'user', content: diagramPrompt },
+            { role: 'user', content: `You are an expert in generating Mermaid.js markdown diagrams. Your response should ONLY be the Mermaid code block itself, starting with \`\`\`mermaid and ending with \`\`\`. Do not include any other explanatory text, greetings, or apologies. Follow all syntax rules for Mermaid diagrams precisely.\n\n${diagramPrompt}` },
           ],
           max_tokens: 1500,
         }),
@@ -87,10 +83,6 @@ module.exports = async (req, res) => {
 
     return res.status(200).json({ mermaidCode });
   } catch (error) {
-    let clientMessage = 'Internal server error processing diagram request.';
-    if (error.name === 'AbortError') {
-      clientMessage = 'Request timed out. Please try again.';
-    }
-    return res.status(500).json({ error: clientMessage });
+    return res.status(500).json({ error: error.message || 'Internal server error processing diagram request.' });
   }
 };

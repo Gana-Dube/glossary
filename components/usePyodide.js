@@ -4,6 +4,34 @@ const PYTHON_CODE = `
 import re
 import json
 
+def schwartz_hearst_match(acronym, definition):
+    """Every char of the acronym must map to chars in the definition in order,
+    with the first char of the acronym aligning to a word boundary."""
+    sf = acronym.lower()
+    lf = definition.lower()
+    long_idx = len(lf) - 1
+    short_idx = len(sf) - 1
+    while short_idx >= 0:
+        c = sf[short_idx]
+        if not c.isalnum():
+            short_idx -= 1
+            continue
+        # Walk long form backwards to find c
+        while long_idx >= 0:
+            if lf[long_idx] == c:
+                # First char of acronym must be at a word boundary
+                if short_idx == 0:
+                    if long_idx == 0 or not lf[long_idx - 1].isalnum():
+                        break
+                else:
+                    break
+            long_idx -= 1
+        if long_idx < 0:
+            return False
+        long_idx -= 1
+        short_idx -= 1
+    return True
+
 def is_real_acronym(acronym, definition):
     # Must be 2-12 chars
     if len(acronym) < 2 or len(acronym) > 12:
@@ -15,13 +43,13 @@ def is_real_acronym(acronym, definition):
     letters = [c for c in acronym if c.isalpha()]
     if not letters or sum(1 for c in letters if c.isupper()) / len(letters) < 0.6:
         return False
-    # Definition must be multi-word (a real expansion has multiple words)
-    def_words = definition.split()
-    if len(def_words) < 2:
+    # Definition must have at least as many words as the acronym has letters
+    def_words = [w for w in definition.split() if w]
+    alnum_chars = [c for c in acronym if c.isalnum()]
+    if len(def_words) < len(alnum_chars):
         return False
-    # First letter of acronym must match first letter of one of the definition words
-    first_letters = {w[0].upper() for w in def_words if w}
-    if acronym[0].upper() not in first_letters:
+    # Full Schwartz-Hearst character walk
+    if not schwartz_hearst_match(acronym, definition):
         return False
     return True
 

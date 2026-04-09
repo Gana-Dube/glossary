@@ -1,4 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+function renderMarkdown(text) {
+  const html = sanitizeHtml(text)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/\n/g, '<br />');
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+}
 
 function convertMarkdownLinks(text) {
   return text.replace(/\[\[(.*?)\]\]\((.*?)\)/g, (_match, alias, url) => {
@@ -70,9 +79,25 @@ export default function AcronymCard({ item, onRemove }) {
   const [aiContent, setAiContent] = useState(null);
   const [aiLoading, setAiLoading] = useState(null);
   const [copied, setCopied] = useState(false);
+  const aiContentRef = useRef(null);
 
   const showScript = hasScriptKeyword(item);
   const tags = getTagsList(item.keywords);
+
+  useEffect(() => {
+    if (!aiContent) return;
+    const el = aiContentRef.current?.querySelector('.mermaid');
+    if (!el) return;
+    const run = () => {
+      if (window.mermaid) {
+        el.removeAttribute('data-processed');
+        window.mermaid.initialize({ startOnLoad: false, securityLevel: 'loose' });
+        window.mermaid.run({ nodes: [el] });
+      }
+    };
+    if (window.mermaid) { run(); return; }
+    loadMermaid(run);
+  }, [aiContent]);
 
   async function fetchApi(url, body) {
     const controller = new AbortController();
@@ -101,7 +126,7 @@ export default function AcronymCard({ item, onRemove }) {
       const data = await fetchApi('/api/tell-me-more', {
         acronym: item.acronym, definition: item.definition, description: item.description || '',
       });
-      setAiContent(<><strong>AI Explanation:</strong> {data.text}</>);
+      setAiContent(<>{renderMarkdown(data.text)}</>);
     } catch (e) {
       setAiContent(<span className="has-text-danger">Error: {e.message}</span>);
     } finally { setAiLoading(null); }
@@ -140,7 +165,6 @@ export default function AcronymCard({ item, onRemove }) {
           <div className="mermaid">{code}</div>
         </div>
       );
-      loadMermaid();
     } catch (e) {
       setAiContent(<span className="has-text-danger">Error: {e.message}</span>);
     } finally { setAiLoading(null); }
@@ -218,7 +242,7 @@ export default function AcronymCard({ item, onRemove }) {
               disabled={!!aiLoading}
               title="Generate diagram"
             >
-              <iconify-icon icon="solar:diagram-up-bold" width="13" height="13" />
+              <img src="/icons/mermaid-icon.svg" width="13" height="13" alt="Mermaid" />
             </button>
             <button
               className={`ac-btn${aiLoading === 'research' ? ' loading' : ''}`}
@@ -234,7 +258,7 @@ export default function AcronymCard({ item, onRemove }) {
               disabled={!!aiLoading}
               title="Tell me more (AI)"
             >
-              <iconify-icon icon="solar:stars-bold" width="13" height="13" />
+              <img src="/icons/google-gemini-icon.svg" width="13" height="13" alt="Gemini" />
             </button>
             <button
               className={`ac-btn${copied ? ' success' : ''}`}
@@ -260,7 +284,7 @@ export default function AcronymCard({ item, onRemove }) {
           )}
 
           {aiContent && (
-            <div className="ac-ai-response">
+            <div className="ac-ai-response" ref={aiContentRef}>
               {aiContent}
               <button
                 className="ac-btn ac-ai-close"

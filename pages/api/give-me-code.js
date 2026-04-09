@@ -1,5 +1,5 @@
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const MODEL_NAME = process.env.OPENROUTER_MODEL || 'mistralai/mistral-small-24b-instruct-2501:free';
+const MODEL_NAME = process.env.OPENROUTER_MODEL || 'google/gemma-3-27b-it:free';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
