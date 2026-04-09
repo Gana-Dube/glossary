@@ -1,18 +1,6 @@
 const CORE_API_URL = 'https://api.core.ac.uk/v3/search/works';
-const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_APP_URL || 'https://glossary-one.vercel.app';
 
-module.exports = async (req, res) => {
-  const allowedOrigin = process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : ALLOWED_ORIGIN;
-  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
@@ -23,8 +11,7 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'Missing query in request body.' });
   }
 
-  const API_KEY = process.env.CORE_API_KEY;
-  if (!API_KEY) {
+  if (!process.env.CORE_API_KEY) {
     return res.status(500).json({ error: 'Research API key is not configured.' });
   }
 
@@ -36,7 +23,7 @@ module.exports = async (req, res) => {
       const response = await fetch(CORE_API_URL, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${API_KEY}`,
+          Authorization: `Bearer ${process.env.CORE_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -50,14 +37,10 @@ module.exports = async (req, res) => {
         signal: controller.signal,
       });
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`API error: ${response.status}`);
 
       const contentType = response.headers.get('content-type') || '';
-      if (!contentType.includes('application/json')) {
-        throw new Error('Unexpected response format from research API.');
-      }
+      if (!contentType.includes('application/json')) throw new Error('Unexpected response format from research API.');
 
       data = await response.json();
     } finally {
@@ -67,13 +50,9 @@ module.exports = async (req, res) => {
     return res.status(200).json(data);
   } catch (error) {
     let clientMessage = 'Failed to get research data.';
-    if (error.name === 'AbortError') {
-      clientMessage = 'Request timed out. Please try again.';
-    } else if (error.message && error.message.includes('API error:')) {
-      clientMessage = error.message;
-    } else if (error.message && error.message.toLowerCase().includes('api key')) {
-      clientMessage = 'Research API Key is invalid or missing.';
-    }
+    if (error.name === 'AbortError') clientMessage = 'Request timed out. Please try again.';
+    else if (error.message?.includes('API error:')) clientMessage = error.message;
+    else if (error.message?.toLowerCase().includes('api key')) clientMessage = 'Research API Key is invalid or missing.';
     return res.status(500).json({ error: clientMessage });
   }
-};
+}

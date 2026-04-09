@@ -1,31 +1,17 @@
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 const MODEL_NAME = process.env.OPENROUTER_DIAGRAM_MODEL || 'qwen/qwen-72b:free';
-const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_APP_URL || 'https://glossary-one.vercel.app';
 
-module.exports = async (req, res) => {
-  const allowedOrigin = process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : ALLOWED_ORIGIN;
-  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 
-  if (!OPENROUTER_API_KEY) {
+  if (!process.env.OPENROUTER_API_KEY) {
     return res.status(500).json({ error: 'Server configuration error: Missing API Key.' });
   }
 
   const { diagramPrompt } = req.body || {};
-
   if (!diagramPrompt) {
     return res.status(400).json({ error: "Missing 'diagramPrompt' in request body." });
   }
@@ -38,9 +24,8 @@ module.exports = async (req, res) => {
       const response = await fetch(OPENROUTER_API_URL, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
           'Content-Type': 'application/json',
-          'HTTP-Referer': allowedOrigin,
         },
         body: JSON.stringify({
           model: MODEL_NAME,
@@ -56,14 +41,10 @@ module.exports = async (req, res) => {
         signal: controller.signal,
       });
 
-      if (!response.ok) {
-        throw new Error(`Failed to get diagram from OpenRouter. Status: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`Failed to get diagram from OpenRouter. Status: ${response.status}`);
 
       const contentType = response.headers.get('content-type') || '';
-      if (!contentType.includes('application/json')) {
-        throw new Error('Unexpected response format from AI API.');
-      }
+      if (!contentType.includes('application/json')) throw new Error('Unexpected response format from AI API.');
 
       data = await response.json();
     } finally {
@@ -88,9 +69,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({ mermaidCode });
   } catch (error) {
     let clientMessage = 'Internal server error processing diagram request.';
-    if (error.name === 'AbortError') {
-      clientMessage = 'Request timed out. Please try again.';
-    }
+    if (error.name === 'AbortError') clientMessage = 'Request timed out. Please try again.';
     return res.status(500).json({ error: clientMessage });
   }
-};
+}

@@ -1,0 +1,181 @@
+/* ═══════════════════════════════════════════════════
+   OVERRIDES — Re-assert our design system on top of
+   Bulma. Only AcronymCard internals should use Bulma.
+   Everything else is overridden here.
+   ═══════════════════════════════════════════════════ */
+
+/* Restore our body/html layout after Bulma resets */
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background: #F5F0E8 !important;
+  color: #1C1917;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+body {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Bulma adds box-sizing globally — fine, keep it */
+
+/* Bulma resets <strong> colour — restore */
+strong { color: inherit; }
+
+/* ── ACRONYM CARD ──────────────────────────────────── */
+.ac-card {
+  background: #FDFAF4;
+  border: 1px solid #E2D9C8;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(28,25,23,0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: #1C1917;
+}
+
+/* toolbar */
+.ac-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem 0;
+  gap: 0.5rem;
+}
+
+.ac-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.ac-btn {
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  border: 1px solid #E2D9C8;
+  background: #F5F0E8;
+  color: #78716C;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  padding: 0;
+  flex-shrink: 0;
+}
+.ac-btn:hover { border-color: #C45A1A; color: #C45A1A; }
+.ac-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.ac-btn.loading { opacity: 0.5; }
+.ac-btn.success { background: #d1fae5; border-color: #6ee7b7; color: #065f46; }
+.ac-btn.danger:hover { border-color: #ef4444; color: #ef4444; }
+
+/* body */
+.ac-body {
+  padding: 0.5rem 0.875rem 0.625rem;
+}
+
+.ac-acronym {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #C45A1A;
+  cursor: pointer;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-align: left;
+}
+.ac-acronym:hover { color: #a0440e; }
+
+.ac-definition {
+  font-size: 0.78rem;
+  color: #1C1917;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+.ac-definition strong { color: #1C1917; }
+
+.ac-description {
+  font-size: 0.72rem;
+  color: #57534E;
+  line-height: 1.55;
+  margin-top: 0.35rem;
+}
+.ac-description strong { color: #1C1917; }
+
+/* ai response */
+.ac-ai-response {
+  background: #EDE8DE;
+  border: 1px solid #D6CFC3;
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  color: #1C1917;
+  font-size: 0.73rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+.ac-ai-response > :not(.ac-ai-close) {
+  flex: 1;
+  min-width: 0;
+}
+.ac-ai-close {
+  flex-shrink: 0;
+}
+.ac-ai-response pre {
+  background: #1C1917;
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  overflow-x: auto;
+  margin-top: 0.4rem;
+}
+.ac-ai-response code { color: #F5F0E8; font-size: 0.72rem; }
+
+/* footer */
+.ac-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.75rem 0.6rem;
+  border-top: 1px solid #F0EBE0;
+  margin-top: 0.25rem;
+}
+
+.ac-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.ac-tag {
+  background: rgba(196,90,26,0.08);
+  color: #C45A1A;
+  border: 1px solid rgba(196,90,26,0.18);
+  border-radius: 5px;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+
+/* Give cards proper gap — override Bulma's default column padding */
+.results-area .column.is-half {
+  padding: 0.5rem !important;
+}
+
+/* Neutralise Bulma's negative margin on .columns so cards don't touch edges */
+.results-area.columns {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Progress bar — override Bulma's */
+.results-area .progress {
+  height: 4px;
+  border-radius: 2px;
+}

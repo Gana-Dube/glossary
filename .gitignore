@@ -1,6 +1,11 @@
 node_modules/
 .vercel
-.env.development.local
+.env
+.env.local
+.env*.local
+.env.development
+.env.production
 .qodo
 test_core_api.py
 api/show-me-diagram AWANLLM disabled.js
+mockups/

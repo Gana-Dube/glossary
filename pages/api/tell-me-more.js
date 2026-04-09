@@ -1,34 +1,19 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const API_KEY = process.env.GOOGLE_API_KEY;
-const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_APP_URL || 'https://glossary-one.vercel.app';
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
+const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
-const genAI = new GoogleGenerativeAI(API_KEY || '');
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-
-module.exports = async (req, res) => {
-  const allowedOrigin = process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : ALLOWED_ORIGIN;
-  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 
-  if (!API_KEY) {
+  if (!process.env.GOOGLE_API_KEY) {
     return res.status(500).json({ error: 'Google API key is not configured.' });
   }
 
   const { acronym, definition, description } = req.body || {};
-
   if (!acronym || !definition) {
     return res.status(400).json({ error: 'Missing acronym or definition in request body.' });
   }
@@ -49,11 +34,8 @@ module.exports = async (req, res) => {
     return res.status(200).json({ text });
   } catch (error) {
     let clientMessage = 'Failed to get explanation from AI.';
-    if (error.message && error.message.includes('API key not valid')) {
-      clientMessage = 'AI API Key is invalid or missing.';
-    } else if (error.name === 'AbortError') {
-      clientMessage = 'Request timed out. Please try again.';
-    }
+    if (error.message?.includes('API key not valid')) clientMessage = 'AI API Key is invalid or missing.';
+    else if (error.name === 'AbortError') clientMessage = 'Request timed out. Please try again.';
     return res.status(500).json({ error: clientMessage });
   }
-};
+}
